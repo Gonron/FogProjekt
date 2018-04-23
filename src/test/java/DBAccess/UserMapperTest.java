@@ -64,21 +64,24 @@ public class UserMapperTest {
 
     @Test
     public void testLogin01() throws LoginSampleException {
+        byte[] emptyArray = new byte[0];
         // Can we log in
-        User user = UserMapper.login( "jens@somewhere.com", "jensen" );
+        User user = UserMapper.login( "jens@somewhere.com", emptyArray );
         assertTrue( user != null );
     }
 
     @Test( expected = LoginSampleException.class )
     public void testLogin02() throws LoginSampleException {
+        byte[] emptyArray = new byte[0];
         // We should get an exception if we use the wrong password
-        User user = UserMapper.login( "jens@somewhere.com", "larsen" );
+        User user = UserMapper.login( "jens@somewhere.com", emptyArray );
     }
 
     @Test
     public void testLogin03() throws LoginSampleException {
         // Jens is supposed to be a customer
-        User user = UserMapper.login( "jens@somewhere.com", "jensen" );
+        byte[] emptyArray = new byte[0];
+        User user = UserMapper.login( "jens@somewhere.com", emptyArray );
         assertEquals( "customer", user.getRole() );
     }
 
@@ -86,9 +89,11 @@ public class UserMapperTest {
     public void testCreateUser01() throws LoginSampleException {
         // Can we create a new user - Notice, if login fails, this will fail
         // but so would login01, so this is OK
-        User original = new User( "king@kong.com", "uhahvorhemmeligt", "konge" );
+        byte[] emptyArray = new byte[0];
+        //der er blevet indsat et tomt array her midlertidigt, fordi password typen før var en String
+        User original = new User( "king@kong.com", emptyArray, "konge" );
         UserMapper.createUser( original );
-        User retrieved = UserMapper.login( "king@kong.com", "uhahvorhemmeligt" );
+        User retrieved = UserMapper.login( "king@kong.com", emptyArray);
         assertEquals( "konge", retrieved.getRole() );
     }
 }
