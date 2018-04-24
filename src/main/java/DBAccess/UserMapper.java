@@ -1,12 +1,14 @@
 package DBAccess;
 
 import FunctionLayer.LoginSampleException;
+import FunctionLayer.Order;
 import FunctionLayer.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -57,5 +59,38 @@ public class UserMapper {
             throw new LoginSampleException(ex.getMessage());
         }
     }
+ public static ArrayList<Order> getOrders() throws ClassNotFoundException, SQLException {
+        ArrayList<Order> orders = new ArrayList();
+        Connection con = Connector.connection();
+        String SQL = "SELECT * FROM orders";
+        PreparedStatement ps = con.prepareStatement(SQL);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            int id = rs.getInt("order_id");
+            int SBricks = rs.getInt("Heigth");
+            int MBricks = rs.getInt("Width");
+            int LBricks = rs.getInt("Length");
+            boolean status = rs.getBoolean("status");
+            Order order = new Order(id, SBricks, MBricks, LBricks, status);
+            orders.add(order);
+        }
+        return orders;
+    }
+ 
+  public static void createOrder(Order order, User user) throws SQLException, ClassNotFoundException {
 
+        Connection con = Connector.connection();
+        String SQL = "INSERT INTO orders (id, Heigth, Width, Length, status) VALUES (?, ?, ?, ?, ?)";
+        PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+        ps.setInt(1, user.getId());
+        ps.setInt(2, order.getHeigth());
+        ps.setInt(3, order.getWidth());
+        ps.setInt(4, order.getLength());
+        ps.setBoolean(5, order.getStatus());
+        ps.executeUpdate();
+        ResultSet ids = ps.getGeneratedKeys();
+        ids.next();
+        int id = ids.getInt(1);
+        order.setId(id);
+    }
 }
