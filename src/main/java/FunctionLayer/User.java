@@ -17,9 +17,9 @@ public class User {
     private String password; // Should be hashed and all
     private String role;
 
-    public User() { //used for testing purposes on Java Bean Entities
-       
-    }
+//    public User() { //used for testing purposes on Java Bean Entities
+//       
+//    }
 
    
 
