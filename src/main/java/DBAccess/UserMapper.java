@@ -67,9 +67,9 @@ public class UserMapper {
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
             int id = rs.getInt("order_id");
-            int SBricks = rs.getInt("SBrick");
-            int MBricks = rs.getInt("MBrick");
-            int LBricks = rs.getInt("LBrick");
+            int SBricks = rs.getInt("Heigth");
+            int MBricks = rs.getInt("Width");
+            int LBricks = rs.getInt("Length");
             boolean status = rs.getBoolean("status");
             Order order = new Order(id, SBricks, MBricks, LBricks, status);
             orders.add(order);
@@ -80,12 +80,12 @@ public class UserMapper {
   public static void createOrder(Order order, User user) throws SQLException, ClassNotFoundException {
 
         Connection con = Connector.connection();
-        String SQL = "INSERT INTO orders (id, SBrick, MBrick, LBrick, status) VALUES (?, ?, ?, ?, ?)";
+        String SQL = "INSERT INTO orders (id, Heigth, Width, Length, status) VALUES (?, ?, ?, ?, ?)";
         PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
         ps.setInt(1, user.getId());
-        ps.setInt(2, order.getSBrick());
-        ps.setInt(3, order.getMBrick());
-        ps.setInt(4, order.getLBrick());
+        ps.setInt(2, order.getHeigth());
+        ps.setInt(3, order.getWidth());
+        ps.setInt(4, order.getLength());
         ps.setBoolean(5, order.getStatus());
         ps.executeUpdate();
         ResultSet ids = ps.getGeneratedKeys();
