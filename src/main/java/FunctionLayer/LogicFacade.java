@@ -1,14 +1,13 @@
 package FunctionLayer;
 
 import DBAccess.UserMapper;
-<<<<<<< HEAD
+
 import java.security.NoSuchAlgorithmException;
-=======
 import javax.servlet.http.HttpSession;
 import DBAccess.UserMapper;
 import java.sql.SQLException;
 import java.util.ArrayList;
->>>>>>> 3af9ffc39eeb2e8bc711243d80b5e8c0d842a910
+
 
 /**
  * The purpose of LogicFacade is to...
@@ -17,7 +16,6 @@ import java.util.ArrayList;
  */
 public class LogicFacade {
 
-<<<<<<< HEAD
    
     
     
@@ -29,14 +27,12 @@ public class LogicFacade {
         PasswordEncryption PE = new PasswordEncryption();
         byte[] salt = PE.genereteSalt();
         User user = new User(id, username, username, email, password, email, salt);
-=======
-    public static User login(String email, String password) throws LoginSampleException {
-        return UserMapper.login(email, password);
+        return user;
     }
+    
 
     public static User createUser(String email, String password) throws LoginSampleException {
         User user = new User(email, password, "customer");
->>>>>>> 3af9ffc39eeb2e8bc711243d80b5e8c0d842a910
         UserMapper.createUser(user);
         return user;
     }
