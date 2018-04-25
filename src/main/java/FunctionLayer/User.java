@@ -8,6 +8,15 @@ package FunctionLayer;
 public class User {
 
     
+    
+    private int id; // just used to demo retrieval of autogen keys in UserMapper
+    private String username;
+    private String phonenumber;
+    private String email;
+    private byte[] password; // Should be hashed and all
+    private String role;
+    private byte[] salt;
+    
     //the "real" constructor which has all the parameters nedded to create the object
     public User(int id, String username, String phonenumber, String email, byte[] password, String role, byte[] salt) {
         this.id = id;
@@ -31,17 +40,17 @@ public class User {
 
 
 
-    private int id; // just used to demo retrieval of autogen keys in UserMapper
-    private String username;
-    private String phonenumber;
-    private String email;
-    private byte[] password; // Should be hashed and all
-    private String role;
-    private byte[] salt;
+
+
 
     public String getUsername() {
         return username;
     }
+
+//    public User() { //used for testing purposes on Java Bean Entities
+//       
+//    }
+
 
     public void setUsername(String username) {
         this.username = username;
