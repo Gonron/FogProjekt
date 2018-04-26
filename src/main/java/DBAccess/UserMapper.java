@@ -42,7 +42,7 @@ public class UserMapper {
     }
 
 
-    public static User login( String email, byte[] password ) throws LoginSampleException, NoSuchAlgorithmException {
+    public static User login( String email, String password ) throws LoginSampleException, NoSuchAlgorithmException {
 
         
         // denne metode skal rettes så ledes, at vi tager et salt objekt udfra databasen og kan bruge det til at verificere brugeren
