@@ -16,9 +16,11 @@ public class User {
     private byte[] password; // Should be hashed and all
     private String role;
     private byte[] salt;
+    private int postalCode;
+    private String address;
     
     //the "real" constructor which has all the parameters nedded to create the object
-    public User(int id, String username, String phonenumber, String email, byte[] password, String role, byte[] salt) {
+    public User(int id, String username, String phonenumber, String email, byte[] password, String role, byte[] salt, int postalCode, String address) {
         this.id = id;
         this.username = username;
         this.phonenumber = phonenumber;
@@ -26,19 +28,21 @@ public class User {
         this.password = password;
         this.role = role;
         this.salt = salt;
+        this.postalCode = postalCode;
+        this.address = address;
     }
     
     //constructor without id, which is used to create the user object, where the id is genereated in the MySQL database
-      public User( String username, String phonenumber, String email, byte[] password, String role, byte[] salt) {
+      public User( String username, String phonenumber, String email, byte[] password, String role, byte[] salt, int postalCode, String address) {
         this.username = username;
         this.phonenumber = phonenumber;
         this.email = email;
         this.password = password;
         this.role = role;
         this.salt = salt;
+        this.postalCode = postalCode;
+        this.address = address;
     }
-
-
 
 
 
@@ -47,9 +51,6 @@ public class User {
         return username;
     }
 
-//    public User() { //used for testing purposes on Java Bean Entities
-//       
-//    }
 
 
     public void setUsername(String username) {
@@ -75,6 +76,22 @@ public class User {
 
     public User() { //used for testing purposes on Java Bean Entities
 
+    }
+
+    public int getPostalCode() {
+        return postalCode; 
+    }
+
+    public void setPostalCode(int postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getEmail() {

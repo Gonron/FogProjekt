@@ -25,18 +25,18 @@ public class Login extends Command {
         
         String email = request.getParameter( "email" );
         String password = request.getParameter( "password" );
-<<<<<<< HEAD
         byte[] passwordAsByte = password.getBytes();
-        User user = LogicFacade.login( email, passwordAsByte);
-=======
-        
         User user = null;
         try {
-            user = LogicFacade.login( email, password );
+            user = LogicFacade.login( email, passwordAsByte);
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
->>>>>>> dev
+        try {
+            user = LogicFacade.login( email, passwordAsByte);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
         HttpSession session = request.getSession();
         session.setAttribute( "user", user );
         session.setAttribute( "role", user.getRole() );

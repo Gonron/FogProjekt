@@ -39,11 +39,7 @@ public class Register extends Command {
                 Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
             }
             User user = null;
-            try {
-                user = LogicFacade.createUser(0, username, email, password, email);
-            } catch (NoSuchAlgorithmException ex) {
-                Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            user = LogicFacade.createUser(username, email, password, email);
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
             session.setAttribute("role", user.getRole());
