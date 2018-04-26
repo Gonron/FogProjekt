@@ -21,20 +21,15 @@ public class Login extends Command {
 
     @Override
     String execute( HttpServletRequest request, HttpServletResponse response ) throws LoginSampleException {
-        try {
-            PasswordEncryption PE = new PasswordEncryption();
-            
-            String email = request.getParameter( "email" );
-            String password = request.getParameter( "password" );
-            User user = LogicFacade.login(email, password);
-            HttpSession session = request.getSession();
-            session.setAttribute( "user", user );
-            session.setAttribute( "role", user.getRole() );
-            return user.getRole() + "page";
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
+        PasswordEncryption PE = new PasswordEncryption();
+        
+        String email = request.getParameter( "email" );
+        String password = request.getParameter( "password" );
+        User user = LogicFacade.login(email, password);
+        HttpSession session = request.getSession();
+        session.setAttribute( "user", user );
+        session.setAttribute( "role", user.getRole() );
+        return user.getRole() + "page";
     }
 
 }
