@@ -75,7 +75,7 @@ public class UserMapper {
  public static ArrayList<Order> getOrders() throws ClassNotFoundException, SQLException {
         ArrayList<Order> orders = new ArrayList();
         Connection con = Connector.connection();
-        String SQL = "SELECT * FROM orders";
+        String SQL = "SELECT * FROM orders ORDER BY order_id DESC";
         PreparedStatement ps = con.prepareStatement(SQL);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
