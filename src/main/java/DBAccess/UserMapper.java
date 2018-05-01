@@ -13,12 +13,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 
-/**
- The purpose of UserMapper is to...
-
- @author kasper
- */
 public class UserMapper {
+
     
     
     public static void createUser( User user ) throws LoginSampleException {
@@ -32,10 +28,10 @@ public class UserMapper {
             ps.executeUpdate();
             ResultSet ids = ps.getGeneratedKeys();
             ids.next();
-            int id = ids.getInt( 1 );
-            user.setId( id );
-        } catch ( SQLException | ClassNotFoundException ex ) {
-            throw new LoginSampleException( ex.getMessage() );
+            int id = ids.getInt(1);
+            user.setId(id);
+        } catch (SQLException | ClassNotFoundException ex) {
+            throw new LoginSampleException(ex.getMessage());
         }
     }
 
@@ -43,6 +39,7 @@ public class UserMapper {
     public static User login( String email, String password ) throws LoginSampleException, NoSuchAlgorithmException, InvalidKeySpecException {
 
         
+
         // denne metode skal rettes så ledes, at vi tager et salt objekt udfra databasen og kan bruge det til at verificere brugeren
         try {
             
@@ -63,13 +60,14 @@ public class UserMapper {
                 user.setId( id );
                 return user;
             } else {
-                throw new LoginSampleException( "Could not validate user" );
+                throw new LoginSampleException("Could not validate user");
             }
-        } catch ( ClassNotFoundException | SQLException ex ) {
+        } catch (ClassNotFoundException | SQLException ex) {
             throw new LoginSampleException(ex.getMessage());
         }
     }
- public static ArrayList<Order> getOrders() throws ClassNotFoundException, SQLException {
+
+    public static ArrayList<Order> getOrders() throws ClassNotFoundException, SQLException {
         ArrayList<Order> orders = new ArrayList();
         Connection con = Connector.connection();
         String SQL = "SELECT * FROM orders ORDER BY order_id DESC";
@@ -86,8 +84,8 @@ public class UserMapper {
         }
         return orders;
     }
- 
-  public static void createOrder(Order order, User user) throws SQLException, ClassNotFoundException {
+
+    public static void createOrder(Order order, User user) throws SQLException, ClassNotFoundException {
 
         Connection con = Connector.connection();
         String SQL = "INSERT INTO orders (id, Heigth, Width, Length, status) VALUES (?, ?, ?, ?, ?)";
@@ -102,6 +100,35 @@ public class UserMapper {
         ids.next();
         int id = ids.getInt(1);
         order.setId(id);
+    }
+
+    public static ArrayList<Order> getOrders(User u) throws ClassNotFoundException, SQLException {
+        int id = u.getId();
+        ArrayList<Order> orders = new ArrayList();
+        Connection con = Connector.connection();
+        String SQL = "SELECT * FROM orders " + "WHERE id=?";
+        PreparedStatement ps = con.prepareStatement(SQL);
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            int orderId = rs.getInt("order_id");
+            int heigth = rs.getInt("Heigth");
+            int width = rs.getInt("Width");
+            int length = rs.getInt("Length");
+            boolean status = rs.getBoolean("status");
+            Order order = new Order(orderId, heigth, width, length, status);
+            orders.add(order);
+        }
+        return orders;
+    }
+
+    public static void updateOrder(int id) throws ClassNotFoundException, SQLException {
+        Connection con = Connector.connection();
+        String SQL = "update orders set status = ? where order_id = ?";
+        PreparedStatement ps = con.prepareStatement(SQL);
+        ps.setBoolean(1, true);
+        ps.setInt(2, id);
+        ps.executeUpdate();
     }
 
 }
