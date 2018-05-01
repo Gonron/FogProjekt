@@ -5,6 +5,7 @@ import FunctionLayer.LoginSampleException;
 import FunctionLayer.PasswordEncryption;
 import FunctionLayer.User;
 import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +28,13 @@ public class Login extends Command {
         String password = request.getParameter( "password" );
        
         User user = null;
-        user = LogicFacade.login(email, password);
+        try {
+            user = LogicFacade.login(email, password);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvalidKeySpecException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
         HttpSession session = request.getSession();
         session.setAttribute( "user", user );
         session.setAttribute( "role", user.getRole() );

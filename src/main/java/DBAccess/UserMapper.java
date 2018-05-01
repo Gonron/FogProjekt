@@ -5,6 +5,7 @@ import FunctionLayer.Order;
 import FunctionLayer.PasswordEncryption;
 import FunctionLayer.User;
 import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,8 +21,6 @@ import java.util.ArrayList;
  */
 public class UserMapper {
     
-   
-
     
     public static void createUser( User user ) throws LoginSampleException {
         try {
@@ -42,24 +41,28 @@ public class UserMapper {
     }
 
 
-    public static User login( String email, String password ) throws LoginSampleException, NoSuchAlgorithmException {
+    public static User login( String email, String password ) throws LoginSampleException, NoSuchAlgorithmException, InvalidKeySpecException {
 
         
         // denne metode skal rettes så ledes, at vi tager et salt objekt udfra databasen og kan bruge det til at verificere brugeren
         try {
             PasswordEncryption PE = new PasswordEncryption();
             Connection con = Connector.connection();
-            String SQL = "SELECT id, role FROM Users "
+            String SQL = "SELECT id, phonennumber, role, salt, postalCode, address FROM Users "
                     + "WHERE email=? AND password=?";
             PreparedStatement ps = con.prepareStatement( SQL );
             ps.setString( 1, email );
-            ps.setBytes(2, password );
-            ps.setBytes( 2, password );
+            ps.setString(2, password );
             ResultSet rs = ps.executeQuery();
             if ( rs.next() ) {
                 String role = rs.getString( "role" );
                 int id = rs.getInt( "id" );
-                User user = new User(role, role, email, password, role, salt);
+                String phonenumber = rs.getString("phonenumber");
+                int postalCode = rs.getInt("postalCode");
+                String address = rs.getString("address");
+                byte[] salt = rs.getBytes("salt");
+                byte[] password1 =PE.getEncryptedPassword(password, salt);
+                User user = new User(id, phonenumber, email, password1, role, salt, postalCode, address);
                 user.setId( id );
                 return user;
             } else {
@@ -104,11 +107,4 @@ public class UserMapper {
         order.setId(id);
     }
 
-    public static ArrayList<Order> getOrders(User u) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public static void updateOrder(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class LogicFacade {
 
-    public static User login( String email, String password ) throws LoginSampleException, NoSuchAlgorithmException {
+    public static User login( String email, String password ) throws LoginSampleException, NoSuchAlgorithmException, InvalidKeySpecException {
         return UserMapper.login( email, password );
     } 
 
@@ -48,11 +48,4 @@ public class LogicFacade {
         return UserMapper.getOrders();
     }
 
-    public static ArrayList<Order> getOrders(User u) throws ClassNotFoundException, SQLException {
-        return UserMapper.getOrders(u);
-    }
-
-    public static void updateOrder(int id) throws ClassNotFoundException, SQLException {
-        UserMapper.updateOrder(id);
-    }
 }
