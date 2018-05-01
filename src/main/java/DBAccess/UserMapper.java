@@ -30,7 +30,7 @@ public class UserMapper {
             String SQL = "INSERT INTO Users (email, password, role) VALUES (?, ?, ?)";
             PreparedStatement ps = con.prepareStatement( SQL, Statement.RETURN_GENERATED_KEYS );
             ps.setString( 1, user.getEmail() );
-            ps.setString( 2, user.getPassword() );
+            ps.setBytes( 2, user.getPassword() );
             ps.setString( 3, user.getRole() );
             ps.executeUpdate();
             ResultSet ids = ps.getGeneratedKeys();
