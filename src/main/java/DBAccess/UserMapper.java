@@ -2,7 +2,6 @@ package DBAccess;
 
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.Order;
-import FunctionLayer.PasswordEncryption;
 import FunctionLayer.User;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -28,7 +27,7 @@ public class UserMapper {
             String SQL = "INSERT INTO Users (email, password, role) VALUES (?, ?, ?)";
             PreparedStatement ps = con.prepareStatement( SQL, Statement.RETURN_GENERATED_KEYS );
             ps.setString( 1, user.getEmail() );
-            ps.setBytes( 2, user.getPassword() );
+            ps.setString( 2, user.getPassword() );
             ps.setString( 3, user.getRole() );
             ps.executeUpdate();
             ResultSet ids = ps.getGeneratedKeys();
@@ -46,9 +45,9 @@ public class UserMapper {
         
         // denne metode skal rettes så ledes, at vi tager et salt objekt udfra databasen og kan bruge det til at verificere brugeren
         try {
-            PasswordEncryption PE = new PasswordEncryption();
+            
             Connection con = Connector.connection();
-            String SQL = "SELECT id, phonennumber, role, salt, postalCode, address FROM Users "
+            String SQL = "SELECT id, phonennumber, role, postalCode, address FROM Users "
                     + "WHERE email=? AND password=?";
             PreparedStatement ps = con.prepareStatement( SQL );
             ps.setString( 1, email );
@@ -60,9 +59,7 @@ public class UserMapper {
                 String phonenumber = rs.getString("phonenumber");
                 int postalCode = rs.getInt("postalCode");
                 String address = rs.getString("address");
-                byte[] salt = rs.getBytes("salt");
-                byte[] password1 =PE.getEncryptedPassword(password, salt);
-                User user = new User(id, phonenumber, email, password1, role, salt, postalCode, address);
+                User user = new User(id, phonenumber, email, password, role, postalCode, address);
                 user.setId( id );
                 return user;
             } else {

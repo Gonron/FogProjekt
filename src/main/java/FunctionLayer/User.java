@@ -12,31 +12,28 @@ public class User {
     private int id; // just used to demo retrieval of autogen keys in UserMapper
     private String phonenumber;
     private String email;
-    private byte[] password; // Should be hashed and all
+    private String password; // Should be hashed and all
     private String role;
-    private byte[] salt;
     private int postalCode;
     private String address;
     
     //the "real" constructor which has all the parameters nedded to create the object
-    public User(int id, String phonenumber, String email, byte[] password, String role, byte[] salt, int postalCode, String address) {
+    public User(int id, String phonenumber, String email, String password, String role, int postalCode, String address) {
         this.id = id;
         this.phonenumber = phonenumber;
         this.email = email;
         this.password = password;
         this.role = role;
-        this.salt = salt;
         this.postalCode = postalCode;
         this.address = address;
     }
     
     //constructor without id, which is used to create the user object, where the id is genereated in the MySQL database
-      public User( String username, String phonenumber, String email, byte[] password, String role, byte[] salt, int postalCode, String address) {
+      public User(String phonenumber, String email, String password, String role, int postalCode, String address) {
         this.phonenumber = phonenumber;
         this.email = email;
         this.password = password;
         this.role = role;
-        this.salt = salt;
         this.postalCode = postalCode;
         this.address = address;
     }
@@ -48,14 +45,6 @@ public class User {
 
     public void setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
-    }
-
-    public byte[] getSalt() {
-        return salt;
-    }
-
-    public void setSalt(byte[] salt) {
-        this.salt = salt;
     }
     
 
@@ -87,11 +76,11 @@ public class User {
         this.email = email;
     }
 
-    public byte[] getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(byte[] password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 

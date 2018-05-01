@@ -1,6 +1,5 @@
 package FunctionLayer;
 
-import DBAccess.UserMapper;
 
 import java.security.NoSuchAlgorithmException;
 import DBAccess.UserMapper;
@@ -29,11 +28,9 @@ public class LogicFacade {
 //    }
     
 
-    public static User createUser(String username, String phonenumber, String email, String password, int postalCode, String address) throws LoginSampleException, NoSuchAlgorithmException, InvalidKeySpecException {
-        PasswordEncryption PE = new PasswordEncryption();
-        byte[] salt = PE.genereteSalt();
-        byte[] realPassword = PE.getEncryptedPassword(password, salt); // skal evt gives et andet navn
-        User user = new User(username, phonenumber, email, realPassword, "customer", salt, postalCode, address);
+    public static User createUser (String phonenumber, String email, String password, String role, int postalCode, String address) throws LoginSampleException, NoSuchAlgorithmException, InvalidKeySpecException {
+      
+        User user = new User(phonenumber, email, password, "customer", postalCode, address);
         UserMapper.createUser(user);
         return user;
     }
