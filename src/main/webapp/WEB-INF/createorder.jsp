@@ -20,6 +20,7 @@
             <input type="number" name="length" placeholder="length">
             <input type="number" name="width" placeholder="width">
             <input type="number" name="height" placeholder="height">
+            <textarea rows ="4" cols ="5" name="comment">Skriv en kommentar</textarea>
             <input type="submit" value="Submit">
             </form>
         <br>
