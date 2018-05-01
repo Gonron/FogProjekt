@@ -19,7 +19,8 @@
                 <h2>To mark an order as sent enter the order id below </h2>
         <form name="sent" action="EmpControl" method="POST">
             <input type="number" name="id" required="" placeholder="Order id" required/>            
-            <input type="submit" name="btn1" value="Mark as sent"/>           
+            <input type="submit" name="open" value="Marker som Åben"/>
+            <input type="submit" name="sent" value="Marker som Sent"/>  
          </form>
     </body>
 </html>

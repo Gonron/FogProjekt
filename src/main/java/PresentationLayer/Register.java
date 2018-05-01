@@ -19,7 +19,6 @@ public class Register extends Command {
     @Override   
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
         String email = request.getParameter("email");
-        String username = request.getParameter("username");
         String phonenumber = request.getParameter("phonenumber");
         int postalCode = Integer.parseInt(request.getParameter("postalcode"));
         String address = request.getParameter("address");
@@ -42,7 +41,7 @@ public class Register extends Command {
             }
             User user = null;
             try {
-                user = LogicFacade.createUser(username, phonenumber, email, password2, postalCode, address);
+                user = LogicFacade.createUser(phonenumber, email, password1, password2, postalCode, address);
             } catch (NoSuchAlgorithmException | InvalidKeySpecException ex) {
                 Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
             }
