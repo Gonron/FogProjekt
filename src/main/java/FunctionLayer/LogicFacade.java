@@ -14,6 +14,7 @@ import java.util.ArrayList;
  *
  * @author kasper
  */
+
 public class LogicFacade {
 
     public static User login( String email, String password ) throws LoginSampleException, NoSuchAlgorithmException {

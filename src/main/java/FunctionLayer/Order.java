@@ -14,49 +14,49 @@ import java.util.logging.Logger;
 public class Order {
 
     private int id;
-    private int Heigth;
-    private int Width;
-    private int Length;
+    private int heigth;
+    private int width;
+    private int length;
     private boolean status;
     private static final Logger LOG = Logger.getLogger(Order.class.getName());
 
-    public Order(int id, int Heigth, int Width, int Length, boolean status) {
+    public Order(int id, int heigth, int width, int length, boolean status) {
         this.id = id;
-        this.Heigth = Heigth;
-        this.Width = Width;
-        this.Length = Length;
+        this.heigth = heigth;
+        this.width = width;
+        this.length = length;
         this.status = status;
     }
     
-    public Order(int Heigth, int Width, int Length, boolean status) {        
-        this.Heigth = Heigth;
-        this.Width = Width;
-        this.Length = Length;
+    public Order(int heigth, int width, int length, boolean status) {        
+        this.heigth = heigth;
+        this.width = width;
+        this.length = length;
         this.status = status;
     }
 
     public int getHeigth() {
-        return Heigth;
+        return heigth;
     }
 
-    public void setHeigth(int Heigth) {
-        this.Heigth = Heigth;
+    public void setHeigth(int heigth) {
+        this.heigth = heigth;
     }
 
     public int getWidth() {
-        return Width;
+        return width;
     }
 
-    public void setWidth(int Width) {
-        this.Width = Width;
+    public void setWidth(int width) {
+        this.width = width;
     }
 
     public int getLength() {
-        return Length;
+        return length;
     }
 
-    public void setLength(int Length) {
-        this.Length = Length;
+    public void setLength(int length) {
+        this.length = length;
     }
 
     public int getId() {
@@ -77,7 +77,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order:" + " id=" + id + ", Heigth=" + Heigth + ", Width=" + Width + ", Length=" + Length + ", status=" + status;
+        return "Order:" + " id=" + id + ", Heigth=" + heigth + ", Width=" + width + ", Length=" + length + ", status=" + status;
     }
 
 }
