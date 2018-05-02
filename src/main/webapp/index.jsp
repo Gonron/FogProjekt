@@ -14,9 +14,18 @@
          <link rel="stylesheet" type="text/css" href="main.css" />
     </head>
     <body>
-        <h1>Welcome to Sem 2</h1>    
+        <header>
+        <h1>Johannes Fog carport service</h1>  
+        <nav>
+            <a href=#>About us</a>
+            <a href=#>Produkter</a>
+            <a href=#>Kontakt os</a>
+            
+        </nav>
+        </header>
         <table>
-            <tr><td>Login</td>
+            <tr>
+            <div id="login"><td>Login</td></div>
                 <td>
                     <form name="login" action="FrontController" method="POST">
                         <input type="hidden" name="command" value="login">
@@ -29,6 +38,7 @@
                         <input type="submit" value="Submit">
                     </form>
                 </td>
+                </div>
                 <td>Or Register</td>
                 <td>
                     <form name="register" action="FrontController" method="POST">
@@ -52,16 +62,17 @@
                         Genindtast Password:<br>
                         <input type="password" name="password2" placeholder="Password">
                         <br>
-                        <input type="submit" value="Submit">
+                      <input type="submit" value="Submit">
                     </form>
                 </td>
             </tr>
         </table>
         <% String error = (String) request.getAttribute("error");
             if (error != null) {%>
-        <H2>Error!!</h2>
+        <p>Error!!</p>
         <p><%= error%>
             <% }
             %>
+        </p>
     </body>
 </html>

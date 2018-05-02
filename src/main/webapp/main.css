@@ -1,4 +1,46 @@
-body, html {
-	height: 100%;
-	font-family: SourceSansPro-Regular, sans-serif;
+* {
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-kerning: auto;
 }
+
+
+
+html {
+  line-height: 1.4;
+  font-weight: 400;
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  background: lightblue;
+  margin: 0;
+  font-family: sans-serif
+}
+header {
+  color: white;
+  padding: 1em;
+  background: whitesmoke;
+  text-align: center;
+}
+header h1 {
+  margin: 0;
+  color: lightblue;
+}
+header nav {
+  display: block;
+  overflow: hidden;
+}
+header nav a {
+  display: inline-block;
+  padding: .75em;
+  color: white;
+  font-weight: 600;
+  text-transform: lowercase;
+  width: 33.33%;
+  float: left;
+}
+
+
