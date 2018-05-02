@@ -12,19 +12,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-
 public class UserMapper {
 
-    
-    
-    public static void createUser( User user ) throws LoginSampleException {
+    public static void createUser(User user) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
             String SQL = "INSERT INTO Users (email, password, role) VALUES (?, ?, ?)";
-            PreparedStatement ps = con.prepareStatement( SQL, Statement.RETURN_GENERATED_KEYS );
-            ps.setString( 1, user.getEmail() );
-            ps.setString( 2, user.getPassword() );
-            ps.setString( 3, user.getRole() );
+            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, user.getEmail());
+            ps.setString(2, user.getPassword());
+            ps.setString(3, user.getRole());
             ps.executeUpdate();
             ResultSet ids = ps.getGeneratedKeys();
             ids.next();
@@ -35,29 +32,26 @@ public class UserMapper {
         }
     }
 
-
-    public static User login( String email, String password ) throws LoginSampleException, NoSuchAlgorithmException, InvalidKeySpecException {
-
-        
+    public static User login(String email, String password) throws LoginSampleException, NoSuchAlgorithmException, InvalidKeySpecException {
 
         // denne metode skal rettes så ledes, at vi tager et salt objekt udfra databasen og kan bruge det til at verificere brugeren
         try {
-            
+
             Connection con = Connector.connection();
             String SQL = "SELECT id, phonennumber, role, postalCode, address FROM Users "
                     + "WHERE email=? AND password=?";
-            PreparedStatement ps = con.prepareStatement( SQL );
-            ps.setString( 1, email );
-            ps.setString(2, password );
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ps.setString(1, email);
+            ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
-            if ( rs.next() ) {
-                String role = rs.getString( "role" );
-                int id = rs.getInt( "id" );
+            if (rs.next()) {
+                String role = rs.getString("role");
+                int id = rs.getInt("id");
                 String phonenumber = rs.getString("phonenumber");
                 int postalCode = rs.getInt("postalCode");
                 String address = rs.getString("address");
                 User user = new User(id, phonenumber, email, password, role, postalCode, address);
-                user.setId( id );
+                user.setId(id);
                 return user;
             } else {
                 throw new LoginSampleException("Could not validate user");
