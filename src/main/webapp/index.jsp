@@ -12,18 +12,7 @@
         <title>Welcome page</title>
     </head>
     <body>
-        <h1>Welcome to Sem 2</h1>
-        <SVG width="255" height=210>
-<rect width="255" height="210" style="fill:#FFFF00"/>
-<rect x="0" y="0" height="90" width="90"
-        style="stroke:#000000; fill: #120CE8"/>
-<rect x="120" y="0" height="90" width="135"
-        style="stroke:#000000; fill: #120CE8"/>
-<rect x="0" y="120" height="90" width="90"
-        style="stroke:#000000; fill: #120CE8"/>
-<rect x="120" y="120" height="90" width="135"
-        style="stroke:#000000; fill: #120CE8"/>
-</SVG>
+        <h1>Welcome to Sem 2</h1>    
         <table>
             <tr><td>Login</td>
                 <td>
@@ -41,18 +30,25 @@
                 <td>Or Register</td>
                 <td>
                     <form name="register" action="FrontController" method="POST">
-                        <input type="hidden" name="command" value="register">
-                        Username:<br>
-                        <input type="text" name="username" value="User">
+                        <input type="hidden" name="command" value="register">                       
                         <br>
                         Email:<br>
-                        <input type="text" name="email" value="someone@nowhere.com">
+                        <input type="text" name="email" placeholder="Email">
+                        <br>
+                        Postnummer:<br>
+                        <input type="number" name="postnr" placeholder="Postnummer">
+                        <br>
+                        Adresse:<br>
+                        <input type="text" name="adress" placeholder="Adresse">
+                        <br>
+                        Telefonnr.:<br>
+                        <input type="number" name="phonenr" placeholder="Tlf.">
                         <br>
                         Password:<br>
-                        <input type="password" name="password1" value="sesam">
+                        <input type="password" name="password1" placeholder="Password">
                         <br>
-                        Retype Password:<br>
-                        <input type="password" name="password2" value="sesam">
+                        Genindtast Password:<br>
+                        <input type="password" name="password2" placeholder="Password">
                         <br>
                         <input type="submit" value="Submit">
                     </form>
@@ -60,7 +56,7 @@
             </tr>
         </table>
         <% String error = (String) request.getAttribute("error");
-                                if (error != null) {%>
+            if (error != null) {%>
         <H2>Error!!</h2>
         <p><%= error%>
             <% }
