@@ -16,15 +16,17 @@ public class Register extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
         String email = request.getParameter("email");
-        int phonenumber = Integer.parseInt(request.getParameter("phonenr"));
-        int postalCode = Integer.parseInt(request.getParameter("postnr"));
-        String address = request.getParameter("adress");
+
+        String username = request.getParameter("username");
+        int phonenumber = Integer.parseInt(request.getParameter("phonenumber"));
+        int postalCode = Integer.parseInt(request.getParameter("postalcode"));
+        String address = request.getParameter("address");
+ 
+
         String password1 = request.getParameter("password1");
         String password2 = request.getParameter("password2");
         if (password1.equals(password2)) {
-
-            User user = null;
-            user = LogicFacade.createUser(phonenumber, email, password2, postalCode, address);
+            User user = LogicFacade.createUser(phonenumber, email, password2, postalCode, address);
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
             session.setAttribute("role", user.getRole());
