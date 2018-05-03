@@ -19,10 +19,10 @@
         <h1>Johannes Fog carport service</h1>  
         </header>
         <ul>
-        <li><a class="active" href="hjem">Home</a></li>
-        <li><a href="lavOrdre">News</a></li>
-        <li><a href="kontakt">Contact</a></li>
-        <li><a href="Om os">About</a></li>
+        <li><a class="active" href="hjem">Hjem</a></li>
+        <li><a href="lavOrdre">lav ordre</a></li>
+        <li><a href="kontakt">kontakt</a></li>
+        <li><a href="Om os">Om os</a></li>
         </ul>
 
         <table>
