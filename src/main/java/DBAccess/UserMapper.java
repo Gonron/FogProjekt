@@ -24,11 +24,11 @@ public class UserMapper {
     public static void createUser( User user ) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
-            String SQL = "INSERT INTO Users (email, password, phonenumber, post, adress, role) VALUES (?, ?, ?, ?, ?, ?)";
+            String SQL = "INSERT INTO Users (email, password, phone, post, adress, role) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = con.prepareStatement( SQL, Statement.RETURN_GENERATED_KEYS );
             ps.setString( 1, user.getEmail() );
             ps.setString( 2, user.getPassword() );
-            ps.setString( 3, user.getPhonenumber() );
+            ps.setInt( 3, user.getPhonenumber() );
             ps.setInt( 4, user.getPostalCode() );
             ps.setString( 5, user.getAddress() );
             ps.setString( 6, user.getRole() );
@@ -59,7 +59,7 @@ public class UserMapper {
             if ( rs.next() ) {
                 String role = rs.getString( "role" );
                 int id = rs.getInt( "id" );
-                String phonenumber = rs.getString("phonenumber");
+                int phonenumber = rs.getInt("phonenumber");
                 int postalCode = rs.getInt("postalCode");
                 String address = rs.getString("address");
                 User user = new User(id, phonenumber, email, password, role, postalCode, address);
