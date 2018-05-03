@@ -2,7 +2,6 @@ package PresentationLayer;
 
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
-import FunctionLayer.PasswordEncryption;
 import FunctionLayer.User;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -13,8 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class Register extends Command {
-
-    PasswordEncryption PE = new PasswordEncryption();
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
