@@ -14,18 +14,20 @@
          <link rel="stylesheet" type="text/css" href="main.css" />
     </head>
     <body>
+       
         <header>
         <h1>Johannes Fog carport service</h1>  
-        <nav>
-            <a href=#>About us</a>
-            <a href=#>Produkter</a>
-            <a href=#>Kontakt os</a>
-            
-        </nav>
         </header>
+        <ul>
+        <li><a class="active" href="hjem">Home</a></li>
+        <li><a href="lavOrdre">News</a></li>
+        <li><a href="kontakt">Contact</a></li>
+        <li><a href="Om os">About</a></li>
+        </ul>
+
         <table>
             <tr>
-            <div id="login"><td>Login</td></div>
+            <td>Login</td>
                 <td>
                     <form name="login" action="FrontController" method="POST">
                         <input type="hidden" name="command" value="login">
