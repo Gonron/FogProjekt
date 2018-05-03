@@ -22,7 +22,6 @@ public class Register extends Command {
         String phonenumber = request.getParameter("phonenumber");
         int postalCode = Integer.parseInt(request.getParameter("postalcode"));
         String address = request.getParameter("address");
-
         String password1 = request.getParameter("password1");
         String password2 = request.getParameter("password2");
         if (password1.equals(password2)) {
