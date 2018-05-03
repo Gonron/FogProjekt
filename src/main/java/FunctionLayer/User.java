@@ -10,7 +10,7 @@ public class User {
     
     
     private int id; // just used to demo retrieval of autogen keys in UserMapper
-    private String phonenumber;
+    private int phonenumber;
     private String email;
     private String password; // Should be hashed and all
     private String role;
@@ -18,7 +18,7 @@ public class User {
     private String address;
     
     //the "real" constructor which has all the parameters nedded to create the object
-    public User(int id, String phonenumber, String email, String password, String role, int postalCode, String address) {
+    public User(int id, int phonenumber, String email, String password, String role, int postalCode, String address) {
         this.id = id;
         this.phonenumber = phonenumber;
         this.email = email;
@@ -29,7 +29,7 @@ public class User {
     }
     
     //constructor without id, which is used to create the user object, where the id is genereated in the MySQL database
-      public User(String phonenumber, String email, String password, String role, int postalCode, String address) {
+      public User(int phonenumber, String email, String password, String role, int postalCode, String address) {
         this.phonenumber = phonenumber;
         this.email = email;
         this.password = password;
@@ -39,11 +39,11 @@ public class User {
     }
 
 
-    public String getPhonenumber() {
+    public int getPhonenumber() {
         return phonenumber;
     }
 
-    public void setPhonenumber(String phonenumber) {
+    public void setPhonenumber(int phonenumber) {
         this.phonenumber = phonenumber;
     }
     

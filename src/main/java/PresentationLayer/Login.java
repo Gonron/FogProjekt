@@ -2,7 +2,6 @@ package PresentationLayer;
 
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
-import FunctionLayer.PasswordEncryption;
 import FunctionLayer.User;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -22,7 +21,7 @@ public class Login extends Command {
 
     @Override
     String execute( HttpServletRequest request, HttpServletResponse response ) throws LoginSampleException {
-        PasswordEncryption PE = new PasswordEncryption();
+        
         
         String email = request.getParameter( "email" );
         String password = request.getParameter( "password" );
