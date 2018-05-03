@@ -28,7 +28,7 @@ public class LogicFacade {
 //    }
     
 
-    public static User createUser (String phonenumber, String email, String password, String role, int postalCode, String address) throws LoginSampleException, NoSuchAlgorithmException, InvalidKeySpecException {
+    public static User createUser (String phonenumber, String email, String password, int postalCode, String address) throws LoginSampleException {
       
         User user = new User(phonenumber, email, password, "customer", postalCode, address);
         UserMapper.createUser(user);
