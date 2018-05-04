@@ -13,5 +13,9 @@
     </head>
     <body>
         <h1>Kontakt Information</h1>
+        
+        <p>Tlf: 12345678</p>
+        <br >
+        <p>E-mail: johannesfog@hotmail.dk</p>
     </body>
 </html>
