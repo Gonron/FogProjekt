@@ -4,6 +4,7 @@
     Author     : morten
 --%>
 
+<%@page import="FunctionLayer.User"%>
 <%@page import="FunctionLayer.LogicFacade"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,8 +15,11 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-         <%for (int i = 0; i < LogicFacade.getOrders().size(); i++) {
-                out.print(LogicFacade.getOrders().get(i)+"<br>");}%>
+         <%   User u = (User) session.getAttribute("user");            
+            for (int i = 0; i < LogicFacade.getOrders(u).size(); i++) {
+                out.print(LogicFacade.getOrders(u).get(i) + "<br>");
+            }
+        %>
                 <h2>To mark an order as sent enter the order id below </h2>
     </body>
 </html>
