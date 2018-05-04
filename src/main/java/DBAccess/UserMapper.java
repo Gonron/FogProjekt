@@ -104,4 +104,32 @@ public class UserMapper {
         order.setId(id);
     }
 
+    public static ArrayList<Order> getOrders(User u) throws ClassNotFoundException, SQLException {
+        int id = u.getId();
+        ArrayList<Order> orders = new ArrayList();
+        Connection con = Connector.connection();
+        String SQL = "SELECT * FROM orders " + "WHERE id=?";
+        PreparedStatement ps = con.prepareStatement(SQL);
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            int orderId = rs.getInt("order_id");
+            int heigth = rs.getInt("Heigth");
+            int width = rs.getInt("Width");
+            int length = rs.getInt("Length");
+            boolean status = rs.getBoolean("status");
+            Order order = new Order(orderId, heigth, width, length, status);
+            orders.add(order);
+        }
+        return orders;
+    }
+
+    public static void updateOrder(int id) throws ClassNotFoundException, SQLException {
+        Connection con = Connector.connection();
+        String SQL = "update orders set status = ? where order_id = ?";
+        PreparedStatement ps = con.prepareStatement(SQL);
+        ps.setBoolean(1, true);
+        ps.setInt(2, id);
+        ps.executeUpdate();
+    }
 }

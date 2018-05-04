@@ -12,11 +12,10 @@
         <title>Customer home page</title>
     </head>
     <body>
-        <h1>Hello <%=request.getParameter( "email" )%> </h1>
-        You are now logged in as a customer of our wonderful site.
-        
-        <a href="FrontController?command=createorder">Start din Ordre<a/>
-        <a href="FrontController?command=allOrdersCyst">Se dine Ordre<a/>
-        <a href="FrontController?command=contact">Kontakt Os<a/>
+        <h1>Hello <%=request.getParameter("email")%> </h1>
+        You are now logged in as a customer of our wonderful site.<br>      
+        <a href="FrontController?command=createorder"> Start din ordre </a><br>
+        <a href="FrontController?command=allOrdersCust"> Vis alle dine ordre </a><br>
+        <a href="FrontController?command=contact"> Kontakt os </a>
     </body>
 </html>
