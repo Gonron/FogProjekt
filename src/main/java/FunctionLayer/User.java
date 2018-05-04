@@ -10,41 +10,41 @@ public class User {
     
     
     private int id; // just used to demo retrieval of autogen keys in UserMapper
-    private int phonenumber;
+    private String phone;
     private String email;
     private String password; // Should be hashed and all
     private String role;
-    private int postalCode;
+    private String postalCode;
     private String address;
     
     //the "real" constructor which has all the parameters nedded to create the object
-    public User(int id, int phonenumber, String email, String password, String role, int postalCode, String address) {
-        this.id = id;
-        this.phonenumber = phonenumber;
+    public User(int id, String email, String password, String phonenumber, String postalCode, String address, String role) {
+        this.id = id;        
         this.email = email;
         this.password = password;
-        this.role = role;
+        this.phone = phonenumber;        
         this.postalCode = postalCode;
         this.address = address;
+        this.role = role;
     }
     
     //constructor without id, which is used to create the user object, where the id is genereated in the MySQL database
-      public User(int phonenumber, String email, String password, String role, int postalCode, String address) {
-        this.phonenumber = phonenumber;
+      public User(String email, String password, String phonenumber, String postalCode, String address, String role) {
         this.email = email;
         this.password = password;
-        this.role = role;
+        this.phone = phonenumber;
         this.postalCode = postalCode;
         this.address = address;
+        this.role = role;
     }
 
 
-    public int getPhonenumber() {
-        return phonenumber;
+    public String getPhonenumber() {
+        return phone;
     }
 
-    public void setPhonenumber(int phonenumber) {
-        this.phonenumber = phonenumber;
+    public void setPhonenumber(String phonenumber) {
+        this.phone = phonenumber;
     }
     
 
@@ -52,11 +52,11 @@ public class User {
 
     }
 
-    public int getPostalCode() {
+    public String getPostalCode() {
         return postalCode; 
     }
 
-    public void setPostalCode(int postalCode) {
+    public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
 

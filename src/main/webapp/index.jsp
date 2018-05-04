@@ -32,10 +32,10 @@
                     <form name="login" action="FrontController" method="POST">
                         <input type="hidden" name="command" value="login">
                         Email:<br>
-                        <input type="text" name="email" value="someone@nowhere.com">
+                        <input type="text" name="email" placeholder="Email">
                         <br>
                         Password:<br>
-                        <input type="password" name="password" value="sesam">
+                        <input type="password" name="password" placeholder="password">
                         <br>
                         <input type="submit" value="Submit">
                     </form>
@@ -50,13 +50,13 @@
                         <input type="text" name="email" placeholder="Email">
                         <br>
                         Postnummer:<br>
-                        <input type="number" name="postnr" placeholder="Postnummer">
+                        <input type="text" name="postnr" placeholder="Postnummer">
                         <br>
                         Adresse:<br>
                         <input type="text" name="adress" placeholder="Adresse">
                         <br>
                         Telefonnr.:<br>
-                        <input type="number" name="phonenr" placeholder="Tlf.">
+                        <input type="text" name="phonenr" placeholder="Tlf.">
                         <br>
                         Password:<br>
                         <input type="password" name="password1" placeholder="Password">
