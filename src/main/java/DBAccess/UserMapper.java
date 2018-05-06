@@ -2,6 +2,7 @@ package DBAccess;
 
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.Order;
+import FunctionLayer.Tree;
 import FunctionLayer.User;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -132,4 +133,16 @@ public class UserMapper {
         ps.setInt(2, id);
         ps.executeUpdate();
     }
+    
+    public static ArrayList<Tree> getTreeMaterials() throws ClassNotFoundException, SQLException{
+        Connection con = Connector.connection();
+        String SQL = "Select * from list";
+        PreparedStatement ps = con.prepareStatement(SQL);
+        ResultSet rs = ps.executeQuery();
+        while(rs.next()){
+            
+        }
+        return null;
+    }
+    
 }

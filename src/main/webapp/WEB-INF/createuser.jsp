@@ -5,9 +5,11 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page errorPage="error.jsp"%>
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="main.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Order</title>
     </head>
