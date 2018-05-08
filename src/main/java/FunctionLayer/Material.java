@@ -9,18 +9,45 @@ package FunctionLayer;
  *
  * @author kristoffer
  */
-public class Screws  {
-    
+public class Material {
+
+    private int id;
     private String descriptionName;
+    private int length;
     private int amount;
     private String unitType;
     private String description;
+    private int lengthPrUnit;
 
-    public Screws(String descriptionName, int amount, String unitType, String description) {
+    public Material(int id, String descriptionName, int length, int amount, String unitType, String description, int lengthPrUnit) {
+        this.id = id;
         this.descriptionName = descriptionName;
+        this.length = length;
         this.amount = amount;
         this.unitType = unitType;
         this.description = description;
+        this.lengthPrUnit = lengthPrUnit;
+    }
+
+    public int calculate(int materialLength, int lengthPrUnit) {
+
+        int materialAmount = Math.abs(materialLength / lengthPrUnit);
+        if (materialLength % lengthPrUnit != 0) {
+            materialAmount += 1;
+        }
+        return materialAmount;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setLengthPrUnit(int lengthPrUnit) {
+        this.lengthPrUnit = lengthPrUnit;
     }
 
     public String getDescriptionName() {
@@ -31,8 +58,20 @@ public class Screws  {
         this.descriptionName = descriptionName;
     }
 
+    public int getLength() {
+        return length;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
     public int getAmount() {
         return amount;
+    }
+
+    public int getLengthPrUnit() {
+        return lengthPrUnit;
     }
 
     public void setAmount(int amount) {
@@ -55,8 +94,4 @@ public class Screws  {
         this.description = description;
     }
 
-    
-    
-    
-    
 }

@@ -2,7 +2,7 @@ package DBAccess;
 
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.Order;
-import FunctionLayer.Tree;
+import FunctionLayer.Material;
 import FunctionLayer.User;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -134,15 +134,22 @@ public class DataMapper {
         ps.executeUpdate();
     }
     
-    public static ArrayList<Tree> getTreeMaterials() throws ClassNotFoundException, SQLException{
+    public static ArrayList<Material> getTreeMaterials() throws ClassNotFoundException, SQLException{
+         ArrayList<Order> orders = new ArrayList();
         Connection con = Connector.connection();
-        String SQL = "Select * from list";
+        String SQL = "SELECT * FROM orderline";
         PreparedStatement ps = con.prepareStatement(SQL);
         ResultSet rs = ps.executeQuery();
-        while(rs.next()){
-            
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            int SBricks = rs.getInt("Heigth");
+            int MBricks = rs.getInt("Width");
+            int LBricks = rs.getInt("Length");
+            boolean status = rs.getBoolean("status");
+            Material m = new Material();
+            orders.add(order);
         }
-        return null;
+        return orders;
     }
     
 }

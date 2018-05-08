@@ -6,7 +6,7 @@
 package PresentationLayer;
 
 import FunctionLayer.LoginSampleException;
-import FunctionLayer.Tree;
+import FunctionLayer.Material;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,8 +22,8 @@ public class Stykliste extends Command{
        //her skal der bare sættes parametre hentet fra usermapperen
         
        
-        ArrayList<Tree> trees = new ArrayList<>();
-        for(Tree tree: trees){
+        ArrayList<Material> trees = new ArrayList<>();
+        for(Material tree: trees){
              int amount = tree.calculate(tree.getLength(), tree.getLengthPrUnit());
              ArrayList <Integer> amountMaterials = new ArrayList<>();
              amountMaterials.add(amount);

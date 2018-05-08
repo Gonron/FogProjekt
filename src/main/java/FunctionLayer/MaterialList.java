@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author kristoffer
  */
-public class stykListe {
+public class MaterialList {
     
  
    
