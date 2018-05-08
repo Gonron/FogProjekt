@@ -14,6 +14,7 @@
         <link rel="stylesheet" type="text/css" href="main.css" />
     </head>
     <body>
+          <%@include file ="header.jsp" %>
         <h1>VELKOMMEN I FOG</h1>
         <p>Her får du kvalificeret rådgivning til den bedste løsning. Fog hjælper dig med at få overblik og komme i mål med dit byggeprojekt. Lige fra hvad der er godt at vide til vejledning i valg af materialer.</p>
         <p>Johannes Fog består af et Bolig &amp; Designhus og ni Trælast &amp; Byggecenter-butikker fordelt i hele Nordsjælland – i Hørsholm, Fredensborg, Kvistgård, Helsinge, Lyngby, Ølstykke, Herlev og Farum. Vi har også en butik mere sydpå i Vordingborg, der også har stor ekspertise i salg af jern, stål og andre metaller.</p>
