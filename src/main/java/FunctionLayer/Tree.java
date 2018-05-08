@@ -19,9 +19,10 @@ public class Tree{
     private int lengthPrUnit;
     
     
+    
     public  int calculate(int treeLength, int lengthPrUnit){
      
-        
+    
     int treeAmount = Math.abs(treeLength / lengthPrUnit);
     if(treeLength % lengthPrUnit != 0){
         treeAmount +=1;
@@ -60,6 +61,10 @@ public class Tree{
         return amount;
     }
 
+    public int getLengthPrUnit() {
+        return lengthPrUnit;
+    }
+
     public void setAmount(int amount) {
         this.amount = amount;
     }
@@ -79,5 +84,7 @@ public class Tree{
     public void setDescription(String description) {
         this.description = description;
     }
+
+   
     
 }

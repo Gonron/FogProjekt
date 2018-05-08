@@ -29,9 +29,7 @@ public class Login extends Command {
         User user = null;
         try {
             user = LogicFacade.login(email, password);
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InvalidKeySpecException ex) {
+        } catch (NoSuchAlgorithmException | InvalidKeySpecException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
         HttpSession session = request.getSession();

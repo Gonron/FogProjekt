@@ -14,11 +14,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
- * The purpose of UserMapper is to...
+ * The purpose of DataMapper is to...
  *
  * @author kasper
  */
-public class UserMapper {
+public class DataMapper {
 
     public static void createUser(User user) throws LoginSampleException {
         try {

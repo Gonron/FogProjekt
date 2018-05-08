@@ -14,6 +14,7 @@
         <title>Order</title>
     </head>
     <body>
+        <%@include file ="header.jsp" %>
         
         <h1>OPRET BRUGER</h1>
         <p>Slip for at indtaste adresseoplysninger m.m. hver gang du handler. 
