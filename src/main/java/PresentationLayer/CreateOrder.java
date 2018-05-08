@@ -17,6 +17,13 @@ public class CreateOrder extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-       return "createorder";
+       
+        String length =request.getParameter("length");
+        String width =request.getParameter("width");
+        String height =request.getParameter("height");
+        
+        
+        
+        return "createorder";
     }
 }
