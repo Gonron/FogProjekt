@@ -85,8 +85,6 @@ public class Tree{
         this.description = description;
     }
 
-    public int getLengthPrUnit() {
-       return lengthPrUnit;
-    }
+   
     
 }
