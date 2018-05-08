@@ -9,19 +9,19 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Find carport</title>
     </head>
     <body>
-       <h1>Start your Order</h1>
-        here is some filler text
+       <h1>Start din bestilling</h1>
+        Indtast mål i cm(?)
         <br>
         <form action="FrontController" name="order" method="POST">
             <input type="hidden" name="command" value="createorder">
-            <input type="number" name="length" placeholder="length">
-            <input type="number" name="width" placeholder="width">
-            <input type="number" name="height" placeholder="height">
+            <input type="number" name="length" placeholder="længde">
+            <input type="number" name="width" placeholder="bredde">
+            <input type="number" name="height" placeholder="højde">
             <textarea rows ="2" cols ="30" name="comment" placeholder="Skriv en kommentar" style="resize: none"></textarea>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Færdig">
             </form>
         <br>
     </body>
