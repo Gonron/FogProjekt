@@ -47,7 +47,7 @@ public class Tree{
     public void setDescriptionName(String descriptionName) {
         this.descriptionName = descriptionName;
     }
-
+ 
     public int getLength() {
         return length;
     }
