@@ -15,10 +15,10 @@
         <link rel="stylesheet" type="text/css" href="main.css" />
     </head>
     <body>
-        <h1>Here is a list of all orders</h1>
+        <h1>Her er en liste over alle ordre</h1>
         <%for (int i = 0; i < LogicFacade.getOrders().size(); i++) {
                 out.print(LogicFacade.getOrders().get(i)+"<br>");}%>
-                <h2>To mark an order as sent enter the order id below </h2>
+                <h2>For at markere en ordre som sendt, indtast ordrenummeret</h2>
         <form name="sent" action="EmpControl" method="POST">
             <input type="number" name="id" required="" placeholder="Order id" required/>            
             <input type="submit" name="btn1" value="Mark as sent"/>           

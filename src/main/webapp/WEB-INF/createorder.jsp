@@ -14,15 +14,15 @@
         <title>JSP Page</title>
     </head>
     <body>
-       <h1>Start your Order</h1>
-        here is some filler text
+       <h1>Start din ordre</h1>
+        
         <br>
-        <form action="FrontController" name="order" method="POST">
-            <input type="hidden" name="command" value="createorder">
+        <form name="order" action="FrontController" method="POST">            
+            <input type="hidden" name="command" value="order">
             <input type="number" name="length" placeholder="length">
             <input type="number" name="width" placeholder="width">
             <input type="number" name="height" placeholder="height">
-            <textarea rows ="2" cols ="30" name="comment" placeholder="Skriv en kommentar" style="resize: none"></textarea>
+            <textarea rows ="2" cols ="30" name="comment" placeholder="Skriv en kommentar" style="resize: none"></textarea>           
             <input type="submit" value="Submit">
             </form>
         <br>

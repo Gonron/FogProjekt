@@ -16,12 +16,12 @@
         <link rel="stylesheet" type="text/css" href="main.css" />
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Her er en liste over alle dine ordre!</h1>
          <%   User u = (User) session.getAttribute("user");           
             for (int i = 0; i < LogicFacade.getOrders(u).size(); i++) {
                 out.print(LogicFacade.getOrders(u)+"<br>");
             }
         %>
-                <h2>To mark an order as sent enter the order id below </h2>
+             
     </body>
 </html>

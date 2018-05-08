@@ -77,7 +77,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order:" + " id=" + id + ", Heigth=" + heigth + ", Width=" + width + ", Length=" + length + ", status=" + status;
+        return "Order:" + " id=" + id + ", Heigth=" + heigth + ", Width=" + width + ", Length=" + length + ", sent=" + status;
     }
 
 }

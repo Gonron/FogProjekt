@@ -30,8 +30,8 @@ public class LogicFacade {
         return user;
     }
 
-    public static Order createOrder(int lBricks, int mBricks, int sBricks, User u) throws SQLException, ClassNotFoundException {
-        Order order = new Order(sBricks, mBricks, lBricks, false);
+    public static Order createOrder(int height, int width, int length, User u) throws SQLException, ClassNotFoundException {
+        Order order = new Order(height, width, length, false);
         DataMapper.createOrder(order, u);
         return order;
     }
