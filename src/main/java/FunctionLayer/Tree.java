@@ -20,7 +20,7 @@ public class Tree{
     
     
     
-    public  int calculate(int treeLength, int lengthPrUnit){
+    public static int calculate(int treeLength, int lengthPrUnit){
      
     
     int treeAmount = Math.abs(treeLength / lengthPrUnit);
