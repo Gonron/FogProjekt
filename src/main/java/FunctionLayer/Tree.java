@@ -60,6 +60,10 @@ public class Tree{
         return amount;
     }
 
+    public int getLengthPrUnit() {
+        return lengthPrUnit;
+    }
+
     public void setAmount(int amount) {
         this.amount = amount;
     }
