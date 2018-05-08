@@ -12,24 +12,29 @@ package FunctionLayer;
 public class Material {
 
     private int id;
-    private String descriptionName;
+    private String name;
     private int length;
-    private int amount;
-    private String unitType;
-    private String description;
-    private int lengthPrUnit;
+    private int amount;     
+    private int price;
 
-    public Material(int id, String descriptionName, int length, int amount, String unitType, String description, int lengthPrUnit) {
-        this.id = id;
-        this.descriptionName = descriptionName;
-        this.length = length;
-        this.amount = amount;
-        this.unitType = unitType;
-        this.description = description;
-        this.lengthPrUnit = lengthPrUnit;
+    public int getPrice() {
+        return price;
     }
 
-    public int calculate(int materialLength, int lengthPrUnit) {
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public Material(int id, String name, int length, int amount, int price) {
+        this.id = id;
+        this.name = name;
+        this.length = length;
+        this.amount = amount;
+      
+        this.price = price;
+    }
+
+    public static int calculate(int materialLength, int lengthPrUnit) {
 
         int materialAmount = Math.abs(materialLength / lengthPrUnit);
         if (materialLength % lengthPrUnit != 0) {
@@ -46,16 +51,13 @@ public class Material {
         this.id = id;
     }
 
-    public void setLengthPrUnit(int lengthPrUnit) {
-        this.lengthPrUnit = lengthPrUnit;
+
+    public String getName() {
+        return name;
     }
 
-    public String getDescriptionName() {
-        return descriptionName;
-    }
-
-    public void setDescriptionName(String descriptionName) {
-        this.descriptionName = descriptionName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getLength() {
@@ -68,30 +70,10 @@ public class Material {
 
     public int getAmount() {
         return amount;
-    }
-
-    public int getLengthPrUnit() {
-        return lengthPrUnit;
-    }
+    }    
 
     public void setAmount(int amount) {
         this.amount = amount;
-    }
-
-    public String getUnitType() {
-        return unitType;
-    }
-
-    public void setUnitType(String unitType) {
-        this.unitType = unitType;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    }   
 
 }

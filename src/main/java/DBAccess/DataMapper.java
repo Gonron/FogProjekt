@@ -135,21 +135,21 @@ public class DataMapper {
     }
     
     public static ArrayList<Material> getTreeMaterials() throws ClassNotFoundException, SQLException{
-         ArrayList<Order> orders = new ArrayList();
+         ArrayList<Material> materials = new ArrayList();
         Connection con = Connector.connection();
         String SQL = "SELECT * FROM orderline";
         PreparedStatement ps = con.prepareStatement(SQL);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
             int id = rs.getInt("id");
-            int SBricks = rs.getInt("Heigth");
-            int MBricks = rs.getInt("Width");
-            int LBricks = rs.getInt("Length");
-            boolean status = rs.getBoolean("status");
-            Material m = new Material();
-            orders.add(order);
+            String name = rs.getString("name");
+            int length = rs.getInt("length");
+            int price = rs.getInt("price");
+            int amount = rs.getInt("amount");
+            Material m = new Material(id, name, length, amount, price);
+            materials.add(m);
         }
-        return orders;
+        return materials;
     }
     
 }
