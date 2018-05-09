@@ -17,7 +17,9 @@
         <h1>Kontakt Information</h1>
         
         <p>Tlf: 12345678</p>
-        <br >
-        <p>E-mail: johannesfog@hotmail.dk</p>
+        <br>
+    <adrress> skril til os på
+        <a href="mailto:johannesfog@hotmail.dk"> email</a>
+        
     </body>
 </html>

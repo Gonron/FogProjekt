@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Welcome page</title>
          <link rel="stylesheet" type="text/css" href="main.css" />
@@ -16,11 +16,13 @@
     <body>
        
         <%@include file ="WEB-INF/header.jsp" %>
-
+        <div class="row">
+          
         <table>
             <tr>
             <td>Login</td>
                 <td>
+                    
                     <form name="login" action="FrontController" method="POST">
                         <input type="hidden" name="command" value="login">
                         Email:<br>
@@ -32,7 +34,9 @@
                         <input type="submit" value="Submit">
                     </form>
                 </td>
-                </div>
+               
+                                          
+
                 <td>Or Register</td>
                 <td>
                     <form name="register" action="FrontController" method="POST">
@@ -61,6 +65,10 @@
                 </td>
             </tr>
         </table>
+       
+
+           
+        
         <% String error = (String) request.getAttribute("error");
             if (error != null) {%>
         <p>Error!!</p>
@@ -68,5 +76,6 @@
             <% }
             %>
         </p>
+        
     </body>
 </html>

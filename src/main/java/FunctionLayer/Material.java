@@ -30,17 +30,27 @@ public class Material {
         this.name = name;
         this.length = length;
         this.amount = amount;
-      
+        
         this.price = price;
     }
 
-    public static int calculate(int materialLength, int lengthPrUnit) {
-
-        int materialAmount = Math.abs(materialLength / lengthPrUnit);
-        if (materialLength % lengthPrUnit != 0) {
+    public static int calculatePlanks(int userLength, int lengthPrUnit) {
+            //denne metode bruges til at bregne diverse materiale, som ikke er stolper 
+          //mateiralLength er bruger input
+        int materialAmount = Math.abs(userLength / lengthPrUnit);
+        if (userLength % lengthPrUnit != 0) {
             materialAmount += 1;
         }
         return materialAmount;
+    }
+    
+    
+    public static int calculatePosts(int materialLength,boolean withShed){
+        int postAmount = materialLength % 2;
+        if(withShed == true){
+            postAmount +=4;
+        }
+        return postAmount;
     }
 
     public int getId() {
