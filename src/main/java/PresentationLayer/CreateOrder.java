@@ -17,6 +17,9 @@ public class CreateOrder extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-       return "createorder";
+       //denne servlet er en test til at teste hvordan styklisten kommer til at fungere
+        
+        
+        return "createorder";
     }
 }
