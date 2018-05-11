@@ -29,8 +29,7 @@ public class Material {
         this.id = id;
         this.name = name;
         this.length = length;
-        this.amount = amount;
-        
+        this.amount = amount;   
         this.price = price;
     }
 

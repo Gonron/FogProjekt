@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * The purpose of DataMapper is to...
@@ -150,6 +151,26 @@ public class DataMapper {
             materials.add(m);
         }
         return materials;
+    }
+    
+    
+    
+    public static ArrayList<Material> fillAmount(int userLength) throws ClassNotFoundException, SQLException{
+        ArrayList<Material> materials = DataMapper.getTreeMaterials();
+         for(int i = 0; i < materials.size(); i ++){
+             
+        //dette stykke kode er for de første stykker træ, hvor calculateplanks metoden kaldes
+        materials.get(i).setAmount(Material.calculatePlanks(userLength, materials.get(i).getLength()));
+        materials.get(i).setAmount(Material.calculatePlanks(userLength, materials.get(i).getLength()));
+            
+        
+        //resterende udregninger for resten af materialerne herunder
+        return materials;
+         
+         }
+        
+        return null;
+        
     }
     
 }
