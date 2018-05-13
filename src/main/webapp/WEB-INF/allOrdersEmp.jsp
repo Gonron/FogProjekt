@@ -19,9 +19,10 @@
         <%for (int i = 0; i < LogicFacade.getOrders().size(); i++) {
                 out.print(LogicFacade.getOrders().get(i)+"<br>");}%>
                 <h2>For at markere en ordre som sendt, indtast ordrenummeret</h2>
-        <form name="sent" action="EmpControl" method="POST">
+        <form name="sent" action="FrontController" method="POST">
+            <input type="hidden" name="command" value="EmpControl">
             <input type="number" name="id" required="" placeholder="Order id" required/>            
-            <input type="submit" name="btn1" value="Mark as sent"/>           
+            <input type="submit" value="Mark as sent"/>           
          </form>
     </body>
 </html>
