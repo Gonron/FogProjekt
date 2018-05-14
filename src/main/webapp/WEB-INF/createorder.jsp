@@ -17,9 +17,9 @@
         <br>
         <form action="FrontController" name="order" method="POST">
             <input type="hidden" name="command" value="createorder">
-            <input type="number" name="length" placeholder="længde">
-            <input type="number" name="width" placeholder="bredde">
-            <input type="number" name="height" placeholder="højde">
+            <input type="number" name="length" placeholder="længde" min="150" max="1000" required="">
+            <input type="number" name="width" placeholder="bredde" min="200" max="1000" required="">
+            <input type="number" name="height" placeholder="højde" min="180" max="1000" required="">
             <textarea rows ="5" cols ="30" name="comment" placeholder="Skriv en kommentar" style="resize: none"></textarea>
             <input type="submit" value="Færdig">
             </form>
