@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-<%-- 
-    Document   : header
-    Created on : May 8, 2018, 11:50:59 AM
-    Author     : kristoffer
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -43,8 +37,6 @@ li a:hover:not(.active) {
          <link rel="stylesheet" type="text/css" href="main.css" />
     </head>
     <body>
-=======
->>>>>>> master
         <header>
         <h1>Johannes Fog carport service</h1>  
         </header>
