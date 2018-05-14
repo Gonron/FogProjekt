@@ -22,7 +22,7 @@
 
             table {
                 border-collapse: collapse;
-                width: 55%;
+                width: 54%;
             }
 
             td {
