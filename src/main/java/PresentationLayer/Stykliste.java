@@ -30,7 +30,7 @@ public class Stykliste extends Command{
 //             request.setAttribute("amountMaterials", amountMaterials);
 //        }
       
-    return null; // her skal den pågældende JSP side bare tilføjes
+    return "stykliste";
     }
    
 }
