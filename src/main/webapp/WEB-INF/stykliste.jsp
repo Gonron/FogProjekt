@@ -9,15 +9,20 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="main.css" />
+
         <title>JSP Page</title>
         <style>
             table, td, th {
+                background: white;
                 border: 1px solid black;
+                padding-left:  5px;
+                padding-right:  5px;
             }
 
             table {
                 border-collapse: collapse;
-                width: 50%;
+                width: 55%;
             }
 
             td {
@@ -30,11 +35,11 @@
 
         <table>
             <tr>
-                <th>Beskrivelse</th>
-                <th>Længde</th>
-                <th>Antal</th>
-                <th>Enhed</th>
-                <th>Beskrivelse</th>
+                <th> Beskrivelse </th>
+                <th> Længde </th>
+                <th> Antal </th>
+                <th> Enhed </th>
+                <th> Beskrivelse </th>
             </tr>
             <tr>
                 <th></th>
