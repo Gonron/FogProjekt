@@ -74,5 +74,9 @@
    marker-end: url(#endArrow);"/>  
     
     </SVG>
+    
+    <input type="submit" name="Side" value="Set fra siden"> 
+    <input type="submit" name="Bestil" value="Fortsæt">
+    
     </body>
 </html>

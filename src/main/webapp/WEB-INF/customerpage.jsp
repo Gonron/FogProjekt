@@ -10,6 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Customer home page</title>
+        <link rel="stylesheet" type="text/css" href="main.css" />
     </head>
     <body>
         <h1>Hello <%=request.getParameter( "email" )%> </h1>
