@@ -14,6 +14,7 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@include file ="header.jsp" %>
         <h1>Kontakt Information</h1>
         
         <p>Tlf: 12345678</p>

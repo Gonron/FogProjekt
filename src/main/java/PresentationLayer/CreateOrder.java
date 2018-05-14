@@ -17,9 +17,11 @@ public class CreateOrder extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-       //denne servlet er en test til at teste hvordan styklisten kommer til at fungere
-        
-        
+       
+        //denne servlet er en test til at teste hvordan styklisten kommer til at fungere       
+        String length =request.getParameter("length");
+        String width =request.getParameter("width");
+        String height =request.getParameter("height");
         return "createorder";
     }
 }

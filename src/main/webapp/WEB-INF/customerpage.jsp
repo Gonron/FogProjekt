@@ -19,5 +19,6 @@
         <a href="FrontController?command=createorder"> Start din ordre </a><br>
         <a href="FrontController?command=allOrdersCust"> Vis alle dine ordre </a><br>
         <a href="FrontController?command=contact"> Kontakt os </a>
+
     </body>
 </html>

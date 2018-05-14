@@ -1,8 +1,3 @@
-<%-- 
-    Document   : header
-    Created on : May 8, 2018, 11:50:59 AM
-    Author     : kristoffer
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -52,5 +47,3 @@ li a:hover:not(.active) {
         <li><a href="contact">kontakt</a></li>
         <li><a href="Om os">Om os</a></li>
         </ul>
-    </body>
-</html>
