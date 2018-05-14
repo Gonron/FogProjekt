@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%-- 
     Document   : header
     Created on : May 8, 2018, 11:50:59 AM
@@ -42,6 +43,8 @@ li a:hover:not(.active) {
          <link rel="stylesheet" type="text/css" href="main.css" />
     </head>
     <body>
+=======
+>>>>>>> master
         <header>
         <h1>Johannes Fog carport service</h1>  
         </header>
@@ -52,5 +55,3 @@ li a:hover:not(.active) {
         <li><a href="contact">kontakt</a></li>
         <li><a href="Om os">Om os</a></li>
         </ul>
-    </body>
-</html>

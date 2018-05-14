@@ -2,7 +2,7 @@ package DBAccess;
 
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.Order;
-import FunctionLayer.Material;
+import FunctionLayer.OrderLine;
 import FunctionLayer.User;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -12,7 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * The purpose of DataMapper is to...
@@ -135,33 +134,34 @@ public class DataMapper {
         ps.executeUpdate();
     }
     
-    public static ArrayList<Material> getTreeMaterials() throws ClassNotFoundException, SQLException{
-         ArrayList<Material> materials = new ArrayList();
+    public static ArrayList<OrderLine> getTreeMaterials() throws ClassNotFoundException, SQLException{
+         ArrayList<OrderLine> materials = new ArrayList();
         Connection con = Connector.connection();
         String SQL = "SELECT * FROM orderline";
         PreparedStatement ps = con.prepareStatement(SQL);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
             int id = rs.getInt("id");
-            String name = rs.getString("name");
+            String description = rs.getString("description");
             int length = rs.getInt("length");
             int price = rs.getInt("price");
             int amount = rs.getInt("amount");
-            Material m = new Material(id, name, length, amount, price);
-            materials.add(m);
+            OrderLine l = new OrderLine(id, length, amount, description, price);
+          
+            materials.add(l);
         }
         return materials;
     }
     
     
     
-    public static ArrayList<Material> fillAmount(int userLength) throws ClassNotFoundException, SQLException{
-        ArrayList<Material> materials = DataMapper.getTreeMaterials();
+    public static ArrayList<OrderLine> fillAmount(int userLength) throws ClassNotFoundException, SQLException{
+        ArrayList<OrderLine> materials = DataMapper.getTreeMaterials();
          for(int i = 0; i < materials.size(); i ++){
              
         //dette stykke kode er for de første stykker træ, hvor calculateplanks metoden kaldes
-        materials.get(i).setAmount(Material.calculatePlanks(userLength, materials.get(i).getLength()));
-        materials.get(i).setAmount(Material.calculatePlanks(userLength, materials.get(i).getLength()));
+        materials.get(i).setAmount(Order.calculatePlanks(userLength, materials.get(i).getLength()));
+        materials.get(i).setAmount(Order.calculatePlanks(userLength, materials.get(i).getLength()));
             
         
         //resterende udregninger for resten af materialerne herunder

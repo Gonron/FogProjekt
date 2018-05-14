@@ -1,24 +1,16 @@
 package FunctionLayer;
 
-import java.util.logging.Logger;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- *
- * @author Morten
- */
 public class Order {
 
     private int id;
     private int heigth;
     private int width;
     private int length;
+    private boolean shed;
+    private boolean flatRoof;
     private boolean status;
-    private static final Logger LOG = Logger.getLogger(Order.class.getName());
+
 
     public Order(int id, int heigth, int width, int length, boolean status) {
         this.id = id;
@@ -79,5 +71,28 @@ public class Order {
     public String toString() {
         return "Order:" + " id=" + id + ", Heigth=" + heigth + ", Width=" + width + ", Length=" + length + ", sent=" + status;
     }
+    
+    public static int calculatePlanks(int userLength, int lengthPrUnit) {
+        //denne metode bruges til at bregne diverse materiale, som ikke er stolper 
+        //mateiralLength er bruger input
+        int materialAmount = Math.abs(userLength / lengthPrUnit);
+        if (userLength % lengthPrUnit != 0) {
+            materialAmount += 1;
+        }
+        return materialAmount;
+    }
+    
+    
+    public static int calculatePosts(int materialLength, boolean shed){
+        int postAmount = materialLength % 2;
+        if(shed == true){
+            postAmount +=4;
+        }
+        return postAmount;
+    }
 
+   public static int calculatePrice(OrderLine line){
+       return line.getAmount() * line.getPrice();
+   } 
+    
 }
