@@ -19,7 +19,7 @@
         <h1>Her er en liste over alle dine ordre!</h1>
          <%   User u = (User) session.getAttribute("user");           
             for (int i = 0; i < LogicFacade.getOrders(u).size(); i++) {
-                out.print(LogicFacade.getOrders(u)+"<br>");
+                out.print(LogicFacade.getOrders(u).get(i)+"<br>");
             }
         %>
              

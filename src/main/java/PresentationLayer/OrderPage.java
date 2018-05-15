@@ -30,7 +30,7 @@ public class OrderPage extends Command {
         HttpSession session = request.getSession();
         User u = (User) session.getAttribute("user"); 
         try {
-            LogicFacade.createOrder(height, width, length, u);
+            LogicFacade.createOrder(height, width, length, false, false, u);
         } catch (SQLException ex) {
             Logger.getLogger(OrderPage.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
