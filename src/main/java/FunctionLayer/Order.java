@@ -20,10 +20,11 @@ public class Order {
         this.status = status;
     }
     
-    public Order(int heigth, int width, int length, boolean status) {        
+    public Order(int heigth, int width, int length, boolean shed, boolean status) {        
         this.heigth = heigth;
         this.width = width;
         this.length = length;
+        this.shed = shed;
         this.status = status;
     }
 
@@ -90,6 +91,7 @@ public class Order {
         }
         return postAmount;
     }
+    
 
    public static int calculatePrice(OrderLine line){
        return line.getAmount() * line.getPrice();
