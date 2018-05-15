@@ -134,43 +134,58 @@ public class DataMapper {
         ps.executeUpdate();
     }
     
-    public static ArrayList<OrderLine> getTreeMaterials() throws ClassNotFoundException, SQLException{
-         ArrayList<OrderLine> materials = new ArrayList();
+//    public static ArrayList<OrderLine> getTreeMaterials() throws ClassNotFoundException, SQLException{
+//         ArrayList<OrderLine> materials = new ArrayList();
+//        Connection con = Connector.connection();
+//        String SQL = "SELECT * FROM orderline";
+//        PreparedStatement ps = con.prepareStatement(SQL);
+//        ResultSet rs = ps.executeQuery();
+//        while (rs.next()) {
+//            int id = rs.getInt("id");
+//            String description = rs.getString("description");
+//            int length = rs.getInt("length");
+//            int price = rs.getInt("price");
+//            int amount = rs.getInt("amount");
+//            OrderLine l = new OrderLine(id, length, amount, description, price);
+//          
+//            materials.add(l);
+//        }
+//        return materials;
+//    }
+    
+      public static ArrayList<OrderLine> createOrderline() throws ClassNotFoundException, SQLException{
+         ArrayList<OrderLine> orderlines = new ArrayList();
         Connection con = Connector.connection();
-        String SQL = "SELECT * FROM orderline";
+        String SQL = "SELECT * FROM materials";
         PreparedStatement ps = con.prepareStatement(SQL);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
-            int id = rs.getInt("id");
-            String description = rs.getString("description");
+            String name = rs.getString("name");
+            String description = rs.getString("desc");
             int length = rs.getInt("length");
-            int price = rs.getInt("price");
-            int amount = rs.getInt("amount");
-            OrderLine l = new OrderLine(id, length, amount, description, price);
-          
-            materials.add(l);
+            int price = rs.getInt("price");            
+            OrderLine OL = new OrderLine(0,name, length, 0, description, price);          
+            orderlines.add(OL);
         }
-        return materials;
+        return orderlines;
     }
     
-    
-    
-    public static ArrayList<OrderLine> fillAmount(int userLength) throws ClassNotFoundException, SQLException{
-        ArrayList<OrderLine> materials = DataMapper.getTreeMaterials();
-         for(int i = 0; i < materials.size(); i ++){
-             
-        //dette stykke kode er for de første stykker træ, hvor calculateplanks metoden kaldes
-        materials.get(i).setAmount(Order.calculatePlanks(userLength, materials.get(i).getLength()));
-        materials.get(i).setAmount(Order.calculatePlanks(userLength, materials.get(i).getLength()));
-            
-        
-        //resterende udregninger for resten af materialerne herunder
-        return materials;
-         
-         }
-        
-        return null;
-        
-    }
+//    public static ArrayList<OrderLine> fillAmount(int userLength) throws ClassNotFoundException, SQLException{
+//        ArrayList<OrderLine> materials = DataMapper.getTreeMaterials();
+//         for(int i = 0; i < materials.size(); i ++){
+//             
+//        //dette stykke kode er for de første stykker træ, hvor calculateplanks metoden kaldes
+//        materials.get(i).setAmount(Order.calculatePlanks(userLength, materials.get(i).getLength()));
+//        materials.get(i).setAmount(Order.calculatePlanks(userLength, materials.get(i).getLength()));
+//            
+//        
+//        //resterende udregninger for resten af materialerne herunder
+//        return materials;
+//         
+//         }
+//        
+//        return null;
+//        
+//    }
     
 }

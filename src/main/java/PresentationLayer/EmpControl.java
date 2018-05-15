@@ -19,13 +19,11 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class EmpControl extends Command{
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
+    String execute(HttpServletRequest request, HttpServletResponse response){
         int id = Integer.parseInt(request.getParameter("id"));
         try {
             LogicFacade.updateOrder(id);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(EmpControl.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(EmpControl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return "allOrdersEmp";
