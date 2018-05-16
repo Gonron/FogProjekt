@@ -31,7 +31,7 @@ public class LogicFacade {
     }
 
     public static Order createOrder(int height, int width, int length, boolean shed, boolean roof, User u) throws SQLException, ClassNotFoundException {
-        Order order = new Order(height, width, length, false, false);
+        Order order = new Order(height, width, length, false, false, false);
         DataMapper.createOrder(order, u);
         return order;
     }
@@ -47,5 +47,11 @@ public class LogicFacade {
     public static void updateOrder(int id) throws ClassNotFoundException, SQLException {
         DataMapper.updateOrder(id);
     }
-
+    
+    public static ArrayList<OrderLine> createList(Order o) throws ClassNotFoundException, SQLException{
+        int userWidth = o.getWidth();
+        int userLength = o.getLength();
+        boolean shed = false;
+        return DataMapper.fillAmount(userWidth, userLength, shed);
+    }
 }
