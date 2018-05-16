@@ -19,13 +19,16 @@ public class Order {
         this.length = length;
         this.status = status;
     }
+
     
-    public Order(int heigth, int width, int length, boolean shed, boolean status) {        
+    public Order(int heigth, int width, int length, boolean shed, boolean flatRoof, boolean status) {        
         this.heigth = heigth;
         this.width = width;
         this.length = length;
         this.shed = shed;
+        this.flatRoof = flatRoof;
         this.status = status;
+       
     }
 
     public int getHeigth() {
@@ -66,6 +69,22 @@ public class Order {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+    
+    public boolean isShed() {
+        return shed;
+    }
+
+    public void setShed(boolean shed) {
+        this.shed = shed;
+    }
+
+    public boolean isFlatRoof() {
+        return flatRoof;
+    }
+
+    public void setFlatRoof(boolean flatRoof) {
+        this.flatRoof = flatRoof;
     }
 
     @Override

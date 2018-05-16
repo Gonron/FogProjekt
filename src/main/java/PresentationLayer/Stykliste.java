@@ -20,13 +20,7 @@ public class Stykliste extends Command{
        //her skal der bare sættes parametre hentet fra usermapperen
         
        
-//        ArrayList<Material> trees = new ArrayList<>();
-//        for(Material tree: trees){
-//             int amount = tree.calculate(tree.getLength(), tree.getLengthPrUnit());
-//             ArrayList <Integer> amountMaterials = new ArrayList<>();
-//             amountMaterials.add(amount);
-//             request.setAttribute("amountMaterials", amountMaterials);
-//        }
+
       
     return "stykliste";
     }

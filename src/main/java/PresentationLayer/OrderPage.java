@@ -27,16 +27,18 @@ public class OrderPage extends Command {
         int height = Integer.parseInt(request.getParameter("height"));
         int width = Integer.parseInt(request.getParameter("width"));
         int length = Integer.parseInt(request.getParameter("length"));
+        boolean shed = Boolean.parseBoolean(request.getParameter("shed"));
+        boolean roof = Boolean.parseBoolean(request.getParameter("roof"));
+        
         HttpSession session = request.getSession();
         User u = (User) session.getAttribute("user"); 
         try {
-            LogicFacade.createOrder(height, width, length, false, false, u); //TODO: Vi skal ikke hardcode shed og roof til false 
+            LogicFacade.createOrder(height, width, length, shed, roof, u); //TODO: Vi skal ikke hardcode shed og roof til false 
         } catch (SQLException ex) {
             Logger.getLogger(OrderPage.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(OrderPage.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("DETTE ER EN TEST");
         return "createorder";
     }
 }
