@@ -11,7 +11,10 @@ import java.util.ArrayList;
  *
  * @author kristoffer
  */
-public class MaterialList {
+public class StykListe {
+
+    private ArrayList<OrderLine> orderLines;
+    
     
  
    
