@@ -16,6 +16,7 @@ abstract class Command {
         commands.put( "allOrdersEmp", new AllOrdersEmp());
         commands.put( "allOrdersCust", new AllOrdersCust());
         commands.put( "contact", new Contact());
+        commands.put( "createorder", new CreateOrder());
         commands.put( "confirmOrder", new ConfirmOrder());
         commands.put( "receipt", new Receipt());
         commands.put( "order", new OrderPage());

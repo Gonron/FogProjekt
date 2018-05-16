@@ -103,8 +103,9 @@ public class Order {
     }
     
     
-    public static int calculatePosts(int materialLength, boolean shed){
-        int postAmount = materialLength % 2;
+    public static int calculatePosts(int materialLength, int userwidth, boolean shed){
+        int postAmount = (materialLength / 200)*(userwidth/5);
+        System.out.println(userwidth/5);
         if(shed == true){
             postAmount +=4;
         }

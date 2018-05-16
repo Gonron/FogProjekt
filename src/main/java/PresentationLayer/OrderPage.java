@@ -39,6 +39,16 @@ public class OrderPage extends Command {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(OrderPage.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return "createorder";
+        Order o= new Order(5, 7, 8, false, false, false);
+        try {
+            System.out.println("TESTTESTTESTTESTTESTTESTTESTTESTTEST231212");
+            System.out.println(LogicFacade.createList(o));
+            System.out.println("TESTTESTTESTTESTTESTTESTTESTTESTTEST");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Receipt.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Receipt.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "receipt";
     }
 }
