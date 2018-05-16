@@ -11,26 +11,26 @@ package FunctionLayer;
  */
 public class OrderLine {
    
-    private int id;
+    private int material_id;
     private int length;
     private int amount;
     private String description;
     private int price;
 
-    public OrderLine(int id, int length, int amount, String description, int price) {
-        this.id = id;
+    public OrderLine(int material_id, int length, int amount, String description, int price) {
+        this.material_id = material_id;
         this.amount = amount;
         this.description = description;
         this.price = price;
         this.length = length;
     }
 
-    public int getId() {
-        return id;
+    public int getMaterial_id() {
+        return material_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setMaterial_id(int material_id) {
+        this.material_id = material_id;
     }
 
 
