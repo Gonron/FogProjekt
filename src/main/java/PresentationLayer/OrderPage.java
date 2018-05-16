@@ -29,6 +29,7 @@ public class OrderPage extends Command {
         int length = Integer.parseInt(request.getParameter("length"));
         boolean shed = Boolean.parseBoolean(request.getParameter("shed"));
         boolean roof = Boolean.parseBoolean(request.getParameter("roof"));
+        
         HttpSession session = request.getSession();
         User u = (User) session.getAttribute("user"); 
         try {
@@ -38,7 +39,6 @@ public class OrderPage extends Command {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(OrderPage.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("DETTE ER EN TEST");
         return "createorder";
     }
 }
