@@ -10,16 +10,18 @@ package FunctionLayer;
  * @author morten
  */
 public class OrderLine {
-   
+
     private int materialId;
+    private String name;
     private int length;
     private int amount;
     private String description;
     private int price;
     private int materialgroup;
 
-    public OrderLine(int material_id, int length, int amount, String description, int price, int materialgroup) {
-        this.materialId = material_id;
+    public OrderLine(int materialId, String name, int length, int amount, String description, int price, int materialgroup) {
+        this.materialId = materialId;
+        this.name = name;
         this.length = length;
         this.amount = amount;
         this.description = description;
@@ -27,12 +29,20 @@ public class OrderLine {
         this.materialgroup = materialgroup;
     }
 
-    public int getMaterial_id() {
+    public int getMaterialId() {
         return materialId;
     }
 
-    public void setMaterial_id(int material_id) {
-        this.materialId = material_id;
+    public void setMaterialId(int materialId) {
+        this.materialId = materialId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getLength() {
@@ -77,9 +87,7 @@ public class OrderLine {
 
     @Override
     public String toString() {
-        return "OrderLine{" + "materialId=" + materialId + ", length=" + length + ", amount=" + amount + ", description=" + description + ", price=" + price + ", materialgroup=" + materialgroup + '}';
+        return "materiale=" + name + ", længde=" + length + ", antal=" + amount + ", beskrivelse=" + description;
     }
-  
-    
-    
+
 }

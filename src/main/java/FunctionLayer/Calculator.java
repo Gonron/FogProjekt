@@ -25,12 +25,15 @@ public class Calculator {
     }
     
     
-    public int calculatePosts(int materialLength, boolean shed){
-        int postAmount = materialLength % 2;
+    public int calculatePosts(int userLength, int userwidth, boolean shed){
+        int postAmount = (userLength / 200)*(userwidth/500);        
         if(shed == true){
             postAmount +=4;
         }
         return postAmount;
     }
     
+    public int calculatePrice(OrderLine line){
+       return line.getAmount() * line.getPrice();
+   } 
 }
