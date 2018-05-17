@@ -90,31 +90,7 @@ public class Order {
     @Override
     public String toString() {
         return "Order:" + " id=" + id + ", Heigth=" + heigth + ", Width=" + width + ", Length=" + length + ", sent=" + status;
-    }
-    
-    public static int calculatePlanks(int userLength, int lengthPrUnit) {
-        //denne metode bruges til at bregne diverse materiale, som ikke er stolper 
-        //mateiralLength er bruger input
-        int materialAmount = Math.abs(userLength / lengthPrUnit);
-        if (userLength % lengthPrUnit != 0) {
-            materialAmount += 1;
-        }
-        return materialAmount;
-    }
-    
-    
-    public static int calculatePosts(int materialLength, int userwidth, boolean shed){
-        int postAmount = (materialLength / 200)*(userwidth/5);
-        System.out.println(userwidth/5);
-        if(shed == true){
-            postAmount +=4;
-        }
-        return postAmount;
-    }
-    
+    }  
 
-   public static int calculatePrice(OrderLine line){
-       return line.getAmount() * line.getPrice();
-   } 
     
 }

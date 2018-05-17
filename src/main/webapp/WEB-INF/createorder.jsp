@@ -14,8 +14,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-       <h1>Start din ordre</h1>
-        
+       <h1>Start din ordre</h1><br>
+        Indtast størrelserne i cm.
         <br>
         <form name="order" action="FrontController" method="POST">            
             <input type="hidden" name="command" value="order">

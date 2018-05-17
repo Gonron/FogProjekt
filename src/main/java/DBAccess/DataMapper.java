@@ -143,11 +143,12 @@ public class DataMapper {
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
             int id = rs.getInt("material_id");
+            String name = rs.getString("name");
             String description = rs.getString("desc");
             int length = rs.getInt("length");
             int price = rs.getInt("price");
             int group = rs.getInt("material_group");               
-            OrderLine l = new OrderLine(id, length, 0, description, price, group);          
+            OrderLine l = new OrderLine(id, name, length, 0, description, price, group);          
             materials.add(l);
         }
         return materials;
@@ -161,99 +162,101 @@ public class DataMapper {
         Calculator calc = new Calculator();
         
         ArrayList<OrderLine> orderlines = DataMapper.getTreeMaterials();
-//        for (int i = 0; i < orderlines.size(); i++) {
-//            switch (orderlines.get(i).getMaterialgroup()) {
-//                case 1:
-//                    orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
-//                    break;
-//                case 2:
-//                    orderlines.get(i).setAmount(Order.calculatePosts(userLength, shed));
-//                    break;
-//                default:
-//                    orderlines.get(i).setAmount(1);
-//                    break;
-//            }
-//        }
-         for(int i = 0; i <= orderlines.size(); i ++){
-             
-        //dette stykke kode er for de første 4 stykker træ, hvor calculateplanks metoden kaldes
-
-        orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
-        orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
-        orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
-        orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
-
-        orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
-        i++;
-        orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
-        i++;
-        orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
-        i++;
-        orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
-        i++;
-
-        
-        
-        //næste stykke materiale er fast for alle carporte
-        orderlines.get(i).setAmount(420); // nr 5
-         i++;
-        //næste materialer er jeg i tivl om hvad der skal bruges, jeg undersøgte "løsholte
-        //og det stod som en slags brædder, der holder stolperne sammen
-
-        orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
-        orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
-        
-        // de næste materialer virker til at være stolperne
-        orderlines.get(i).setAmount(calc.calculatePosts(userLength, shed));
-        orderlines.get(i).setAmount(calc.calculatePosts(userLength, shed));
-        orderlines.get(i).setAmount(calc.calculatePosts(userLength, shed)); // nr 10
-        
-        //en enkelt stolpe jeg tror det er samme metode som pælene
-        orderlines.get(i).setAmount(calc.calculatePosts(userLength, shed));
-        
-        // nu kommer der brædt igen ligesom i starten
-        orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
-        orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
-        orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
-        
-        //Plastmo Ecolite skal måske have en ny metode, men indtil videre burde
-        //calculate planks matoden virke
-        orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength())); //nr 15
-        orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
-        
-        orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
-         i++;
-        orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
-         i++;
-        // de næste materialer virker til at være stolperne
-        orderlines.get(i).setAmount(Order.calculatePosts(userLength, userWidth, shed));
-         i++;
-        orderlines.get(i).setAmount(Order.calculatePosts(userLength, userWidth, shed));
-         i++;
-        orderlines.get(i).setAmount(Order.calculatePosts(userLength, userWidth, shed)); // nr 10
-         i++;
-        //en enkelt stolpe jeg tror det er samme metode som pælene
-        orderlines.get(i).setAmount(Order.calculatePosts(userLength, userWidth, shed));
-         i++;
-        // nu kommer der brædt igen ligesom i starten
-        orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
-         i++;
-        orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
-         i++;
-        orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
-         i++;
-        //Plastmo Ecolite skal måske have en ny metode, men indtil videre burde
-        //calculate planks matoden virke
-        orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
-         i++;//nr 15
-        orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
-         i++;
-
-        
-        //resterende udregninger for resten af materialerne herunder
-        return orderlines;
-         
-         }
+        for (int i = 0; i < orderlines.size(); i++) {
+            int group = orderlines.get(i).getMaterialgroup();
+            switch (group) {
+                case 1:
+                    orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
+                    break;
+                case 2:
+                    orderlines.get(i).setAmount(calc.calculatePosts(userLength,userWidth, shed));
+                    break;
+                default:
+                    orderlines.get(i).setAmount(1);
+                    break;
+            }
+            orderlines.get(i).setPrice(calc.calculatePrice(orderlines.get(i)));
+        }
+//         for(int i = 0; i <= orderlines.size(); i ++){
+//             
+//        //dette stykke kode er for de første 4 stykker træ, hvor calculateplanks metoden kaldes
+//
+//        orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
+//        orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
+//        orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
+//        orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
+//
+//        orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
+//        i++;
+//        orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
+//        i++;
+//        orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
+//        i++;
+//        orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
+//        i++;
+//
+//        
+//        
+//        //næste stykke materiale er fast for alle carporte
+//        orderlines.get(i).setAmount(420); // nr 5
+//         i++;
+//        //næste materialer er jeg i tivl om hvad der skal bruges, jeg undersøgte "løsholte
+//        //og det stod som en slags brædder, der holder stolperne sammen
+//
+//        orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
+//        orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
+//        
+//        // de næste materialer virker til at være stolperne
+//        orderlines.get(i).setAmount(calc.calculatePosts(userLength, shed));
+//        orderlines.get(i).setAmount(calc.calculatePosts(userLength, shed));
+//        orderlines.get(i).setAmount(calc.calculatePosts(userLength, shed)); // nr 10
+//        
+//        //en enkelt stolpe jeg tror det er samme metode som pælene
+//        orderlines.get(i).setAmount(calc.calculatePosts(userLength, shed));
+//        
+//        // nu kommer der brædt igen ligesom i starten
+//        orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
+//        orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
+//        orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
+//        
+//        //Plastmo Ecolite skal måske have en ny metode, men indtil videre burde
+//        //calculate planks matoden virke
+//        orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength())); //nr 15
+//        orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
+//        
+//        orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
+//         i++;
+//        orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
+//         i++;
+//        // de næste materialer virker til at være stolperne
+//        orderlines.get(i).setAmount(Order.calculatePosts(userLength, userWidth, shed));
+//         i++;
+//        orderlines.get(i).setAmount(Order.calculatePosts(userLength, userWidth, shed));
+//         i++;
+//        orderlines.get(i).setAmount(Order.calculatePosts(userLength, userWidth, shed)); // nr 10
+//         i++;
+//        //en enkelt stolpe jeg tror det er samme metode som pælene
+//        orderlines.get(i).setAmount(Order.calculatePosts(userLength, userWidth, shed));
+//         i++;
+//        // nu kommer der brædt igen ligesom i starten
+//        orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
+//         i++;
+//        orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
+//         i++;
+//        orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
+//         i++;
+//        //Plastmo Ecolite skal måske have en ny metode, men indtil videre burde
+//        //calculate planks matoden virke
+//        orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
+//         i++;//nr 15
+//        orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
+//         i++;
+//
+//        
+//        //resterende udregninger for resten af materialerne herunder
+//        return orderlines;
+//         
+//         }
         
         return orderlines;        
     }
