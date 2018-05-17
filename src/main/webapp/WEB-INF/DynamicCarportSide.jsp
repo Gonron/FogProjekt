@@ -32,8 +32,8 @@
         
     
     </SVG>
-
-    <input type="submit" name="Oppefra" value="Set oppefra">
+    
+    <a href="FrontController?command=DynamicCarport"><input type="submit" name="Oppefra" value="Set oppefra"><a/>
     <input type="submit" name="Bestil" value="Fortsæt">
      
 </html>

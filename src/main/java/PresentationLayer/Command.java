@@ -20,7 +20,7 @@ abstract class Command {
         commands.put( "confirmOrder", new ConfirmOrder());
         commands.put( "receipt", new Receipt());
         commands.put( "DynamicCarport", new DynamicCarport());
-        
+        commands.put( "DynamicCarportSide", new DynamicCarportSide());
 
     }
 

@@ -15,9 +15,12 @@
     <body>
         <h1>Hello <%=request.getParameter( "email" )%> </h1>
         You are now logged in as a customer of our wonderful site.
-        
+        <br>
         <a href="FrontController?command=createorder">Start din Ordre<a/>
-        <a href="FrontController?command=allOrdersCyst">Se dine Ordre<a/>
+            <br>
+        <a href="FrontController?command=allOrdersCust">Se dine Ordre<a/>
+            <br>
         <a href="FrontController?command=contact">Kontakt Os<a/>
+            <br>
     </body>
 </html>

@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Carport der matcher målene.</title>
+        <title>Carport set oppefra.</title>
     </head>
     <body>
         <% int len = Integer.parseInt(request.getParameter("length")); %>
@@ -75,7 +75,7 @@
     
     </SVG>
     
-    <input type="submit" name="Side" value="Set fra siden"> 
+    <a href="FrontController?command=DynamicCarportSide"><input type="submit" name="Side" value="Set fra siden"><a/> 
     <input type="submit" name="Bestil" value="Fortsæt">
     
     </body>

@@ -11,13 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author User
+ * @author Johachim
  */
-public class Receipt extends Command {
+public class DynamicCarportSide extends Command {
+
+    public DynamicCarportSide() {
+    }
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-        return "receipt";
+        return "DynamicCarportSide";
     }
-
+    
 }
