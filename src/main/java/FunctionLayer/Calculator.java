@@ -26,8 +26,7 @@ public class Calculator {
     
     
     public int calculatePosts(int userLength, int userwidth, boolean shed){
-        int postAmount = (userLength / 200)*(userwidth/500);
-        System.out.println(userwidth/500);
+        int postAmount = (userLength / 200)*(userwidth/500);        
         if(shed == true){
             postAmount +=4;
         }

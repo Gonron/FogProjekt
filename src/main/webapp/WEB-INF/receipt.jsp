@@ -17,13 +17,7 @@
     </head>
     <body>
         <h1>Kvittering</h1>
-         Din ordre er blevet modtaget.<br>
-        <% 
-             Order o= new Order(5000, 5000, 8000, false, false, false);
-             for (int i = 0; i <LogicFacade.createList(o).size(); i++) {
-                     out.println(LogicFacade.createList(o).get(i)+"<br>");
-                 }             
-         %>
+         Din ordre er blevet modtaget.<br>        
         <a href="FrontController?command=allOrdersCust"> Vis alle dine ordre </a><br>
         <a href="FrontController?command=contact"> Kontakt os </a>
     </body>

@@ -5,24 +5,18 @@
  */
 package PresentationLayer;
 
-import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
-import FunctionLayer.Order;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author User
+ * @author Morten
  */
-public class Receipt extends Command {
+public class MaterialListOrder extends Command {
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {       
+    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
         return "receipt";
     }
-
 }

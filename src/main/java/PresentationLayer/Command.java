@@ -11,29 +11,30 @@ abstract class Command {
 
     private static void initCommands() {
         commands = new HashMap<>();
-        commands.put( "login", new Login() );
-        commands.put( "register", new Register() );
-        commands.put( "allOrdersEmp", new AllOrdersEmp());
-        commands.put( "allOrdersCust", new AllOrdersCust());
-        commands.put( "contact", new Contact());
-        commands.put( "createorder", new CreateOrder());
-        commands.put( "confirmOrder", new ConfirmOrder());
-        commands.put( "receipt", new Receipt());
-        commands.put( "order", new OrderPage());
-        commands.put( "EmpControl", new EmpControl());
-        commands.put( "stykliste", new Stykliste());
-        
+        commands.put("materialListOrder", new MaterialListOrder());
+        commands.put("login", new Login());
+        commands.put("register", new Register());
+        commands.put("allOrdersEmp", new AllOrdersEmp());
+        commands.put("allOrdersCust", new AllOrdersCust());
+        commands.put("contact", new Contact());
+        commands.put("createorder", new CreateOrder());
+        commands.put("confirmOrder", new ConfirmOrder());
+        commands.put("receipt", new Receipt());
+        commands.put("order", new OrderPage());
+        commands.put("EmpControl", new EmpControl());
+        commands.put("stykliste", new Stykliste());
+
     }
 
-    static Command from( HttpServletRequest request ) {
-        String commandName = request.getParameter( "command" );
-        if ( commands == null ) {
+    static Command from(HttpServletRequest request) {
+        String commandName = request.getParameter("command");
+        if (commands == null) {
             initCommands();
         }
-        return commands.getOrDefault(commandName, new UnknownCommand() );
+        return commands.getOrDefault(commandName, new UnknownCommand());
     }
 
-    abstract String execute( HttpServletRequest request, HttpServletResponse response ) 
+    abstract String execute(HttpServletRequest request, HttpServletResponse response)
             throws LoginSampleException;
 
 }

@@ -134,9 +134,9 @@ public class DataMapper {
         ps.setInt(2, id);
         ps.executeUpdate();
     }
-    
-    public static ArrayList<OrderLine> getTreeMaterials() throws ClassNotFoundException, SQLException{
-         ArrayList<OrderLine> materials = new ArrayList();
+
+    public static ArrayList<OrderLine> getTreeMaterials() throws ClassNotFoundException, SQLException {
+        ArrayList<OrderLine> materials = new ArrayList();
         Connection con = Connector.connection();
         String SQL = "SELECT * FROM materials";
         PreparedStatement ps = con.prepareStatement(SQL);
@@ -147,20 +147,18 @@ public class DataMapper {
             String description = rs.getString("desc");
             int length = rs.getInt("length");
             int price = rs.getInt("price");
-            int group = rs.getInt("material_group");               
-            OrderLine l = new OrderLine(id, name, length, 0, description, price, group);          
+            int group = rs.getInt("material_group");
+            OrderLine l = new OrderLine(id, name, length, 0, description, price, group);
             materials.add(l);
         }
         return materials;
     }
-    
-    
-    
-    public static ArrayList<OrderLine> fillAmount(int userWidth, int userLength, boolean shed) throws ClassNotFoundException, SQLException{
+
+    public static ArrayList<OrderLine> fillAmount(int userWidth, int userLength, boolean shed) throws ClassNotFoundException, SQLException {
         //denne metode tager udgangspunk i en carport med flattag
-        
+
         Calculator calc = new Calculator();
-        
+
         ArrayList<OrderLine> orderlines = DataMapper.getTreeMaterials();
         for (int i = 0; i < orderlines.size(); i++) {
             int group = orderlines.get(i).getMaterialgroup();
@@ -169,96 +167,30 @@ public class DataMapper {
                     orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
                     break;
                 case 2:
-                    orderlines.get(i).setAmount(calc.calculatePosts(userLength,userWidth, shed));
+                    orderlines.get(i).setAmount(calc.calculatePosts(userLength, userWidth, shed));
                     break;
                 default:
                     orderlines.get(i).setAmount(1);
                     break;
             }
             orderlines.get(i).setPrice(calc.calculatePrice(orderlines.get(i)));
-        }
-//         for(int i = 0; i <= orderlines.size(); i ++){
-//             
-//        //dette stykke kode er for de første 4 stykker træ, hvor calculateplanks metoden kaldes
-//
-//        orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
-//        orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
-//        orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
-//        orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
-//
-//        orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
-//        i++;
-//        orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
-//        i++;
-//        orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
-//        i++;
-//        orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
-//        i++;
-//
-//        
-//        
-//        //næste stykke materiale er fast for alle carporte
-//        orderlines.get(i).setAmount(420); // nr 5
-//         i++;
-//        //næste materialer er jeg i tivl om hvad der skal bruges, jeg undersøgte "løsholte
-//        //og det stod som en slags brædder, der holder stolperne sammen
-//
-//        orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
-//        orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
-//        
-//        // de næste materialer virker til at være stolperne
-//        orderlines.get(i).setAmount(calc.calculatePosts(userLength, shed));
-//        orderlines.get(i).setAmount(calc.calculatePosts(userLength, shed));
-//        orderlines.get(i).setAmount(calc.calculatePosts(userLength, shed)); // nr 10
-//        
-//        //en enkelt stolpe jeg tror det er samme metode som pælene
-//        orderlines.get(i).setAmount(calc.calculatePosts(userLength, shed));
-//        
-//        // nu kommer der brædt igen ligesom i starten
-//        orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
-//        orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
-//        orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
-//        
-//        //Plastmo Ecolite skal måske have en ny metode, men indtil videre burde
-//        //calculate planks matoden virke
-//        orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength())); //nr 15
-//        orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
-//        
-//        orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
-//         i++;
-//        orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
-//         i++;
-//        // de næste materialer virker til at være stolperne
-//        orderlines.get(i).setAmount(Order.calculatePosts(userLength, userWidth, shed));
-//         i++;
-//        orderlines.get(i).setAmount(Order.calculatePosts(userLength, userWidth, shed));
-//         i++;
-//        orderlines.get(i).setAmount(Order.calculatePosts(userLength, userWidth, shed)); // nr 10
-//         i++;
-//        //en enkelt stolpe jeg tror det er samme metode som pælene
-//        orderlines.get(i).setAmount(Order.calculatePosts(userLength, userWidth, shed));
-//         i++;
-//        // nu kommer der brædt igen ligesom i starten
-//        orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
-//         i++;
-//        orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
-//         i++;
-//        orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
-//         i++;
-//        //Plastmo Ecolite skal måske have en ny metode, men indtil videre burde
-//        //calculate planks matoden virke
-//        orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
-//         i++;//nr 15
-//        orderlines.get(i).setAmount(Order.calculatePlanks(userLength, orderlines.get(i).getLength()));
-//         i++;
-//
-//        
-//        //resterende udregninger for resten af materialerne herunder
-//        return orderlines;
-//         
-//         }
-        
-        return orderlines;        
+        }//      
+
+        return orderlines;
     }
-    
+
+    public static Order getOrder(int id) throws ClassNotFoundException, SQLException {
+        Connection con = Connector.connection();
+        String SQL = "SELECT * FROM orders " + "WHERE order_id=?";
+        PreparedStatement ps = con.prepareStatement(SQL);
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+        int orderId = rs.getInt("order_id");
+        int heigth = rs.getInt("Heigth");
+        int width = rs.getInt("Width");
+        int length = rs.getInt("Length");
+        boolean status = rs.getBoolean("status");
+        Order order = new Order(orderId, heigth, width, length, status);
+        return order;
+    }
 }
