@@ -9,6 +9,7 @@ package FunctionLayer;
  *
  * @author morten
  */
+
 public class OrderLine {
 
     private int materialId;

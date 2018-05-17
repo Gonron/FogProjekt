@@ -12,7 +12,6 @@ package FunctionLayer;
 public class Calculator {
     
     
-    
      
     public int calculatePlanks(int userLength, int lengthPrUnit) {
         //denne metode bruges til at bregne diverse materiale, som ikke er stolper 
