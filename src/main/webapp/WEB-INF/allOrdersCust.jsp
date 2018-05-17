@@ -22,6 +22,11 @@
                 out.print(LogicFacade.getOrders(u).get(i)+"<br>");
             }
         %>
-             
+           <h2>For at se en stykliste over materialer i en ordre, indtast ordrenummeret</h2>
+        <form name="materialListOrder" action="FrontController" method="POST">
+            <input type="hidden" name="command" value="materialListOrder">
+            <input type="number" name="id" required="" placeholder="Order id" required/>            
+            <input type="submit" value="List of materials"/>           
+         </form>   
     </body>
 </html>

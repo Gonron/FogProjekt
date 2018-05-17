@@ -181,16 +181,17 @@ public class DataMapper {
 
     public static Order getOrder(int id) throws ClassNotFoundException, SQLException {
         Connection con = Connector.connection();
-        String SQL = "SELECT * FROM orders " + "WHERE order_id=?";
+        String SQL = "SELECT * FROM orders WHERE order_id=?";
         PreparedStatement ps = con.prepareStatement(SQL);
         ps.setInt(1, id);
         ResultSet rs = ps.executeQuery();
-        int orderId = rs.getInt("order_id");
+        if (rs.next()) {        
         int heigth = rs.getInt("Heigth");
         int width = rs.getInt("Width");
         int length = rs.getInt("Length");
         boolean status = rs.getBoolean("status");
-        Order order = new Order(orderId, heigth, width, length, status);
-        return order;
+        Order order = new Order(id, heigth, width, length, status);
+        return order;}
+        return null;
     }
 }

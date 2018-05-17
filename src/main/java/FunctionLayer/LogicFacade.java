@@ -57,4 +57,8 @@ public class LogicFacade {
         boolean shed = false;
         return DataMapper.fillAmount(userWidth, userLength, shed);
     }
+    
+    public static Order getOrder(int orderId) throws ClassNotFoundException, SQLException{
+        return DataMapper.getOrder(orderId);
+    }
 }

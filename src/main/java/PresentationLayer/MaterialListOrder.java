@@ -8,6 +8,7 @@ package PresentationLayer;
 import FunctionLayer.LoginSampleException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -17,6 +18,11 @@ public class MaterialListOrder extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-        return "receipt";
+        
+        int OrderId = Integer.parseInt(request.getParameter("id"));
+        
+        HttpSession session = request.getSession();       
+        session.setAttribute( "OrderId", OrderId);
+        return "materialListOrder";
     }
 }
