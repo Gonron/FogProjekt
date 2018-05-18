@@ -33,9 +33,7 @@
                         <br>
                         <input type="submit" value="Submit">
                     </form>
-                </td>
-               
-                                          
+                </td>                      
 
                 <td>Or Register</td>
                 <td>

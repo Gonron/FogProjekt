@@ -95,9 +95,9 @@ public class DataMapper {
         String SQL = "INSERT INTO orders (id, Heigth, Width, Length, status) VALUES (?, ?, ?, ?, ?)";
         PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
         ps.setInt(1, user.getId());
-        ps.setInt(2, order.getHeigth());
-        ps.setInt(3, order.getWidth());
-        ps.setInt(4, order.getLength());
+        ps.setDouble(2, order.getHeigth());
+        ps.setDouble(3, order.getWidth());
+        ps.setDouble(4, order.getLength());
         ps.setBoolean(5, order.getStatus());
         ps.executeUpdate();
         ResultSet ids = ps.getGeneratedKeys();
@@ -154,7 +154,7 @@ public class DataMapper {
         return materials;
     }
 
-    public static ArrayList<OrderLine> fillAmount(int userWidth, int userLength, boolean shed) throws ClassNotFoundException, SQLException {
+    public static ArrayList<OrderLine> fillAmount(double userWidth, double userLength, boolean shed) throws ClassNotFoundException, SQLException {
         //denne metode tager udgangspunk i en carport med flattag
 
         Calculator calc = new Calculator();
@@ -186,9 +186,9 @@ public class DataMapper {
         ps.setInt(1, id);
         ResultSet rs = ps.executeQuery();
         if (rs.next()) {        
-        int heigth = rs.getInt("Heigth");
-        int width = rs.getInt("Width");
-        int length = rs.getInt("Length");
+        double heigth = rs.getInt("Heigth");
+        double width = rs.getInt("Width");
+        double length = rs.getInt("Length");
         boolean status = rs.getBoolean("status");
         Order order = new Order(id, heigth, width, length, status);
         return order;}
