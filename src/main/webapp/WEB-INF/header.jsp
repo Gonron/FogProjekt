@@ -43,7 +43,7 @@ li a:hover:not(.active) {
         <ul>
         <li><a class="active" href="hjem">Hjem</a>
         </li>
-        <li><a href="lavOrdre">lav ordre</a></li>
-        <li><a href="contact">kontakt</a></li>
-        <li><a href="Om os">Om os</a></li>
+        <li><a href="FrontController?command=createorder">lav ordre</a></li>
+        <li><a href="FrontController?command=contact">Kontakt</a></li>
+        <li><a href="FrontController?command=about">Omkring os</a></li>
         </ul>
