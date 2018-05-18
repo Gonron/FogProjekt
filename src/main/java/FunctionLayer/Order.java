@@ -90,7 +90,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order:" + " Ordrenummer=" + id + ", Bredde=" + width + ", Længde=" + length + ", Sendt=" + status;
+        return id + "" + width + "" + length + "" + status;
     }   
 
     
