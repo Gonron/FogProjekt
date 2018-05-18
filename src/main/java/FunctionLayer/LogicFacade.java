@@ -34,7 +34,7 @@ public class LogicFacade {
 
         //Order order = new Order(length, width, length, shed, roof, false);
 
-        Order order = new Order(height, width, length, false, false, false);
+        Order order = new Order(210, width, length, shed, false, false);
         DataMapper.createOrder(order, u);
         return order;
     }
@@ -52,8 +52,8 @@ public class LogicFacade {
     }
     
     public static ArrayList<OrderLine> createList(Order o) throws ClassNotFoundException, SQLException{
-        int userWidth = o.getWidth();
-        int userLength = o.getLength();
+        double userWidth = o.getWidth();
+        double userLength = o.getLength();
         boolean shed = false;
         return DataMapper.fillAmount(userWidth, userLength, shed);
     }

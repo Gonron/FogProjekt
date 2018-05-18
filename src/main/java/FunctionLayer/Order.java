@@ -4,15 +4,15 @@ package FunctionLayer;
 public class Order {
 
     private int id;
-    private int heigth;
-    private int width;
-    private int length;
+    private double heigth;
+    private double width;
+    private double length;
     private boolean shed;
     private boolean flatRoof;
     private boolean status;
 
 
-    public Order(int id, int heigth, int width, int length, boolean status) {
+    public Order(int id, double heigth, double width, double length, boolean status) {
         this.id = id;
         this.heigth = heigth;
         this.width = width;
@@ -21,7 +21,7 @@ public class Order {
     }
 
     
-    public Order(int heigth, int width, int length, boolean shed, boolean flatRoof, boolean status) {        
+    public Order(double heigth, double width, double length, boolean shed, boolean flatRoof, boolean status) {        
         this.heigth = heigth;
         this.width = width;
         this.length = length;
@@ -29,30 +29,6 @@ public class Order {
         this.flatRoof = flatRoof;
         this.status = status;
        
-    }
-
-    public int getHeigth() {
-        return heigth;
-    }
-
-    public void setHeigth(int heigth) {
-        this.heigth = heigth;
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
-    public int getLength() {
-        return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
     }
 
     public int getId() {
@@ -63,15 +39,31 @@ public class Order {
         this.id = id;
     }
 
-    public boolean getStatus() {
-        return status;
+    public double getHeigth() {
+        return heigth;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setHeigth(double heigth) {
+        this.heigth = heigth;
     }
-    
-    public boolean isShed() {
+
+    public double getWidth() {
+        return width;
+    }
+
+    public void setWidth(double width) {
+        this.width = width;
+    }
+
+    public double getLength() {
+        return length;
+    }
+
+    public void setLength(double length) {
+        this.length = length;
+    }
+
+    public boolean getShed() {
         return shed;
     }
 
@@ -79,7 +71,7 @@ public class Order {
         this.shed = shed;
     }
 
-    public boolean isFlatRoof() {
+    public boolean getFlatRoof() {
         return flatRoof;
     }
 
@@ -87,10 +79,19 @@ public class Order {
         this.flatRoof = flatRoof;
     }
 
+    public boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+
     @Override
     public String toString() {
-        return "Order:" + " id=" + id + ", Heigth=" + heigth + ", Width=" + width + ", Length=" + length + ", sent=" + status;
-    }  
+        return "Order:" + " Ordrenummer=" + id + ", Bredde=" + width + ", Længde=" + length + ", Sendt=" + status;
+    }   
 
     
 }
