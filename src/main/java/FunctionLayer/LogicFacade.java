@@ -34,7 +34,7 @@ public class LogicFacade {
 
         //Order order = new Order(length, width, length, shed, roof, false);
 
-        Order order = new Order(210, width, length, false, false, false);
+        Order order = new Order(210, width, length, shed, false, false);
         DataMapper.createOrder(order, u);
         return order;
     }

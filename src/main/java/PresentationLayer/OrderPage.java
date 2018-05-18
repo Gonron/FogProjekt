@@ -15,7 +15,6 @@ import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 /**
  *
  * @author morten
@@ -26,9 +25,11 @@ public class OrderPage extends Command {
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
         int width = Integer.parseInt(request.getParameter("width"));
         int length = Integer.parseInt(request.getParameter("length"));
-        boolean shed = Boolean.parseBoolean(request.getParameter("shed"));
+        boolean shed=false; //= Boolean.parseBoolean(request.getParameter("shed"));
         boolean roof = Boolean.parseBoolean(request.getParameter("roof"));
-        
+        if(request.getParameter("shed").equals("medskur")){
+            shed=true;
+        }
         HttpSession session = request.getSession();
         User u = (User) session.getAttribute("user"); 
         try {
