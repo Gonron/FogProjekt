@@ -321,7 +321,7 @@
         for (int j = 0; j < LogicFacade.createList(o).size(); j++) {
             totalPrice = totalPrice + LogicFacade.createList(o).get(j).getPrice();            
         }
-        out.println("Pris" + totalPrice*10 + "kr.");
+        out.println("<br>"+ "Pris: " + totalPrice*10 + "kr.");
     }
 %>
 </body>
