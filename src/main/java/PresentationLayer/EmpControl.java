@@ -23,9 +23,7 @@ public class EmpControl extends Command{
         int id = Integer.parseInt(request.getParameter("id"));
         try {
             LogicFacade.updateOrder(id);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(EmpControl.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(EmpControl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return "allOrdersEmp";

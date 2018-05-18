@@ -13,7 +13,7 @@ public class Calculator {
     
     
      
-    public int calculatePlanks(int userLength, int lengthPrUnit) {
+    public int calculatePlanks(int userLength, int lengthPrUnit, boolean shed) {
         //denne metode bruges til at bregne diverse materiale, som ikke er stolper 
         //mateiralLength er bruger input
         int materialAmount = Math.abs(userLength / lengthPrUnit);
@@ -25,7 +25,7 @@ public class Calculator {
     
     
     public int calculatePosts(int userLength, int userwidth, boolean shed){
-        int postAmount = (userLength / 200)*(userwidth/500);        
+        int postAmount = (userLength / 200)*(userwidth / 500);        
         if(shed == true){
             postAmount +=4;
         }

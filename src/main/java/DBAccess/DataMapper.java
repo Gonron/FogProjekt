@@ -128,7 +128,7 @@ public class DataMapper {
 
     public static void updateOrder(int id) throws ClassNotFoundException, SQLException {
         Connection con = Connector.connection();
-        String SQL = "update orders set status = ? where order_id = ?";
+        String SQL = "UPDATE orders SET status = ? WHERE order_id = ?";
         PreparedStatement ps = con.prepareStatement(SQL);
         ps.setBoolean(1, true);
         ps.setInt(2, id);
@@ -136,7 +136,7 @@ public class DataMapper {
     }
 
     public static ArrayList<OrderLine> getTreeMaterials() throws ClassNotFoundException, SQLException {
-        ArrayList<OrderLine> materials = new ArrayList();
+        ArrayList<OrderLine> materials = new ArrayList<>();
         Connection con = Connector.connection();
         String SQL = "SELECT * FROM materials";
         PreparedStatement ps = con.prepareStatement(SQL);
@@ -164,7 +164,7 @@ public class DataMapper {
             int group = orderlines.get(i).getMaterialgroup();
             switch (group) {
                 case 1:
-                    orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
+                    orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength(), shed));
                     break;
                 case 2:
                     orderlines.get(i).setAmount(calc.calculatePosts(userLength, userWidth, shed));
@@ -193,5 +193,23 @@ public class DataMapper {
         Order order = new Order(id, heigth, width, length, status);
         return order;}
         return null;
+    }
+    
+    
+    
+    
+    public static void updateMaterails(int materialId, String name, String desc, int length, int price, int materialGroup) throws ClassNotFoundException, SQLException{
+        Connection con = Connector.connection();
+        String SQL = "UPDATE materials SET name = ?, desc = ?, length = ?, price = ?, material_group = ?, WHERE material_id = ?";
+        PreparedStatement ps = con.prepareStatement(SQL);
+        ps.setInt(1, materialId);
+        ps.setString(2, name);
+        ps.setString(3, desc);
+        ps.setInt(4, length);
+        ps.setInt(5, price);
+        ps.setInt(6, materialGroup);
+        ps.executeUpdate();
+        
+        
     }
 }

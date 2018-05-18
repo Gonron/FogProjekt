@@ -61,4 +61,11 @@ public class LogicFacade {
     public static Order getOrder(int orderId) throws ClassNotFoundException, SQLException{
         return DataMapper.getOrder(orderId);
     }
+    
+    public static void updateMaterials(int materialId, String name, String desc, int length, int price, int materialGroup) throws ClassNotFoundException, SQLException{
+         DataMapper.updateMaterails(materialId, name, desc, length, price, materialGroup);
+        
+        
+    }
+    
 }
