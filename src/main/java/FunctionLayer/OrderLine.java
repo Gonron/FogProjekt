@@ -88,7 +88,7 @@ public class OrderLine {
 
     @Override
     public String toString() {
-        return "materiale=" + name + ", længde=" + length + ", antal=" + amount + ", beskrivelse=" + description;
+        return name + "" + length + "" + amount + "" + description;
     }
 
 }

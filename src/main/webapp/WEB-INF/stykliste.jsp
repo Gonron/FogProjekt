@@ -32,6 +32,9 @@
     </head>
     <body>
         <h1>Stykliste</h1>
+        <%
+            //request.getParameter(name)
+        %>
 
         <table>
             <tr>
