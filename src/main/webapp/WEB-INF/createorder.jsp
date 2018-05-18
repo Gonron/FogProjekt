@@ -29,7 +29,11 @@
             <textarea rows ="5" cols ="30" name="comment" placeholder="Skriv en kommentar" style="resize: none"></textarea>
             <br>
             <br>
-            <input type="submit" value="Færdig">
+            <input type="submit" value="Se sidetegning">
+        </form>
+        <br>
+        <form action="FrontController?command=DynamicCarport" name="order2" method="POST">
+            <input type="submit" value="Se grundtegning"
         </form>
         <br>
     </body>

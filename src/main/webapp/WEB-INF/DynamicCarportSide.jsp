@@ -33,6 +33,7 @@
     
     </SVG>
     
-    <a href="FrontController?command=DynamicCarport">Carport<a/>
-     
+    <form action="FrontController?command=DynamicCarport" method="POST">
+    <input type="submit" value="Grundtegning">
+    </form>
 </html>
