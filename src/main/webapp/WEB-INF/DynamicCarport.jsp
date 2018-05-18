@@ -20,9 +20,9 @@
     
     <rect x="0" y="0" height="<%= request.getParameter("length") %>" width="<%= Math.abs(wid/10) %>"
         style="stroke:#000000; fill: #dcdfe5"/>
-    <rect x="<%= Math.abs(wid/40) %>" y="0" height="<%= request.getParameter("length") %>" width="<%= Math.abs(wid/10) %>"
+    <rect x="<%= Math.abs(wid-(wid/2.5)) %>" y="0" height="<%= request.getParameter("length") %>" width="<%= Math.abs(wid/10) %>"
         style="stroke:#000000; fill: #dcdfe5"/>
-    <rect x="<%= Math.abs(wid/20) %>" y="0" height="<%= request.getParameter("length") %>" width="<%= Math.abs(wid/10) %>"
+    <rect x="<%= Math.abs(wid-(wid/1.43)) %>" y="0" height="<%= request.getParameter("length") %>" width="<%= Math.abs(wid/10) %>"
         style="stroke:#000000; fill: #dcdfe5"/>
     <rect x="<%= Math.abs(wid-(wid/10)) %>" y="0" height="<%= request.getParameter("length") %>" width="<%= Math.abs(wid/10) %>"
         style="stroke:#000000; fill: #dcdfe5"/>
@@ -32,7 +32,7 @@
     
     
     
-    <text x="<%= Math.abs(wid+15) %>" y="<%= Math.abs(len/2) %>" fill="Red"> Længde: <%= request.getParameter("length") %> </text>
+    <text x="<%= Math.abs(wid+20) %>" y="<%= Math.abs(len/2) %>" fill="Red"> Længde: <%= request.getParameter("length") %> </text>
     <text x="<%= Math.abs(wid/2) %>" y="<%= Math.abs(len+15) %>" fill="Red"> Bredde: <%= request.getParameter("width") %> </text>
     
     
