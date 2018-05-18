@@ -39,7 +39,7 @@
             Order o = LogicFacade.getOrder(orderId);
             for (int i = 0; i < LogicFacade.createList(o).size(); i++) {
         %>
-        
+
         <table>
             <tr>
                 <th> Beskrivelse </th>
@@ -67,112 +67,128 @@
                 <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
                 <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
                 <td>Stk</td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getDescription()); i++;%></td>
-            </tr>
-           <tr>
-                <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
-                <td>Stk</td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getDescription()); i++;%></td>
+                <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
+                    i++;%></td>
             </tr>
             <tr>
                 <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
                 <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
                 <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
                 <td>Stk</td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getDescription()); i++;%></td>
+                <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
+                    i++;%></td>
             </tr>
             <tr>
                 <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
                 <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
                 <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
                 <td>Stk</td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getDescription()); i++;%></td>
+                <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
+                    i++;%></td>
             </tr>
             <tr>
                 <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
                 <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
                 <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
                 <td>Stk</td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getDescription()); i++;%></td>
+                <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
+                    i++;%></td>
             </tr>
             <tr>
                 <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
                 <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
                 <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
                 <td>Stk</td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getDescription()); i++;%></td>
+                <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
+                    i++;%></td>
             </tr>
             <tr>
                 <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
                 <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
                 <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
                 <td>Stk</td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getDescription()); i++;%></td>
+                <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
+                    i++;%></td>
             </tr>
             <tr>
                 <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
                 <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
                 <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
                 <td>Stk</td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getDescription()); i++;%></td>
+                <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
+                    i++;%></td>
             </tr>
             <tr>
                 <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
                 <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
                 <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
                 <td>Stk</td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getDescription()); i++;%></td>
+                <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
+                    i++;%></td>
             </tr>
             <tr>
                 <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
                 <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
                 <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
                 <td>Stk</td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getDescription()); i++;%></td>
-            </tr>
-           <tr>
-                <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
-                <td>Stk</td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getDescription()); i++;%></td>
+                <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
+                    i++;%></td>
             </tr>
             <tr>
                 <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
                 <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
                 <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
                 <td>Stk</td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getDescription()); i++;%></td>
+                <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
+                    i++;%></td>
             </tr>
             <tr>
                 <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
                 <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
                 <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
                 <td>Stk</td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getDescription()); i++;%></td>
+                <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
+                    i++;%></td>
             </tr>
             <tr>
                 <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
                 <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
                 <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
                 <td>Stk</td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getDescription()); i++;%></td>
-            </tr>
-           <tr>
-                <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
-                <td>Stk</td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getDescription()); i++;%></td>
+                <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
+                    i++;%></td>
             </tr>
             <tr>
                 <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
                 <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
                 <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
                 <td>Stk</td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getDescription()); i++;%></td>
+                <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
+                    i++;%></td>
+            </tr>
+            <tr>
+                <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
+                <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
+                <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
+                <td>Stk</td>
+                <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
+                    i++;%></td>
+            </tr>
+            <tr>
+                <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
+                <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
+                <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
+                <td>Stk</td>
+                <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
+                    i++;%></td>
+            </tr>
+            <tr>
+                <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
+                <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
+                <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
+                <td>Stk</td>
+                <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
+                    i++;%></td>
             </tr>
             <tr>
                 <th></th>
@@ -189,106 +205,124 @@
                 <th></th>
             </tr>
             <tr>
-                <tr>
-                <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
-                <td>Pakke</td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getDescription()); i++;%></td>
-            </tr>
-            </tr>
-            <tr>
-                <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
-                <td>Rulle</td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getDescription()); i++;%></td>
-            </tr>
-            <tr>
-               <tr>
-                <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
-                <td>Stk</td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getDescription()); i++;%></td>
-            </tr>
-            </tr>
-            <tr>
-              <tr>
-                <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
-                <td>Stk</td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getDescription()); i++;%></td>
-            </tr>
-            <tr>
-               <tr>
-                <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
-                <td>Pakke</td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getDescription()); i++;%></td>
-            </tr>
             <tr>
                 <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
                 <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
                 <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
                 <td>Pakke</td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getDescription()); i++;%></td>
+                <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
+                    i++;%></td>
             </tr>
-            <tr>
-               <tr>
-                <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
-                <td>Stk</td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getDescription()); i++;%></td>
-            </tr>
-            <tr>
-                <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
-                <td>Stk</td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getDescription()); i++;%></td>
-            </tr>
-            <tr>
-                <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
-                <td>Pakke</td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getDescription()); i++;%></td>
-            </tr>
-            <tr>
-                <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
-                <td>Pakke</td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getDescription()); i++;%></td>
-            </tr>
-            <tr>
-                <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
-                <td>Sæt</td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getDescription()); i++;%></td>
-            </tr>
-            <tr>
-                <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
-                <td>Stk</td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getDescription()); i++;%></td>
-            </tr>
-            <tr>
-                <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
-                <td>Stk</td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getDescription()); i++;%></td>
-            </tr>
-        </table>
-        <%
-            }
-            %>
-    </body>
+        </tr>
+        <tr>
+            <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
+            <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
+            <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
+            <td>Rulle</td>
+                <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
+                i++;%></td>
+        </tr>
+        <tr>
+        <tr>
+            <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
+            <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
+            <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
+            <td>Stk</td>
+                <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
+                i++;%></td>
+        </tr>
+    </tr>
+    <tr>
+    <tr>
+        <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
+        <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
+        <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
+        <td>Stk</td>
+            <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
+            i++;%></td>
+    </tr>
+    <tr>
+    <tr>
+        <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
+        <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
+        <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
+        <td>Pakke</td>
+            <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
+            i++;%></td>
+    </tr>
+    <tr>
+        <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
+        <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
+        <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
+        <td>Pakke</td>
+            <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
+            i++;%></td>
+    </tr>
+    <tr>
+    <tr>
+        <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
+        <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
+        <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
+        <td>Stk</td>
+            <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
+            i++;%></td>
+    </tr>
+    <tr>
+        <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
+        <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
+        <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
+        <td>Stk</td>
+            <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
+            i++;%></td>
+    </tr>
+    <tr>
+        <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
+        <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
+        <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
+        <td>Pakke</td>
+            <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
+            i++;%></td>
+    </tr>
+    <tr>
+        <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
+        <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
+        <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
+        <td>Pakke</td>
+            <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
+            i++;%></td>
+    </tr>
+    <tr>
+        <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
+        <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
+        <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
+        <td>Sæt</td>
+            <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
+            i++;%></td>
+    </tr>
+    <tr>
+        <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
+        <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
+        <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
+        <td>Stk</td>
+            <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
+            i++;%></td>
+    </tr>
+    <tr>
+        <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
+        <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
+        <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
+        <td>Stk</td>
+            <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
+            i++;%></td>
+    </tr>
+</table>
+<%
+        int totalPrice = 0;
+        for (int j = 0; j < LogicFacade.createList(o).size(); j++) {
+            totalPrice = totalPrice + LogicFacade.createList(o).get(j).getPrice();            
+        }
+        out.println("Pris" + totalPrice*10 + "kr.");
+    }
+%>
+</body>
 </html>
