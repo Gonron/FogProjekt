@@ -12,28 +12,27 @@
         <title>Carport der matcher målene.</title>
     </head>
     <body>
-        <% int hei = Integer.parseInt(request.getParameter("height")); %>
         <% int wid = Integer.parseInt(request.getParameter("width")); %>
     </body>
-    <SVG width="1000" height="5000">
+    <SVG width="<%= Math.abs(wid*2) %>" height="400">
     
-        <rect x="0" y="25" height="<% request.getParameter("heihgt"); %>" width="<% Math.abs(wid/10); %>"
+        <rect x="0" y="0" height="25" width="<%= Math.abs(wid/2) %>"
         style="stroke:#000000; fill: none"/>
-        <rect x="<% Math.abs((wid/2)-(wid/10)); %>" y="25" height="<% request.getParameter("heihgt"); %>" width="<% Math.abs(wid/10); %>"
+        <rect x="<%= Math.abs(wid/2) %>" y="0" height="25" width="<%= Math.abs(wid/2) %>"
         style="stroke:#000000; fill: none"/>
-        <rect x="<% Math.abs((wid)-(wid/10)); %>" y="25" height="<% request.getParameter("heihgt"); %>" width="<% Math.abs(wid/10); %>"
+        
+        <rect x="0" y="25" height="210" width="<%= Math.abs(wid/10) %>"
+        style="stroke:#000000; fill: none"/>
+        <rect x="<%= Math.abs((wid/2)-(wid/20)) %>" y="25" height="210" width="<%= Math.abs(wid/10) %>"
+        style="stroke:#000000; fill: none"/>
+        <rect x="<%= Math.abs((wid)-(wid/10)) %>" y="25" height="210" width="<%= Math.abs(wid/10) %>"
         style="stroke:#000000; fill: none"/>
     
         
-        <rect x="0" y="0" height="25" width="360"
-        style="stroke:#000000; fill: none"/>
-        <rect x="125" y="0" height="25" width="140"
-        style="stroke:#000000; fill: none"/>
         
     
     </SVG>
     
-    <a href="FrontController?command=DynamicCarport"><input type="submit" name="Oppefra" value="Set oppefra"><a/>
-    <input type="submit" name="Bestil" value="Fortsæt">
+    <a href="FrontController?command=DynamicCarport">Carport<a/>
      
 </html>

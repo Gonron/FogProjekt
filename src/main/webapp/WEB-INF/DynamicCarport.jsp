@@ -9,12 +9,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Carport set oppefra.</title>
+        <title>Carport tegninger.</title>
     </head>
     <body>
         <% int len = Integer.parseInt(request.getParameter("length")); %>
         <% int wid = Integer.parseInt(request.getParameter("width")); %>
-    <SVG width="1000" height="5000">
+    <SVG width="<% Math.abs(wid*2); %>" height="<% Math.abs(len*2); %>">
     <rect x="0" y="<% Math.abs((len/2)-((len/10)/2)); %>" height="<% Math.abs(len/10); %>" width="<% request.getParameter("width"); %>"
         style="stroke:#000000; fill: #dcdfe5;"/>
     
@@ -75,8 +75,7 @@
     
     </SVG>
     
-    <a href="FrontController?command=DynamicCarportSide"><input type="submit" name="Side" value="Set fra siden"><a/> 
-    <input type="submit" name="Bestil" value="Fortsæt">
+    <a href="FrontController?command=DynamicCarportSide">Set fra siden.<a/> 
     
     </body>
 </html>
