@@ -194,4 +194,30 @@ public class DataMapper {
         return order;}
         return null;
     }
+    
+      public static void createOrderLine(Order order, User user) throws SQLException, ClassNotFoundException {
+
+        Connection con = Connector.connection();
+        String SQL = "INSERT INTO orders (id, Heigth, Width, Length, status) VALUES (?, ?, ?, ?, ?)";
+        PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+        ps.setInt(1, user.getId());
+        ps.setDouble(2, order.getHeigth());
+        ps.setDouble(3, order.getWidth());
+        ps.setDouble(4, order.getLength());
+        ps.setBoolean(5, order.getStatus());
+        ps.executeUpdate();
+        ResultSet ids = ps.getGeneratedKeys();
+        ids.next();
+        int id = ids.getInt(1);
+        order.setId(id);
+        ArrayList<OrderLine> orderlines = fillAmount(order.getLength(), order.getWidth(), false);
+        SQL = "INSERT INTO orderline (id, material_id, amount) VALUES (?, ?, ?)"; 
+        ps = con.prepareStatement(SQL);
+          for (int i = 0; i < orderlines.size(); i++) {
+              ps.setInt(1, id);
+              ps.setInt(2,orderlines.get(i).getMaterialId());
+              ps.setInt(3, orderlines.get(i).getAmount());
+              ps.executeUpdate();
+          };
+    }
 }
