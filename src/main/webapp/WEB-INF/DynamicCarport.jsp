@@ -14,7 +14,7 @@
     <body>
         <% int len = Integer.parseInt(request.getParameter("length")); %>
         <% int wid = Integer.parseInt(request.getParameter("width")); %>
-    <SVG width="<%= Math.abs(wid*2) %>" height="<%= Math.abs(len*2) %>">
+    <SVG width="<%= Math.abs(wid*2) %>" height="<%= Math.abs(len+100) %>">
     <rect x="0" y="<%= Math.abs((len/2)-((len/10)/2)) %>" height="<%= Math.abs(len/10) %>" width="<%= request.getParameter("width") %>"
         style="stroke:#000000; fill: #dcdfe5;"/>
     
@@ -33,7 +33,7 @@
     
     
     <text x="<%= Math.abs(wid+20) %>" y="<%= Math.abs(len/2) %>" fill="Red"> Længde: <%= request.getParameter("length") %> </text>
-    <text x="<%= Math.abs(wid/2) %>" y="<%= Math.abs(len+15) %>" fill="Red"> Bredde: <%= request.getParameter("width") %> </text>
+    <text x="<%= Math.abs((wid/2)-15) %>" y="<%= Math.abs(len+15) %>" fill="Red"> Bredde: <%= request.getParameter("width") %> </text>
     
     
     <defs>
@@ -76,6 +76,8 @@
     </SVG>
     
     <form action="FrontController?command=DynamicCarportSide" name="order" method="POST">
+        <input type="hidden" name="length" value="<%= request.getParameter("length") %>">
+        <input type="hidden" name="width" value="<%= request.getParameter("width") %>">
         <input type="submit" value="Side tegning">
     </form>
     </body>

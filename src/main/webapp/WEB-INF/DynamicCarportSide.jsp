@@ -34,6 +34,8 @@
     </SVG>
     
     <form action="FrontController?command=DynamicCarport" method="POST">
+    <input type="hidden" name="length" value="<%= request.getParameter("length") %>">
+    <input type="hidden" name="width" value="<%= request.getParameter("width") %>">
     <input type="submit" value="Grundtegning">
     </form>
 </html>

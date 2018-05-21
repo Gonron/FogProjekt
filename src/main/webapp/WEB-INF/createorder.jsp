@@ -15,12 +15,12 @@
        <h1>Start din bestilling</h1>
         Indtast mål i cm
         <br>
-        <form action="FrontController?command=DynamicCarportSide" name="order" method="POST">
+        <form action="FrontController?command=DynamicCarport" name="order" method="POST">
             <input type="hidden" name="command" value="createorder">
-            <input type="number" name="length" placeholder="længde" min="150" max="800" required="">
+            Længde: <input type="number" name="length" placeholder="længde" min="150" max="800" required="">
             <br>
             <br>
-            <input type="number" name="width" placeholder="bredde" min="200" max="800" required="">
+            Bredde: <input type="number" name="width" placeholder="bredde" min="200" max="800" required=""> 
             <br>
             <br>
             Carportens højde vil være 210 cm.
@@ -29,12 +29,7 @@
             <textarea rows ="5" cols ="30" name="comment" placeholder="Skriv en kommentar" style="resize: none"></textarea>
             <br>
             <br>
-            <input type="submit" value="Se sidetegning">
+            <input type="submit" name="grundtegning" value="Se grundtegning">
         </form>
-        <br>
-        <form action="FrontController?command=DynamicCarport" name="order2" method="POST">
-            <input type="submit" value="Se grundtegning"
-        </form>
-        <br>
     </body>
 </html>
