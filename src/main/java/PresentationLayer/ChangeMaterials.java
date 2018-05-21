@@ -33,7 +33,7 @@ public class ChangeMaterials extends Command {
        
         
         try {
-            LogicFacade.updateMaterials(materialId, name, desc, length, price, materialGroup);
+            LogicFacade.updateMaterials(name, desc, length, price, materialGroup);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ChangeMaterials.class.getName()).log(Level.SEVERE, null, ex);
         }

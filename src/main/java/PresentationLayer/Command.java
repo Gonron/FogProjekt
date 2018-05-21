@@ -23,6 +23,7 @@ abstract class Command {
         commands.put("order", new OrderPage());
         commands.put("EmpControl", new EmpControl());
         commands.put("stykliste", new Stykliste());
+        commands.put("changematerials", new ChangeMaterials());
 
     }
 

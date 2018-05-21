@@ -198,11 +198,10 @@ public class DataMapper {
     
     
     
-    public static void updateMaterails(int materialId, String name, String desc, int length, int price, int materialGroup) throws ClassNotFoundException, SQLException{
+    public static void updateMaterails(String name, String desc, int length, int price, int materialGroup) throws ClassNotFoundException, SQLException{
         Connection con = Connector.connection();
         String SQL = "UPDATE materials SET name = ?, desc = ?, length = ?, price = ?, material_group = ?, WHERE material_id = ?";
         PreparedStatement ps = con.prepareStatement(SQL);
-        ps.setInt(1, materialId);
         ps.setString(2, name);
         ps.setString(3, desc);
         ps.setInt(4, length);
