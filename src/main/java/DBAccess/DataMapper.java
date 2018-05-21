@@ -185,17 +185,18 @@ public class DataMapper {
         PreparedStatement ps = con.prepareStatement(SQL);
         ps.setInt(1, id);
         ResultSet rs = ps.executeQuery();
-        if (rs.next()) {        
-        double heigth = rs.getInt("Heigth");
-        double width = rs.getInt("Width");
-        double length = rs.getInt("Length");
-        boolean status = rs.getBoolean("status");
-        Order order = new Order(id, heigth, width, length, status);
-        return order;}
+        if (rs.next()) {
+            double heigth = rs.getInt("Heigth");
+            double width = rs.getInt("Width");
+            double length = rs.getInt("Length");
+            boolean status = rs.getBoolean("status");
+            Order order = new Order(id, heigth, width, length, status);
+            return order;
+        }
         return null;
     }
-    
-      public static void createOrderLine(Order order, User user) throws SQLException, ClassNotFoundException {
+
+    public static void createOrderLine(Order order, User user) throws SQLException, ClassNotFoundException {
 
         Connection con = Connector.connection();
         String SQL = "INSERT INTO orders (id, Heigth, Width, Length, status) VALUES (?, ?, ?, ?, ?)";
@@ -211,13 +212,51 @@ public class DataMapper {
         int id = ids.getInt(1);
         order.setId(id);
         ArrayList<OrderLine> orderlines = fillAmount(order.getLength(), order.getWidth(), false);
-        SQL = "INSERT INTO orderline (id, material_id, amount) VALUES (?, ?, ?)"; 
+        SQL = "INSERT INTO orderline (id, material_id, amount) VALUES (?, ?, ?)";
         ps = con.prepareStatement(SQL);
-          for (int i = 0; i < orderlines.size(); i++) {
-              ps.setInt(1, id);
-              ps.setInt(2,orderlines.get(i).getMaterialId());
-              ps.setInt(3, orderlines.get(i).getAmount());
-              ps.executeUpdate();
-          };
+        for (int i = 0; i < orderlines.size(); i++) {
+            ps.setInt(1, id);
+            ps.setInt(2, orderlines.get(i).getMaterialId());
+            ps.setInt(3, orderlines.get(i).getAmount());
+            ps.executeUpdate();
+        };
+    }
+
+    public static ArrayList<OrderLine> getOrderLines() throws ClassNotFoundException, SQLException {
+        ArrayList<OrderLine> materials = new ArrayList();
+        ArrayList<Integer> materialIds = new ArrayList();
+        ArrayList<Integer> amounts = new ArrayList();
+        Connection con = Connector.connection();
+        String SQL = "SELECT * FROM orderline WHERE id=?"; //TODO: Vi skal have lavet noget joint med denne metode så vi kan returnere en orderline
+        PreparedStatement ps = con.prepareStatement(SQL);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            int id = rs.getInt("material_id");
+            int amount = rs.getInt("amount");
+            materialIds.add(id);
+            amounts.add(amount);
+        }
+        SQL = "SELECT * FROM materials WHERE material_id=?";
+        int id = 0;
+        int amount = 0;
+        while (rs.next()) {
+            for (int i = 0; i < materialIds.size(); i++) {
+                id = materialIds.get(i);
+                break;
+            }
+            String name = rs.getString("name");
+            String description = rs.getString("desc");
+            int length = rs.getInt("length");
+            for (int j = 0; j < amounts.size(); j++) {
+                amount = amounts.get(j);
+                break;
+            }
+            int price = rs.getInt("price");
+            int group = rs.getInt("material_group");
+            OrderLine l = new OrderLine(id, name, length, amount, description, price, group);
+            materials.add(l);
+        }
+
+        return materials;
     }
 }
