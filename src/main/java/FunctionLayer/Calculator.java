@@ -23,7 +23,7 @@ public class Calculator {
             materialAmount += 1;
         }
         return (int) (materialAmount*2);
-    }
+    }    
     
     
             
