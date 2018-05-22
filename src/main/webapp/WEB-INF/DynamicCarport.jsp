@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Carport tegninger.</title>
+        <title>Fog - Carport grundtegning.</title>
     </head>
     <body>
         <% int len = Integer.parseInt(request.getParameter("length")); %>
