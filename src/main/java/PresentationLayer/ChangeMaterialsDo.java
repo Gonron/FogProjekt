@@ -34,23 +34,22 @@ public class ChangeMaterialsDo extends Command {
             String name = request.getParameter("name");
             String desc = request.getParameter("desc");
             int length = Integer.parseInt(request.getParameter("length"));
+            int id = Integer.parseInt(request.getParameter("id"));
             int price = Integer.parseInt(request.getParameter("price"));
             int materialGroup = Integer.parseInt(request.getParameter("materialgroup"));
 
             try {
-                LogicFacade.updateMaterials(name, desc, length, price, materialGroup);
+                LogicFacade.updateMaterials(name, desc, length, price, materialGroup, id);
             } catch (ClassNotFoundException | SQLException ex) {
                 Logger.getLogger(ChangeMaterialsDo.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-            return "changematerials";
-
+            return "changeMaterials";
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ChangeMaterialsDo.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(ChangeMaterialsDo.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+        return "changeMaterials";
 
     }
 

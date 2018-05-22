@@ -177,15 +177,16 @@ public class DataMapper {
         return null;
     }
     
-    public static void updateMaterials(String name, String desc, int length, int price, int materialGroup) throws ClassNotFoundException, SQLException{
+    public static void updateMaterials(String name, String desc, int length, int price, int materialGroup, int id) throws ClassNotFoundException, SQLException{
         Connection con = Connector.connection();
-        String SQL = "UPDATE materials SET name = ?, desc = ?, length = ?, price = ?, material_group = ?, WHERE material_id = ?";
+        String SQL = "UPDATE materials SET name = ?, desc = ?, length = ?, price = ?, material_group = ? WHERE material_id = ?";
         PreparedStatement ps = con.prepareStatement(SQL);
-        ps.setString(2, name);
-        ps.setString(3, desc);
-        ps.setInt(4, length);
-        ps.setInt(5, price);
-        ps.setInt(6, materialGroup);
+        ps.setString(1, name);
+        ps.setString(2, desc);
+        ps.setInt(3, length);
+        ps.setInt(4, price);
+        ps.setInt(5, materialGroup);
+        ps.setInt(6, id);
         ps.executeUpdate();
     }       
 
