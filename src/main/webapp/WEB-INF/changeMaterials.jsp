@@ -159,7 +159,7 @@ input[type=submit]:hover {
             
         
             <form name="materialListOrder" action="FrontController" method="POST">
-            <input type="hidden" name="command" value="changematerials"> Insert name 
+            <input type="hidden" name="command" value="changematerialsdo"> Insert name 
             <input type="text" name="name" placeholder="Name" size="20"> Insert length of product
             <input type="number" name="length" placeholder="Length" min="0"> insert the price of the product
             <input type="number" name="price" placeholder="Price" min="0"> insert the Material Group Id of the product
