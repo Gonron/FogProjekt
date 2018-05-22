@@ -27,14 +27,7 @@ public class ChangeMaterials extends Command {
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
         
         
-
-            
-            
-            try {
-                
-                
-                
-                
+            try {        
                 
                 ArrayList<OrderLine> materials = DataMapper.getTreeMaterials();
                 HttpSession session = request.getSession();
@@ -59,11 +52,9 @@ public class ChangeMaterials extends Command {
                 
                 return "changematerials";
                 
-            } catch (ClassNotFoundException ex) {
+            } catch (ClassNotFoundException | SQLException ex) {
                 Logger.getLogger(ChangeMaterials.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
-            Logger.getLogger(ChangeMaterials.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            }
         return null;
     
     }
