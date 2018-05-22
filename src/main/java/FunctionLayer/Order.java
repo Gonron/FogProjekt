@@ -87,11 +87,10 @@ public class Order {
         this.status = status;
     }
 
-
     @Override
     public String toString() {
-        return id + "" + width + "" + length + "" + status;
-    }   
+        return "Order:" + "id=" + id + ", bredde=" + width + ", længde=" + length + ", sendt=" + status;
+    }     
 
     
 }

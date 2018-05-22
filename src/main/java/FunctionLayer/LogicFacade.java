@@ -16,7 +16,6 @@ public class LogicFacade {
     public static User login(String email, String password) throws LoginSampleException, NoSuchAlgorithmException, InvalidKeySpecException {
         return DataMapper.login(email, password);
     }
-
 //    public static User createUser(int id, String username, String phonenumber, byte[] password, String email) throws LoginSampleException, NoSuchAlgorithmException {      
 //        PasswordEncryption PE = new PasswordEncryption();
 //        byte[] salt = PE.genereteSalt();
@@ -31,9 +30,7 @@ public class LogicFacade {
     }
 
     public static Order createOrder(int height, int width, int length, boolean shed, boolean roof, User u) throws SQLException, ClassNotFoundException {
-
         //Order order = new Order(length, width, length, shed, roof, false);
-
         Order order = new Order(210, width, length, shed, false, false);
         DataMapper.createOrder(order, u);
         return order;
@@ -62,10 +59,8 @@ public class LogicFacade {
         return DataMapper.getOrder(orderId);
     }
     
-    public static void updateMaterials( String name, String desc, int length, int price, int materialGroup) throws ClassNotFoundException, SQLException{
-         DataMapper.updateMaterails(name, desc, length, price, materialGroup);
-        
-        
+    public static void updateMaterials( String name, String desc, int length, int price, int materialGroup, int id) throws ClassNotFoundException, SQLException{
+         DataMapper.updateMaterials(name, desc, length, price, materialGroup, id);      
     }
     
 }

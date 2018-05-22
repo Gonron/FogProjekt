@@ -27,9 +27,6 @@ public class OrderPage extends Command {
         int length = Integer.parseInt(request.getParameter("length"));
         boolean shed=false; //= Boolean.parseBoolean(request.getParameter("shed"));
         boolean roof = Boolean.parseBoolean(request.getParameter("roof"));
-        if(request.getParameter("shed").equals("medskur")){
-            shed=true;
-        }
         HttpSession session = request.getSession();
         User u = (User) session.getAttribute("user"); 
         try {

@@ -14,30 +14,21 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Start din ordre</h1><br>
+       <h1>Start din ordre</h1><br>
         Indtast størrelserne i cm.
         <br>
         Alle carporte har en højde på 210cm.
         <br>
         <form name="order" action="FrontController" method="POST">            
             <input type="hidden" name="command" value="order">
-            <input type="number" name="length" placeholder="length">
-            <input type="number" name="width" placeholder="width">
-            <input type="number" name="height" placeholder="height">
-            <select>
-            <option name="medskur">Med skur</option>
-            <option name="udenskur">Uden skur</option>
-            </select>
-            <textarea rows ="2" cols ="30" name="comment" placeholder="Skriv en kommentar" style="resize: none"></textarea>           
             <input type="number" name="length" placeholder="length" min="250" max="800" required>
-            <input type="number" name="width" placeholder="width" min="150" max="800" required> 
-            <select name="shed">
-                <option value="medskur">Med skur</option>
-                <option value="udenskur">Uden skur</option>            
+            <input type="number" name="width" placeholder="width" min="150" max="800" required>       
+            <option value="medskur">Med skur</option>
+            <option value="udenskur">Uden skur</option>            
             </select>   
             <textarea rows ="1" cols ="30" name="comment" placeholder="Skriv en kommentar" style="resize: none"></textarea> 
             <input type="submit" value="Submit">
-        </form>
+            </form>
         <br>
     </body>
 </html>

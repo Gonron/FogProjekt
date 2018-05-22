@@ -43,10 +43,8 @@ public class DataMapper {
     }
 
     public static User login(String email, String password) throws LoginSampleException, NoSuchAlgorithmException, InvalidKeySpecException {
-
         // denne metode skal rettes så ledes, at vi tager et salt objekt udfra databasen og kan bruge det til at verificere brugeren
         try {
-
             Connection con = Connector.connection();
             String SQL = "SELECT id, phone, post, adress, role FROM Users "
                     + "WHERE email=? AND password=?";
@@ -140,7 +138,6 @@ public class DataMapper {
     public static ArrayList<OrderLine> fillAmount(double userWidth, double userLength, boolean shed) throws ClassNotFoundException, SQLException {
         //denne metode tager udgangspunk i en carport med flat tag
         Calculator calc = new Calculator();
-
         ArrayList<OrderLine> orderlines = DataMapper.getTreeMaterials();
         for (int i = 0; i < orderlines.size(); i++) {
             int group = orderlines.get(i).getMaterialgroup();
@@ -159,8 +156,7 @@ public class DataMapper {
                     break;
             }
             orderlines.get(i).setPrice(calc.calculatePrice(orderlines.get(i)));
-        }//      
-
+        }
         return orderlines;
     }
 
@@ -181,18 +177,18 @@ public class DataMapper {
         return null;
     }
     
-    public static void updateMaterails(String name, String desc, int length, int price, int materialGroup) throws ClassNotFoundException, SQLException{
+    public static void updateMaterials(String name, String desc, int length, int price, int materialGroup, int id) throws ClassNotFoundException, SQLException{
         Connection con = Connector.connection();
-        String SQL = "UPDATE materials SET name = ?, desc = ?, length = ?, price = ?, material_group = ?, WHERE material_id = ?";
+        String SQL = "UPDATE materials SET name = ?, desc = ?, length = ?, price = ?, material_group = ? WHERE material_id = ?";
         PreparedStatement ps = con.prepareStatement(SQL);
-        ps.setString(2, name);
-        ps.setString(3, desc);
-        ps.setInt(4, length);
-        ps.setInt(5, price);
-        ps.setInt(6, materialGroup);
+        ps.setString(1, name);
+        ps.setString(2, desc);
+        ps.setInt(3, length);
+        ps.setInt(4, price);
+        ps.setInt(5, materialGroup);
+        ps.setInt(6, id);
         ps.executeUpdate();
-    }
-        
+    }       
 
 
     public static void createOrder(Order order, User user) throws SQLException, ClassNotFoundException {
