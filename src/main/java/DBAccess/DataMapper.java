@@ -89,23 +89,6 @@ public class DataMapper {
         return orders;
     }
 
-    public static void createOrder(Order order, User user) throws SQLException, ClassNotFoundException {
-
-        Connection con = Connector.connection();
-        String SQL = "INSERT INTO orders (id, Heigth, Width, Length, status) VALUES (?, ?, ?, ?, ?)";
-        PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
-        ps.setInt(1, user.getId());
-        ps.setDouble(2, order.getHeigth());
-        ps.setDouble(3, order.getWidth());
-        ps.setDouble(4, order.getLength());
-        ps.setBoolean(5, order.getStatus());
-        ps.executeUpdate();
-        ResultSet ids = ps.getGeneratedKeys();
-        ids.next();
-        int id = ids.getInt(1);
-        order.setId(id);
-    }
-
     public static ArrayList<Order> getOrders(User u) throws ClassNotFoundException, SQLException {
         int id = u.getId();
         ArrayList<Order> orders = new ArrayList();
@@ -155,8 +138,7 @@ public class DataMapper {
     }
 
     public static ArrayList<OrderLine> fillAmount(double userWidth, double userLength, boolean shed) throws ClassNotFoundException, SQLException {
-        //denne metode tager udgangspunk i en carport med flattag
-
+        //denne metode tager udgangspunk i en carport med flat tag
         Calculator calc = new Calculator();
 
         ArrayList<OrderLine> orderlines = DataMapper.getTreeMaterials();
@@ -168,6 +150,9 @@ public class DataMapper {
                     break;
                 case 2:
                     orderlines.get(i).setAmount(calc.calculatePosts(userLength, userWidth, shed));
+                    break;
+                case 4:
+                    orderlines.get(i).setAmount(calc.calculatePlanks(userWidth, orderlines.get(i).getLength()));
                     break;
                 default:
                     orderlines.get(i).setAmount(1);
@@ -196,8 +181,7 @@ public class DataMapper {
         return null;
     }
 
-    public static void createOrderLine(Order order, User user) throws SQLException, ClassNotFoundException {
-
+    public static void createOrder(Order order, User user) throws SQLException, ClassNotFoundException {
         Connection con = Connector.connection();
         String SQL = "INSERT INTO orders (id, Heigth, Width, Length, status) VALUES (?, ?, ?, ?, ?)";
         PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
@@ -212,17 +196,18 @@ public class DataMapper {
         int id = ids.getInt(1);
         order.setId(id);
         ArrayList<OrderLine> orderlines = fillAmount(order.getLength(), order.getWidth(), false);
-        SQL = "INSERT INTO orderline (id, material_id, amount) VALUES (?, ?, ?)";
+        SQL = "INSERT INTO orderline (order_id, material_id, amount, price) VALUES (?, ?, ?, ?)";
         ps = con.prepareStatement(SQL);
         for (int i = 0; i < orderlines.size(); i++) {
             ps.setInt(1, id);
             ps.setInt(2, orderlines.get(i).getMaterialId());
             ps.setInt(3, orderlines.get(i).getAmount());
+            ps.setInt(4, orderlines.get(i).getPrice());
             ps.executeUpdate();
-        };
+        }
     }
 
-    public static ArrayList<OrderLine> getOrderLines() throws ClassNotFoundException, SQLException {
+    public static ArrayList<OrderLine> getOrderLines(int id) throws ClassNotFoundException, SQLException {
         ArrayList<OrderLine> materials = new ArrayList();
         ArrayList<Integer> materialIds = new ArrayList();
         ArrayList<Integer> amounts = new ArrayList();
@@ -231,32 +216,30 @@ public class DataMapper {
         PreparedStatement ps = con.prepareStatement(SQL);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
-            int id = rs.getInt("material_id");
+            int matId = rs.getInt("material_id");
             int amount = rs.getInt("amount");
-            materialIds.add(id);
+            materialIds.add(matId);
             amounts.add(amount);
         }
         SQL = "SELECT * FROM materials WHERE material_id=?";
-        int id = 0;
+        ps = con.prepareStatement(SQL);
+        rs = ps.executeQuery();
+        int i = 0;
+        int j = 0;
         int amount = 0;
         while (rs.next()) {
-            for (int i = 0; i < materialIds.size(); i++) {
-                id = materialIds.get(i);
-                break;
-            }
+            int matId = materialIds.get(i);
+            i++;
             String name = rs.getString("name");
             String description = rs.getString("desc");
             int length = rs.getInt("length");
-            for (int j = 0; j < amounts.size(); j++) {
-                amount = amounts.get(j);
-                break;
-            }
+            amount = amounts.get(j);
+            j++;
             int price = rs.getInt("price");
             int group = rs.getInt("material_group");
-            OrderLine l = new OrderLine(id, name, length, amount, description, price, group);
+            OrderLine l = new OrderLine(matId, name, length, amount, description, price, group);
             materials.add(l);
         }
-
         return materials;
     }
 }

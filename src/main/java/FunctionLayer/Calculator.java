@@ -21,7 +21,7 @@ public class Calculator {
             materialAmount += 1;
         }
         return (int) (materialAmount*2);
-    }
+    }    
     
     
     public int calculatePosts(double userLength, double userwidth, boolean shed){
