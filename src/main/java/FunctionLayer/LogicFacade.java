@@ -63,7 +63,7 @@ public class LogicFacade {
     }
     
     public static void updateMaterials( String name, String desc, int length, int price, int materialGroup) throws ClassNotFoundException, SQLException{
-         DataMapper.updateMaterails(name, desc, length, price, materialGroup);
+         DataMapper.updateMaterials(name, desc, length, price, materialGroup);
         
         
     }
