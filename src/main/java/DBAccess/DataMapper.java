@@ -191,8 +191,7 @@ public class DataMapper {
         ps.setInt(5, price);
         ps.setInt(6, materialGroup);
         ps.executeUpdate();
-    }
-        
+    }       
 
 
     public static void createOrder(Order order, User user) throws SQLException, ClassNotFoundException {
