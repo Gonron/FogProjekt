@@ -32,8 +32,8 @@
     
     
     
-    <text x="<%= Math.abs(wid+20) %>" y="<%= Math.abs(len/2) %>" fill="Red"> Længde: <%= request.getParameter("length") %> </text>
-    <text x="<%= Math.abs((wid/2)-15) %>" y="<%= Math.abs(len+15) %>" fill="Red"> Bredde: <%= request.getParameter("width") %> </text>
+    <text x="<%= Math.abs(wid+25) %>" y="<%= Math.abs(len/2) %>" fill="Red"> Længde: <%= request.getParameter("length") %> cm </text>
+    <text x="<%= Math.abs((wid/2)-25) %>" y="<%= Math.abs(len+35) %>" fill="Red"> Bredde: <%= request.getParameter("width") %> cm </text>
     
     
     <defs>
