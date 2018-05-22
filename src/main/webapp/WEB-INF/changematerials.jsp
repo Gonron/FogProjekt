@@ -159,7 +159,7 @@ input[type=submit]:hover {
             <input type="number" name="price" placeholder="Price" min="0"> insert the Material Group Id of the product
             <input type="number" name="materialGroup" placeholder="Material Group" min="0">
             Insert the description of the product
-            <textarea rows="4" cols="50" placeholder="insert the description of the product...."></textarea>
+            <textarea rows="4" cols="50" name="desc" placeholder="insert the description of the product...."></textarea>
             <input type="submit" value="Submit">
             </form>
             
