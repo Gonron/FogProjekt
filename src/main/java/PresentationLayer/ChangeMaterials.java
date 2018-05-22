@@ -27,38 +27,45 @@ public class ChangeMaterials extends Command {
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
         
         
-        try {
-            
-            
-            ArrayList<OrderLine> materials;
-            materials = DataMapper.getTreeMaterials();
-            HttpSession session = request.getSession();
-            session.setAttribute("materials", materials);
-            
-            
-            String name = request.getParameter("name");
-            String desc = request.getParameter("desc");
-            int length = Integer.parseInt(request.getParameter("length"));
-            int price = Integer.parseInt(request.getParameter("price"));
-            int materialGroup = Integer.parseInt(request.getParameter("materialgroup"));
+
             
             
             try {
-                LogicFacade.updateMaterials(name, desc, length, price, materialGroup);
-            } catch (ClassNotFoundException | SQLException ex) {
+                
+                
+                
+                
+                
+                ArrayList<OrderLine> materials = DataMapper.getTreeMaterials();
+                HttpSession session = request.getSession();
+                session.setAttribute("materials", materials);
+                
+                
+                String name = request.getParameter("name");
+                String desc = request.getParameter("desc");
+                int length = Integer.parseInt(request.getParameter("length"));
+                int price = Integer.parseInt(request.getParameter("price"));
+                int materialGroup = Integer.parseInt(request.getParameter("materialgroup"));
+                
+                
+                try {
+                    LogicFacade.updateMaterials(name, desc, length, price, materialGroup);
+                } catch (ClassNotFoundException | SQLException ex) {
+                    Logger.getLogger(ChangeMaterials.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                
+                
+                
+                return "changematerials";
+                
+            } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ChangeMaterials.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            
-            
-            
-            return "changematerials";
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ChangeMaterials.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+            } catch (SQLException ex) {
             Logger.getLogger(ChangeMaterials.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    
     }
     
 }

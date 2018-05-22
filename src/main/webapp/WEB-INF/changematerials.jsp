@@ -105,6 +105,7 @@ input[type=submit]:hover {
             <table class="zui-table">
          <thead>
          <tr>
+             <th> id</th> 
             <th>Name</th>
             <th>Length</th>
             <th>Description</th>
@@ -114,6 +115,7 @@ input[type=submit]:hover {
         </thead>
         <tbody>
         <tr>
+            <td> 1 </td>
             <td>25X200 mm. trykimp. Brædt</td>
             <td>360</td>
             <td>understernbrædder til for & bag ende</td>
@@ -121,6 +123,7 @@ input[type=submit]:hover {
             <td>1</td>
         </tr>
         <tr>
+            <td>2</td>
             <td>25X200 mm. trykimp. Brædt</td>
             <td>540</td>
             <td>understernbrædder til siderne</td>
@@ -128,6 +131,7 @@ input[type=submit]:hover {
             <td>1</td>
         </tr>
         <tr>
+            <td>3</td>
             <td>25X200 mm. trykimp. Brædt</td>
             <td>360</td>
             <td>oversternbrædder til forenden</td>
@@ -135,6 +139,7 @@ input[type=submit]:hover {
             <td>1</td>
         </tr>
         <tr>
+            <td>4</td>
             <td>25X200 mm. trykimp. Brædt</td>
             <td>540</td>
             <td>oversternbrædder til siderne</td>
@@ -142,6 +147,7 @@ input[type=submit]:hover {
             <td>1</td>
         </tr>
         <tr>
+            <td>5</td>
             <td>38x73 mm. Lægte ubh.</td>
             <td>420</td>
             <td>til z på bagside af dør </td>
