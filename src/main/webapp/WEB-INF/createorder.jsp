@@ -11,7 +11,7 @@
     <head>
         <link rel="stylesheet" type="text/css" href="main.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Find carport</title>
     </head>
     <body>
        <h1>Start din ordre</h1><br>
