@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * The purpose of LogicFacade is to...
+ * This logic facade is a facade between the function and presentationlayer.
  *
  * @author kasper
  */
