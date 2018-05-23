@@ -15,12 +15,17 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
- * The purpose of DataMapper is to...
+ * The purpose of DataMapper is to extract data and insert data into the database
  *
  * @author kasper
  */
 public class DataMapper {
 
+    /**
+     * This method creates a user and saves it in the database
+     * @param user
+     * @throws LoginSampleException 
+     */
     public static void createUser(User user) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
@@ -42,6 +47,15 @@ public class DataMapper {
         }
     }
 
+    /**
+     * This method validates that the user exists in the database
+     * @param email
+     * @param password
+     * @return this method returns the user with the corresponding username and password 
+     * @throws LoginSampleException
+     * @throws NoSuchAlgorithmException
+     * @throws InvalidKeySpecException 
+     */
     public static User login(String email, String password) throws LoginSampleException, NoSuchAlgorithmException, InvalidKeySpecException {
         // denne metode skal rettes så ledes, at vi tager et salt objekt udfra databasen og kan bruge det til at verificere brugeren
         try {
@@ -68,7 +82,12 @@ public class DataMapper {
             throw new LoginSampleException(ex.getMessage());
         }
     }
-
+/**
+ * This method extracts all orders from the database and sorts by newest.
+ * @return returns all orders in an arraylist
+ * @throws ClassNotFoundException
+ * @throws SQLException 
+ */
     public static ArrayList<Order> getOrders() throws ClassNotFoundException, SQLException {
         ArrayList<Order> orders = new ArrayList();
         Connection con = Connector.connection();
@@ -87,6 +106,13 @@ public class DataMapper {
         return orders;
     }
 
+    /**
+     * This method returns all orders made by a specific user
+     * @param u
+     * @return the method returns an arraylist of orders made by a user
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
     public static ArrayList<Order> getOrders(User u) throws ClassNotFoundException, SQLException {
         int id = u.getId();
         ArrayList<Order> orders = new ArrayList();
@@ -106,7 +132,12 @@ public class DataMapper {
         }
         return orders;
     }
-
+     /**
+      * this method marks an order as sent
+      * @param id
+      * @throws ClassNotFoundException
+      * @throws SQLException 
+      */
     public static void updateOrder(int id) throws ClassNotFoundException, SQLException {
         Connection con = Connector.connection();
         String SQL = "UPDATE orders SET status = ? WHERE order_id = ?";
@@ -114,8 +145,14 @@ public class DataMapper {
         ps.setBoolean(1, true);
         ps.setInt(2, id);
         ps.executeUpdate();
-    }
-
+    }   
+    
+    /**
+     * This method returns a list of orderlines without amount 
+     * @return Returns an arraylist of orderlines
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
     public static ArrayList<OrderLine> getTreeMaterials() throws ClassNotFoundException, SQLException {
         ArrayList<OrderLine> materials = new ArrayList<>();
         Connection con = Connector.connection();
@@ -135,6 +172,15 @@ public class DataMapper {
         return materials;
     }
 
+    /**
+     * This method set the amount of materials used to the appropiate amount and calculates the price
+     * @param userWidth
+     * @param userLength
+     * @param shed
+     * @return The method calls a calculator that calculates amount and price of materials in the order
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
     public static ArrayList<OrderLine> fillAmount(double userWidth, double userLength, boolean shed) throws ClassNotFoundException, SQLException {
         //denne metode tager udgangspunk i en carport med flat tag
         Calculator calc = new Calculator();
@@ -159,7 +205,13 @@ public class DataMapper {
         }
         return orderlines;
     }
-
+/**
+ * this method returns and order from the database
+ * @param id
+ * @return The method return a specific order 
+ * @throws ClassNotFoundException
+ * @throws SQLException 
+ */
     public static Order getOrder(int id) throws ClassNotFoundException, SQLException {
         Connection con = Connector.connection();
         String SQL = "SELECT * FROM orders WHERE order_id=?";
@@ -177,6 +229,17 @@ public class DataMapper {
         return null;
     }
     
+    /**
+     * This method should be used to update the materials in the database but sadly doesn't work yet
+     * @param name
+     * @param desc
+     * @param length
+     * @param price
+     * @param materialGroup
+     * @param id
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
     public static void updateMaterials(String name, String desc, int length, int price, int materialGroup, int id) throws ClassNotFoundException, SQLException{
         Connection con = Connector.connection();
         String SQL = "UPDATE materials SET name = ?, desc = ?, length = ?, price = ?, material_group = ? WHERE material_id = ?";
@@ -188,9 +251,15 @@ public class DataMapper {
         ps.setInt(5, materialGroup);
         ps.setInt(6, id);
         ps.executeUpdate();
-    }       
+    }     
 
-
+    /**
+     * This method creates an order and saves it in the database and the creates orderlines and saves them aswell
+     * @param order
+     * @param user
+     * @throws SQLException
+     * @throws ClassNotFoundException 
+     */
     public static void createOrder(Order order, User user) throws SQLException, ClassNotFoundException {
         Connection con = Connector.connection();
         String SQL = "INSERT INTO orders (id, Heigth, Width, Length, status) VALUES (?, ?, ?, ?, ?)";
@@ -216,7 +285,13 @@ public class DataMapper {
             ps.executeUpdate();
         }
     }
-
+    /**
+     * This method is used to return a list of orderlines
+     * @param id
+     * @return The method returns an arraylist of orderlines
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
     public static ArrayList<OrderLine> getOrderLines(int id) throws ClassNotFoundException, SQLException {
         ArrayList<OrderLine> materials = new ArrayList();
         ArrayList<Integer> materialIds = new ArrayList();

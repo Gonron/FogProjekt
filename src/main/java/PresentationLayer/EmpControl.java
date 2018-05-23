@@ -9,9 +9,9 @@ import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import java.sql.SQLException;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import logger.Conf;
 
 /**
  *
@@ -24,7 +24,7 @@ public class EmpControl extends Command{
         try {
             LogicFacade.updateOrder(id);
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(EmpControl.class.getName()).log(Level.SEVERE, null, ex);
+            Conf.MYLOGGER.log(Level.SEVERE, null, ex);
         }
         return "allOrdersEmp";
     }
