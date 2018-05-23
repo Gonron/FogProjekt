@@ -39,13 +39,13 @@
                 <th> Ordernummer </th>
                 <th> Længde </th>
                 <th> Brede </th>
-                <th> Status </th>
+                <th> Sendt </th>
                 <th> Skur </th>
             </tr>
             <tr>
                 <td><b>  </b></td>
-                <td><b> Meter </b></td>
-                <td><b> Meter </b></td>
+                <td><b> Centimeter </b></td>
+                <td><b> Centimeter </b></td>
                 <td><b>  </b></td>
                 <td><b>  </b></td>
             </tr>
