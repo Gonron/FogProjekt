@@ -19,6 +19,7 @@
         <h1>Kvittering</h1>
          Din ordre er blevet modtaget.<br>        
         <a href="FrontController?command=allOrdersCust"> Vis alle dine ordre </a><br>
-        <a href="FrontController?command=contact"> Kontakt os </a>
-    </body>
+        <a href="FrontController?command=contact"> Kontakt os </a><br>
+        <a href="FrontController?command=DynamicCarport"> Se carport </a>
+       </body>
 </html>

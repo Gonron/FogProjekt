@@ -25,6 +25,8 @@ abstract class Command {
         commands.put("stykliste", new Stykliste());
         commands.put("changematerialsdo", new ChangeMaterialsDo());
         commands.put("changematerials", new ChangeMaterials());
+        commands.put("DynamicCarport", new DynamicCarport());
+        commands.put("DynamicCarportSide", new DynamicCarportSide());
     }
 
     static Command from(HttpServletRequest request) {

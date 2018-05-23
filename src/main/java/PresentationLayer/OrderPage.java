@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 /**
  *
  * @author morten
@@ -25,17 +26,19 @@ public class OrderPage extends Command {
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
         int width = Integer.parseInt(request.getParameter("width"));
         int length = Integer.parseInt(request.getParameter("length"));
-        boolean shed=false; //= Boolean.parseBoolean(request.getParameter("shed"));
-        boolean roof = Boolean.parseBoolean(request.getParameter("roof"));
+        boolean shed = false; //= Boolean.parseBoolean(request.getParameter("shed"));
+        boolean roof = Boolean.parseBoolean(request.getParameter("roof"));            
+        Order o = new Order(0, 210, width, length, true);
         HttpSession session = request.getSession();
-        User u = (User) session.getAttribute("user"); 
+        User u = (User) session.getAttribute("user");
+        session.setAttribute( "order", o );
         try {
             LogicFacade.createOrder(210, width, length, shed, roof, u); //TODO: Vi skal ikke hardcode shed og roof til false 
         } catch (SQLException ex) {
             Logger.getLogger(OrderPage.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(OrderPage.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        }
         return "receipt";
     }
 }

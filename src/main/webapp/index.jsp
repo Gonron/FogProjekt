@@ -38,7 +38,7 @@
                 <td>Or Register</td>
                 <td>
                     <form name="register" action="FrontController" method="POST">
-                        <input type="hidden" name="command" value="register">                       
+                        <input type="hidden" name="command" value="register">
                         <br>
                         Email:<br>
                         <input type="text" name="email" placeholder="Email">

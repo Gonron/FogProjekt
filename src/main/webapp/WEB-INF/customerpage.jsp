@@ -12,6 +12,7 @@
         <link rel="stylesheet" type="text/css" href="main.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Customer home page</title>
+        <link rel="stylesheet" type="text/css" href="main.css" />
     </head>
     <body>
         <h1>Hello <%=request.getParameter("email")%> </h1>
@@ -19,6 +20,5 @@
         <a href="FrontController?command=createorder"> Start din ordre </a><br>
         <a href="FrontController?command=allOrdersCust"> Vis alle dine ordre </a><br>
         <a href="FrontController?command=contact"> Kontakt os </a>
-
     </body>
 </html>
