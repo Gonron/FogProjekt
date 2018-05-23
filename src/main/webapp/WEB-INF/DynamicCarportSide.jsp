@@ -4,16 +4,19 @@
     Author     : Johachim
 --%>
 
+<%@page import="FunctionLayer.Order"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="main.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Fog - Carport sidetegning.</title>
     </head>
     <body>
-        <% int wid = Integer.parseInt(request.getParameter("width")); %>
-        <% int len = Integer.parseInt(request.getParameter("length")); %>
+      <% Order o = (Order) session.getAttribute("order"); %>
+        <% double len = o.getLength(); %>
+        <% double wid = o.getWidth(); %>
     </body>
     <SVG width="<%= Math.abs(wid*2) %>" height="<%= Math.abs(len+100) %>">
     
@@ -31,7 +34,7 @@
         
         <text x="<%= Math.abs(wid+25) %>" y="115" fill="Red"> Højde: 210 cm </text>
         <text x="<%= Math.abs(wid+25) %>" y="15" fill="Red"> Højde: 25 cm </text>
-        <text x="<%= Math.abs((wid/2)-25) %>" y="265" fill="Red"> Bredde: <%= request.getParameter("width") %> cm </text>
+        <text x="<%= Math.abs((wid/2)-25) %>" y="265" fill="Red"> Bredde: <%= wid %> cm </text>
     
     
     <defs>
@@ -48,7 +51,7 @@
         <path d="M0,0 L8,4 L0,8 L0,0" style="fill: #c40d0d;" />
     </marker>
 </defs>
-<line x1="0"  y1="250" x2="<%= request.getParameter("width") %>" y2="250" 
+<line x1="0"  y1="250" x2="<%= wid %>" y2="250" 
 	style="stroke:#c40d0d;
 	marker-start: url(#beginArrow);
    marker-end: url(#endArrow);"/>
@@ -95,8 +98,8 @@
     </SVG>
     
     <form action="FrontController?command=DynamicCarport" method="POST">
-    <input type="hidden" name="length" value="<%= request.getParameter("length") %>">
-    <input type="hidden" name="width" value="<%= request.getParameter("width") %>">
+    <input type="hidden" name="length" value="<%= len %>">
+    <input type="hidden" name="width" value="<%= wid %>">
     <input type="submit" value="Grundtegning">
     </form>
 </html>

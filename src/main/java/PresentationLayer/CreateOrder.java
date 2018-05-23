@@ -6,21 +6,25 @@
 package PresentationLayer;
 
 import FunctionLayer.LoginSampleException;
+import FunctionLayer.Order;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Morten
  */
-public class CreateOrder extends Command{
+public class CreateOrder extends Command {
+
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
 
-        String length = request.getParameter("length");
-        String width = request.getParameter("width");
-        String height = request.getParameter("height");
-
+//        int length = Integer.parseInt(request.getParameter("length"));
+//        int width = Integer.parseInt(request.getParameter("width"));        
+//        Order o = new Order(0, 210, width, length, true);
+//        HttpSession session = request.getSession();
+//        session.setAttribute( "order", o );
         return "createorder";
     }
 }

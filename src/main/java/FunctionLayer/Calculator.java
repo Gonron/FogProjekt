@@ -32,6 +32,9 @@ public class Calculator {
         if(shed == true){
             postAmount +=4;
         }
+        if(postAmount%2!=0){
+            postAmount+=1;
+        }
         return (int) Math.round(postAmount);
     }
     

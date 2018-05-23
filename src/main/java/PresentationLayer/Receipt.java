@@ -19,7 +19,6 @@ import javax.servlet.http.HttpServletResponse;
  * @author User
  */
 public class Receipt extends Command {
-
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
         return "receipt";
