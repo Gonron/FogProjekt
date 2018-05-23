@@ -63,7 +63,6 @@ public class DataMapper {
     public static User login(String email, String password) throws LoginSampleException {
         try {
             // denne metode skal rettes så ledes, at vi tager et salt objekt udfra databasen og kan bruge det til at verificere brugeren
-
             Connection con = Connector.connection();
             String SQL = "SELECT id, phone, post, adress, role FROM Users "
                     + "WHERE email=? AND password=?";
