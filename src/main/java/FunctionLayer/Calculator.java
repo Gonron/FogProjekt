@@ -70,7 +70,8 @@ public class Calculator {
      * @throws ClassNotFoundException
      * @throws SQLException 
      */
-    public static ArrayList<OrderLine> fillAmount(double userWidth, double userLength, boolean shed) throws SQLException, ClassNotFoundException{
+    public static ArrayList<OrderLine> fillAmount(double userWidth, double userLength, boolean shed) throws LoginSampleException 
+    {
         //denne metode tager udgangspunk i en carport med flat tag
         Calculator calc = new Calculator();
         ArrayList<OrderLine> orderlines = DataMapper.getTreeMaterials();

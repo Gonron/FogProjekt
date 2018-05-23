@@ -20,12 +20,7 @@ import logger.Conf;
 public class EmpControl extends Command{
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        try {
-            LogicFacade.updateOrder(id);
-        } catch (ClassNotFoundException | SQLException ex) {
-            Conf.MYLOGGER.log(Level.SEVERE, null, ex);
-        }
+        int id = Integer.parseInt(request.getParameter("id"));       
         return "allOrdersEmp";
     }
 }

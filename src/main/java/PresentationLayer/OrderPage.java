@@ -31,14 +31,7 @@ public class OrderPage extends Command {
         Order o = new Order(0, 210, width, length, true);
         HttpSession session = request.getSession();
         User u = (User) session.getAttribute("user");
-        session.setAttribute( "order", o );
-        try {
-            LogicFacade.createOrder(210, width, length, shed, roof, u); //TODO: Vi skal ikke hardcode shed og roof til false 
-        } catch (SQLException ex) {
-            Logger.getLogger(OrderPage.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(OrderPage.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        session.setAttribute( "order", o );        
         return "receipt";
     }
 }

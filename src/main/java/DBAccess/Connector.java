@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import logger.Conf;
 
 /**
  * The purpose of Connector is to...
@@ -16,7 +17,6 @@ public class Connector {
     private static final String URL = "jdbc:mysql://46.101.101.94/fog?autoReconnect=true&serverTimezone=CET";
     private static final String USERNAME = "ruben";
     private static final String PASSWORD = "1234";
-    
 
     private static Connection singleton;
 
@@ -26,11 +26,14 @@ public class Connector {
 
     public static Connection connection() throws SQLException {
         if (singleton == null) {
+
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
+
             } catch (ClassNotFoundException ex) {
-                Logger.getLogger(Connector.class.getName()).log(Level.SEVERE, null, ex);
+                Conf.MYLOGGER.log(Level.SEVERE, null, ex);
             }
+
             singleton = DriverManager.getConnection(URL, USERNAME, PASSWORD);
         }
         return singleton;
