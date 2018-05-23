@@ -2,6 +2,7 @@ package FunctionLayer;
 
 import java.security.NoSuchAlgorithmException;
 import DBAccess.DataMapper;
+import static FunctionLayer.Calculator.fillAmount;
 import java.security.spec.InvalidKeySpecException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -32,7 +33,8 @@ public class LogicFacade {
     public static Order createOrder(int height, int width, int length, boolean shed, boolean roof, User u) throws SQLException, ClassNotFoundException {
         //Order order = new Order(length, width, length, shed, roof, false);
         Order order = new Order(210, width, length, shed, false, false);
-        DataMapper.createOrder(order, u);
+        ArrayList<OrderLine> orderlines = fillAmount(order.getLength(), order.getWidth(), false);
+        DataMapper.createOrder(order, u, orderlines);
         return order;
     }
 
@@ -48,11 +50,11 @@ public class LogicFacade {
         DataMapper.updateOrder(id);
     }
     
-    public static ArrayList<OrderLine> createList(Order o) throws ClassNotFoundException, SQLException{
+    public static ArrayList<OrderLine> createList(Order o) throws ClassNotFoundException, SQLException{        
         double userWidth = o.getWidth();
         double userLength = o.getLength();
         boolean shed = false;
-        return DataMapper.fillAmount(userWidth, userLength, shed);
+        return Calculator.fillAmount(userWidth, userLength, shed);
     }
     
     public static Order getOrder(int orderId) throws ClassNotFoundException, SQLException{

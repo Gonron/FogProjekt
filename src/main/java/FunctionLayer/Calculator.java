@@ -5,6 +5,10 @@
  */
 package FunctionLayer;
 
+import DBAccess.DataMapper;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 /**
  * This is all of our calculators
  * @author kristoffer
@@ -56,5 +60,38 @@ public class Calculator {
      */
     public int calculatePrice(OrderLine line){
        return line.getAmount() * line.getPrice();
-   } 
+   }
+    /**
+     * This method set the amount of materials used to the appropiate amount and calculates the price
+     * @param userWidth
+     * @param userLength
+     * @param shed
+     * @return The method calls a calculator that calculates amount and price of materials in the order
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
+    public static ArrayList<OrderLine> fillAmount(double userWidth, double userLength, boolean shed) throws SQLException, ClassNotFoundException{
+        //denne metode tager udgangspunk i en carport med flat tag
+        Calculator calc = new Calculator();
+        ArrayList<OrderLine> orderlines = DataMapper.getTreeMaterials();
+        for (int i = 0; i < orderlines.size(); i++) {
+            int group = orderlines.get(i).getMaterialgroup();
+            switch (group) {
+                case 1:
+                    orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
+                    break;
+                case 2:
+                    orderlines.get(i).setAmount(calc.calculatePosts(userLength, userWidth, shed));
+                    break;
+                case 4:
+                    orderlines.get(i).setAmount(calc.calculatePlanks(userWidth, orderlines.get(i).getLength()));
+                    break;
+                default:
+                    orderlines.get(i).setAmount(1);
+                    break;
+            }
+            orderlines.get(i).setPrice(calc.calculatePrice(orderlines.get(i)));
+        }
+        return orderlines;
+    }
 }

@@ -13,6 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * The purpose of DataMapper is to extract data and insert data into the database
@@ -42,7 +44,7 @@ public class DataMapper {
             ids.next();
             int id = ids.getInt(1);
             user.setId(id);
-        } catch (SQLException | ClassNotFoundException ex) {
+        } catch (SQLException ex) {
             throw new LoginSampleException(ex.getMessage());
         }
     }
@@ -78,42 +80,44 @@ public class DataMapper {
             } else {
                 throw new LoginSampleException("Could not validate user");
             }
-        } catch (ClassNotFoundException | SQLException ex) {
+        } catch (SQLException ex) {
             throw new LoginSampleException(ex.getMessage());
         }
     }
 /**
  * This method extracts all orders from the database and sorts by newest.
- * @return returns all orders in an arraylist
- * @throws ClassNotFoundException
- * @throws SQLException 
+ * @return returns all orders in an arraylist 
+ * @throws LoginSampleException 
  */
-    public static ArrayList<Order> getOrders() throws ClassNotFoundException, SQLException {
-        ArrayList<Order> orders = new ArrayList();
-        Connection con = Connector.connection();
-        String SQL = "SELECT * FROM orders ORDER BY order_id DESC";
-        PreparedStatement ps = con.prepareStatement(SQL);
-        ResultSet rs = ps.executeQuery();
-        while (rs.next()) {
-            int id = rs.getInt("order_id");
-            int SBricks = rs.getInt("Heigth");
-            int MBricks = rs.getInt("Width");
-            int LBricks = rs.getInt("Length");
-            boolean status = rs.getBoolean("status");
-            Order order = new Order(id, SBricks, MBricks, LBricks, status);
-            orders.add(order);
+    public static ArrayList<Order> getOrders() throws LoginSampleException{
+        try {
+            ArrayList<Order> orders = new ArrayList();
+            Connection con = Connector.connection();
+            String SQL = "SELECT * FROM orders ORDER BY order_id DESC";
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("order_id");
+                int SBricks = rs.getInt("Heigth");
+                int MBricks = rs.getInt("Width");
+                int LBricks = rs.getInt("Length");
+                boolean status = rs.getBoolean("status");
+                Order order = new Order(id, SBricks, MBricks, LBricks, status);
+                orders.add(order);
+            }
+            return orders;
+        } catch (SQLException ex) {
+            throw new LoginSampleException(ex.getMessage());
         }
-        return orders;
     }
 
     /**
      * This method returns all orders made by a specific user
      * @param u
-     * @return the method returns an arraylist of orders made by a user
-     * @throws ClassNotFoundException
+     * @return the method returns an arraylist of orders made by a user     
      * @throws SQLException 
      */
-    public static ArrayList<Order> getOrders(User u) throws ClassNotFoundException, SQLException {
+    public static ArrayList<Order> getOrders(User u) throws SQLException {
         int id = u.getId();
         ArrayList<Order> orders = new ArrayList();
         Connection con = Connector.connection();
@@ -135,10 +139,9 @@ public class DataMapper {
      /**
       * this method marks an order as sent
       * @param id
-      * @throws ClassNotFoundException
       * @throws SQLException 
       */
-    public static void updateOrder(int id) throws ClassNotFoundException, SQLException {
+    public static void updateOrder(int id) throws SQLException {
         Connection con = Connector.connection();
         String SQL = "UPDATE orders SET status = ? WHERE order_id = ?";
         PreparedStatement ps = con.prepareStatement(SQL);
@@ -149,11 +152,10 @@ public class DataMapper {
     
     /**
      * This method returns a list of orderlines without amount 
-     * @return Returns an arraylist of orderlines
-     * @throws ClassNotFoundException
+     * @return Returns an arraylist of orderlines     
      * @throws SQLException 
      */
-    public static ArrayList<OrderLine> getTreeMaterials() throws ClassNotFoundException, SQLException {
+    public static ArrayList<OrderLine> getTreeMaterials() throws SQLException {
         ArrayList<OrderLine> materials = new ArrayList<>();
         Connection con = Connector.connection();
         String SQL = "SELECT * FROM materials";
@@ -171,48 +173,14 @@ public class DataMapper {
         }
         return materials;
     }
-
-    /**
-     * This method set the amount of materials used to the appropiate amount and calculates the price
-     * @param userWidth
-     * @param userLength
-     * @param shed
-     * @return The method calls a calculator that calculates amount and price of materials in the order
-     * @throws ClassNotFoundException
-     * @throws SQLException 
-     */
-    public static ArrayList<OrderLine> fillAmount(double userWidth, double userLength, boolean shed) throws ClassNotFoundException, SQLException {
-        //denne metode tager udgangspunk i en carport med flat tag
-        Calculator calc = new Calculator();
-        ArrayList<OrderLine> orderlines = DataMapper.getTreeMaterials();
-        for (int i = 0; i < orderlines.size(); i++) {
-            int group = orderlines.get(i).getMaterialgroup();
-            switch (group) {
-                case 1:
-                    orderlines.get(i).setAmount(calc.calculatePlanks(userLength, orderlines.get(i).getLength()));
-                    break;
-                case 2:
-                    orderlines.get(i).setAmount(calc.calculatePosts(userLength, userWidth, shed));
-                    break;
-                case 4:
-                    orderlines.get(i).setAmount(calc.calculatePlanks(userWidth, orderlines.get(i).getLength()));
-                    break;
-                default:
-                    orderlines.get(i).setAmount(1);
-                    break;
-            }
-            orderlines.get(i).setPrice(calc.calculatePrice(orderlines.get(i)));
-        }
-        return orderlines;
-    }
+    
 /**
  * this method returns and order from the database
  * @param id
- * @return The method return a specific order 
- * @throws ClassNotFoundException
+ * @return The method return a specific order
  * @throws SQLException 
  */
-    public static Order getOrder(int id) throws ClassNotFoundException, SQLException {
+    public static Order getOrder(int id) throws SQLException {
         Connection con = Connector.connection();
         String SQL = "SELECT * FROM orders WHERE order_id=?";
         PreparedStatement ps = con.prepareStatement(SQL);
@@ -236,11 +204,10 @@ public class DataMapper {
      * @param length
      * @param price
      * @param materialGroup
-     * @param id
-     * @throws ClassNotFoundException
+     * @param id     
      * @throws SQLException 
      */
-    public static void updateMaterials(String name, String desc, int length, int price, int materialGroup, int id) throws ClassNotFoundException, SQLException{
+    public static void updateMaterials(String name, String desc, int length, int price, int materialGroup, int id) throws SQLException{
         Connection con = Connector.connection();
         String SQL = "UPDATE materials SET name = ?, desc = ?, length = ?, price = ?, material_group = ? WHERE material_id = ?";
         PreparedStatement ps = con.prepareStatement(SQL);
@@ -257,10 +224,10 @@ public class DataMapper {
      * This method creates an order and saves it in the database and the creates orderlines and saves them aswell
      * @param order
      * @param user
-     * @throws SQLException
-     * @throws ClassNotFoundException 
+     * @param orderlines
+     * @throws SQLException      
      */
-    public static void createOrder(Order order, User user) throws SQLException, ClassNotFoundException {
+    public static void createOrder(Order order, User user, ArrayList<OrderLine> orderlines) throws SQLException {
         Connection con = Connector.connection();
         String SQL = "INSERT INTO orders (id, Heigth, Width, Length, status) VALUES (?, ?, ?, ?, ?)";
         PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
@@ -273,8 +240,7 @@ public class DataMapper {
         ResultSet ids = ps.getGeneratedKeys();
         ids.next();
         int id = ids.getInt(1);
-        order.setId(id);
-        ArrayList<OrderLine> orderlines = fillAmount(order.getLength(), order.getWidth(), false);
+        order.setId(id);       
         SQL = "INSERT INTO orderline (order_id, material_id, amount, price) VALUES (?, ?, ?, ?)";
         ps = con.prepareStatement(SQL);
         for (int i = 0; i < orderlines.size(); i++) {
@@ -288,11 +254,10 @@ public class DataMapper {
     /**
      * This method is used to return a list of orderlines
      * @param id
-     * @return The method returns an arraylist of orderlines
-     * @throws ClassNotFoundException
+     * @return The method returns an arraylist of orderlines     
      * @throws SQLException 
      */
-    public static ArrayList<OrderLine> getOrderLines(int id) throws ClassNotFoundException, SQLException {
+    public static ArrayList<OrderLine> getOrderLines(int id) throws SQLException {
         ArrayList<OrderLine> materials = new ArrayList();
         ArrayList<Integer> materialIds = new ArrayList();
         ArrayList<Integer> amounts = new ArrayList();
