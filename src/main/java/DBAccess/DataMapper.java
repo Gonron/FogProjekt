@@ -343,4 +343,37 @@ public class DataMapper {
             throw new LoginSampleException(ex.getMessage());
         }
     }
-}
+        
+        
+        public static boolean validateUser(String username, String password) throws LoginSampleException{
+           boolean isValidUser = false;
+            try{
+                // get the connection for the database
+                Connection con = Connector.connection();
+                
+                //skriv 'select query'
+                String SQL = "select * from Users where email = ?, password = ?";
+                
+                // set de givne parametre til PreparedStatement
+                
+                PreparedStatement statement = con.prepareStatement(SQL);
+                statement.setString(1, username);
+                statement.setString(2, password);
+                
+                
+                //udfør statmentet og check om brugeren er gyldig
+                
+                ResultSet set = statement.executeQuery();
+                while(set.next()){
+                isValidUser = true;
+            }
+            }catch(SQLException ex){
+                Conf.MYLOGGER.log(Level.SEVERE, null, ex);
+                throw new LoginSampleException(ex.getSQLState());
+                
+                
+            }
+            return isValidUser;
+        }
+    }
+

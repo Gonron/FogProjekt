@@ -63,4 +63,8 @@ public class LogicFacade {
         DataMapper.updateMaterials(name, desc, length, price, materialGroup, id);
     }
 
+    public static boolean validateUser(String email, String password) throws LoginSampleException{
+        return DataMapper.validateUser(email, password);
+        
+    }
 }
