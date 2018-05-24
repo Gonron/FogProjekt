@@ -184,7 +184,7 @@ public class DataMapper {
             while (rs.next()) {
                 int id = rs.getInt("material_id");
                 String name = rs.getString("name");
-                String description = rs.getString("desc");
+                String description = rs.getString("descr");
                 int length = rs.getInt("length");
                 int price = rs.getInt("price");
                 int group = rs.getInt("material_group");
@@ -242,7 +242,7 @@ public class DataMapper {
     public static void updateMaterials(String name, String desc, int length, int price, int materialGroup, int id) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
-            String SQL = "UPDATE materials SET name = ?, desc = ?, length = ?, price = ?, material_group = ? WHERE material_id = ?";
+            String SQL = "UPDATE materials SET name = ?, descr = ?, length = ?, price = ?, material_group = ? WHERE material_id = ?";
             PreparedStatement ps = con.prepareStatement(SQL);
             ps.setString(1, name);
             ps.setString(2, desc);
@@ -328,7 +328,7 @@ public class DataMapper {
                 int matId = materialIds.get(i);
                 i++;
                 String name = rs.getString("name");
-                String description = rs.getString("desc");
+                String description = rs.getString("descr");
                 int length = rs.getInt("length");
                 amount = amounts.get(j);
                 j++;

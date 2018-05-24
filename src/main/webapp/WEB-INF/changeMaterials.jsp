@@ -106,11 +106,7 @@ input[type=submit]:hover {
         <h1>Denne side kan bruges til at ændre diverse materialer i databasen</h1>
         <h2> Herunder ses en liste af alle materialer</h2>
         
-         <%   ArrayList<OrderLine> materials = (ArrayList<OrderLine>) session.getAttribute("materials");
-                for (int i = 0; i < materials.size(); i++) {
-                   out.println(materials.get(i).toString()); 
-                }
-            %>
+         
             <table class="zui-table">
          <thead>
          <tr>
