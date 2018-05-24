@@ -149,7 +149,7 @@ header{
     <input type="text" placeholder="Skriv dit telefonnummer" name="phonenr" required>
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <input type="password" placeholder="Enter Password" name="passsword" required>
 
     <label for="psw-repeat"><b>Repeat Password</b></label>
     <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
@@ -174,7 +174,7 @@ header{
     <input type="text" placeholder="Enter Email" name="email" required>
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <input type="password" placeholder="Enter Password" name="password" required>
     <div class="clearfix">
       <button type="submit" class="loginbtn" value="Submit">Login</button>
     </form>
