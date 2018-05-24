@@ -9,6 +9,22 @@
 <!DOCTYPE html>
 <html>
     <head>
+        
+        <style>
+       
+             body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box}
+
+h1 {padding-top: 30px; color: #000000; font-family: 'Lato', sans-serif; font-size: 54px; font-weight: 300; line-height: 58px; margin: 0 0 58px; }
+
+p {
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+            
+        </style>
+        </style>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link rel="stylesheet" type="text/css" href="main.css" />

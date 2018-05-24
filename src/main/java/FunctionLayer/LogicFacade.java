@@ -1,9 +1,7 @@
 package FunctionLayer;
 
-import java.security.NoSuchAlgorithmException;
 import DBAccess.DataMapper;
-import java.security.spec.InvalidKeySpecException;
-import java.sql.SQLException;
+import static FunctionLayer.Calculator.fillAmount;
 import java.util.ArrayList;
 
 /**
@@ -13,7 +11,7 @@ import java.util.ArrayList;
  */
 public class LogicFacade {
 
-    public static User login(String email, String password) throws LoginSampleException, NoSuchAlgorithmException, InvalidKeySpecException {
+    public static User login(String email, String password) throws LoginSampleException{
         return DataMapper.login(email, password);
     }
 //    public static User createUser(int id, String username, String phonenumber, byte[] password, String email) throws LoginSampleException, NoSuchAlgorithmException {      
@@ -22,6 +20,7 @@ public class LogicFacade {
 //        User user = new User(id, username, username, email, password, email, salt);
 //        return user;
 //    }
+
     public static User createUser(String email, String password, String phonenumber, String postalCode, String address) throws LoginSampleException {
 
         User user = new User(email, password, phonenumber, postalCode, address, "customer");
@@ -29,38 +28,39 @@ public class LogicFacade {
         return user;
     }
 
-    public static Order createOrder(int height, int width, int length, boolean shed, boolean roof, User u) throws SQLException, ClassNotFoundException {
+    public static Order createOrder(int height, int width, int length, boolean shed, boolean roof, User u) throws LoginSampleException {
         //Order order = new Order(length, width, length, shed, roof, false);
         Order order = new Order(210, width, length, shed, false, false);
-        DataMapper.createOrder(order, u);
+        ArrayList<OrderLine> orderlines = fillAmount(order.getLength(), order.getWidth(), false);
+        DataMapper.createOrder(order, u, orderlines);
         return order;
     }
 
-    public static ArrayList<Order> getOrders() throws ClassNotFoundException, SQLException {
+    public static ArrayList<Order> getOrders() throws LoginSampleException {
         return DataMapper.getOrders();
     }
 
-    public static ArrayList<Order> getOrders(User u) throws ClassNotFoundException, SQLException {
+    public static ArrayList<Order> getOrders(User u) throws LoginSampleException {
         return DataMapper.getOrders(u);
     }
 
-    public static void updateOrder(int id) throws ClassNotFoundException, SQLException {
+    public static void updateOrder(int id) throws LoginSampleException {
         DataMapper.updateOrder(id);
     }
-    
-    public static ArrayList<OrderLine> createList(Order o) throws ClassNotFoundException, SQLException{
+
+    public static ArrayList<OrderLine> createList(Order o) throws LoginSampleException {
         double userWidth = o.getWidth();
         double userLength = o.getLength();
         boolean shed = false;
-        return DataMapper.fillAmount(userWidth, userLength, shed);
+        return Calculator.fillAmount(userWidth, userLength, shed);
     }
-    
-    public static Order getOrder(int orderId) throws ClassNotFoundException, SQLException{
+
+    public static Order getOrder(int orderId) throws LoginSampleException {
         return DataMapper.getOrder(orderId);
     }
-    
-    public static void updateMaterials( String name, String desc, int length, int price, int materialGroup, int id) throws ClassNotFoundException, SQLException{
-         DataMapper.updateMaterials(name, desc, length, price, materialGroup, id);      
+
+    public static void updateMaterials(String name, String desc, int length, int price, int materialGroup, int id) throws LoginSampleException {
+        DataMapper.updateMaterials(name, desc, length, price, materialGroup, id);
     }
-    
+
 }
