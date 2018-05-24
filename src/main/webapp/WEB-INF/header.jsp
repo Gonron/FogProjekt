@@ -31,15 +31,42 @@ li a:hover:not(.active) {
 .active {
     background-color: teal;
 }
+
+
+header .logo{
+  display: block;
+  width: 200px;
+}
+header img{
+  display: block;
+  width: 100%;
+}
+header{
+  background-color: #f4f4f4;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.14);
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box}
+
+h1 { color: #000000; font-family: 'Lato', sans-serif; font-size: 54px; font-weight: 300; line-height: 58px; margin: 0 0 58px; }
+
+
 </style>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
          <link rel="stylesheet" type="text/css" href="main.css" />
     </head>
     <body>
-        <header>
-        <h1>Johannes Fog carport service</h1>  
-        </header>
+       <div id="fill">
+    <header>
+  <a href="#" class="logo" title="Logo">
+    <img src="https://prisbyg.libpx.com/eu-west-1/images/merchant/johannesfog.jpg" alt="Johannes Fog">
+  </a>
+    </header>
         <ul>
         <li><a class="active" href="hjem">Hjem</a>
         </li>

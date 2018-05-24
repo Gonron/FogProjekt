@@ -110,7 +110,7 @@ input[type=submit]:hover {
         <form name="sent" action="FrontController" method="POST">
             <input type="hidden" name="command" value="EmpControl">
             <input type="number" name="id" required="" placeholder="Order id" required/>            
-            <input type="submit" value="Mark as sent"/>           
+            <input type="submit" value="Mark as sent"/>         
          </form>
     </body>
 </html>
