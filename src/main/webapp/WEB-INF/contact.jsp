@@ -29,13 +29,12 @@ p {
     <body>
         <%@include file ="header.jsp" %>
         <h1>Kontakt Information</h1>
-    <li>
         <p>Tlf: 23759305</p>
         <p>Pressechef: Kristoffer Tølbøll</p>
         <p>Besøg os i vores butik på Lyngbyvej 132</p>
         <p>Vi står altid klar til at tage i mod din bestilling herinde på vores hjemmeside, hvor vi svarer indenfor 24 timer</p>
         <p>Vi yder den bedst mulige service</p>
-    </li>
+    
         <br>
         <adrress> skriv til os på
         <a href="mailto:johannesfog@hotmail.dk"> email</a>

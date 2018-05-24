@@ -112,6 +112,8 @@ header{
 }
 
 
+
+
 </style>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Welcome page</title>
@@ -119,15 +121,7 @@ header{
     </head>
     <body>
        
-        
-        <body>
-
-<div id="fill">
-    <header>
-
-
-    </header>
-</div>
+       
 
 
 <%@include file ="WEB-INF/header.jsp" %>
