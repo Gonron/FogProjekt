@@ -52,7 +52,7 @@ public class CalculatorTest {
         double userLength = 600.0;
         double lengthPrUnit = 360.0;
         Calculator calc = new Calculator();
-        int expResult = 4;
+        int expResult = 5;
         int result = calc.calculatePlanks(userLength, lengthPrUnit);
         assertEquals(expResult, result);
     }
