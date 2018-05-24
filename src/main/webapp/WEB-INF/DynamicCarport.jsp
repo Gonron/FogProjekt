@@ -33,7 +33,7 @@
     <rect x="0" y="0" height="<%= len %>" width="<%= wid %>"
         style="stroke:#000000; fill: none"/>
     
-    
+
     
     <text x="<%= Math.abs(wid+25) %>" y="<%= Math.abs(len/2) %>" fill="Red"> Længde: <%= len %> cm </text>
     <text x="<%= Math.abs((wid/2)-25) %>" y="<%= Math.abs(len+35) %>" fill="Red"> Bredde: <%= wid %> cm </text>
@@ -85,3 +85,4 @@
     </form>
     </body>
 </html>
+
