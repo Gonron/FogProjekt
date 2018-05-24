@@ -4,6 +4,7 @@
     Author     : kristoffer
 --%>
 
+<%@page import="FunctionLayer.LogicFacade"%>
 <%@page import="FunctionLayer.OrderLine"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -105,8 +106,10 @@ input[type=submit]:hover {
         <h1>Denne side kan bruges til at ændre diverse materialer i databasen</h1>
         <h2> Herunder ses en liste af alle materialer</h2>
         
-         <%   ArrayList<OrderLine> matarials = (ArrayList<OrderLine>) session.getAttribute("materials");
-                for (int i = 0; i < LogicFacade.getOrders(u).size(); i++) {
+         <%   ArrayList<OrderLine> materials = (ArrayList<OrderLine>) session.getAttribute("materials");
+                for (int i = 0; i < materials.size(); i++) {
+                   out.println(materials.get(i).toString()); 
+                }
             %>
             <table class="zui-table">
          <thead>

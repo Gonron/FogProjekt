@@ -26,12 +26,11 @@ public class OrderPage extends Command {
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
         int width = Integer.parseInt(request.getParameter("width"));
         int length = Integer.parseInt(request.getParameter("length"));
-        boolean shed = false; //= Boolean.parseBoolean(request.getParameter("shed"));
-        boolean roof = Boolean.parseBoolean(request.getParameter("roof"));            
-        Order o = new Order(0, 210, width, length, true);
+        boolean shed = Boolean.parseBoolean(request.getParameter("shed"));
+        boolean roof = Boolean.parseBoolean(request.getParameter("roof"));
         HttpSession session = request.getSession();
         User u = (User) session.getAttribute("user");
-        session.setAttribute( "order", o );        
+        LogicFacade.createOrder(210, width, length, shed, roof, u); //TODO: Vi skal ikke hardcode shed og roof til false
         return "receipt";
     }
 }
