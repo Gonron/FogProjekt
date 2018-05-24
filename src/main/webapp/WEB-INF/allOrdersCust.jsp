@@ -72,8 +72,7 @@
                 <td><%out.print(LogicFacade.getOrders(u).get(i).getLength());%></td>
                 <td><%out.print(LogicFacade.getOrders(u).get(i).getWidth());%></td>
                 <td><%out.print(LogicFacade.getOrders(u).get(i).getStatus());%></td>
-                <td>><%out.print(LogicFacade.getOrders(u).get(i).getShed());
-                    %></td>
+                <td>><%out.print(LogicFacade.getOrders(u).get(i).getShed());%></td>
             </tr>
             <%              }
             %>
