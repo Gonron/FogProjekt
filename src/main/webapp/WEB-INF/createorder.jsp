@@ -23,9 +23,9 @@
             <input type="hidden" name="command" value="order">
             <input type="number" name="length" placeholder="length" min="250" max="800" required>
             <input type="number" name="width" placeholder="width" min="150" max="800" required> 
-            <select>  
-            <option value="medskur">Med skur</option>
-            <option value="udenskur">Uden skur</option>            
+            <select name="shed">  
+            <option value="medskur" name="wShed" selected='selected'>Med skur</option>
+            <option value="udenskur" name="noShed" selected='selected'>Uden skur</option>            
             </select>             
             <input type="submit" value="Submit">
             </form>
