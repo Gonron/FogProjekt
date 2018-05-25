@@ -11,26 +11,29 @@ public class Order {
     private boolean flatRoof;
     private boolean status;
 
-
-    public Order(int id, double heigth, double width, double length, boolean status) {
-        this.id = id;
-        this.heigth = heigth;
-        this.width = width;
-        this.length = length;
-        this.status = status;
-    }
-
-    
-    public Order(double heigth, double width, double length, boolean shed, boolean flatRoof, boolean status) {        
+    public Order(double heigth, double width, double length, boolean shed, boolean flatRoof, boolean status) {
         this.heigth = heigth;
         this.width = width;
         this.length = length;
         this.shed = shed;
         this.flatRoof = flatRoof;
         this.status = status;
-       
     }
 
+
+   
+
+    public Order(int id, double heigth, double width, double length, boolean shed, boolean flatRoof, boolean status) {
+        this.id = id;
+        this.heigth = heigth;
+        this.width = width;
+        this.length = length;
+        this.shed = shed;
+        this.flatRoof = flatRoof;
+        this.status = status;
+    }
+
+    
     public int getId() {
         return id;
     }

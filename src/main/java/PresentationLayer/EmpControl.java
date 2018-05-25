@@ -7,11 +7,8 @@ package PresentationLayer;
 
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
-import java.sql.SQLException;
-import java.util.logging.Level;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import logger.Conf;
 
 /**
  *
@@ -20,7 +17,8 @@ import logger.Conf;
 public class EmpControl extends Command{
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-        int id = Integer.parseInt(request.getParameter("id"));       
+        int id = Integer.parseInt(request.getParameter("id"));
+        LogicFacade.updateOrder(id);
         return "allOrdersEmp";
     }
 }
