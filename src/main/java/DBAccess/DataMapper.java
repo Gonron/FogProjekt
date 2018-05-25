@@ -14,8 +14,7 @@ import java.util.logging.Level;
 import logger.Conf;
 
 /**
- * The purpose of DataMapper is to extract data and insert data into the
- * database
+ * The purpose of DataMapper is to extract data and insert data into the database
  *
  * @author kasper
  */
@@ -53,8 +52,7 @@ public class DataMapper {
      *
      * @param email
      * @param password
-     * @return this method returns the user with the corresponding username and
-     * password
+     * @return this method returns the user with the corresponding username and password
      * @throws LoginSampleException
      */
     public static User login(String email, String password) throws LoginSampleException {
@@ -100,11 +98,12 @@ public class DataMapper {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("order_id");
-                int SBricks = rs.getInt("Heigth");
-                int MBricks = rs.getInt("Width");
-                int LBricks = rs.getInt("Length");
+                int Heigth = rs.getInt("Heigth");
+                int Width = rs.getInt("Width");
+                int Length = rs.getInt("Length");
                 boolean status = rs.getBoolean("status");
-                Order order = new Order(id, SBricks, MBricks, LBricks, status);
+                boolean shed = rs.getBoolean("shed");
+                Order order = new Order(id, Heigth, Width, Length, shed, status, false);
                 orders.add(order);
             }
             return orders;
@@ -136,8 +135,9 @@ public class DataMapper {
                 int heigth = rs.getInt("Heigth");
                 int width = rs.getInt("Width");
                 int length = rs.getInt("Length");
+                boolean shed = rs.getBoolean("shed");
                 boolean status = rs.getBoolean("status");
-                Order order = new Order(orderId, heigth, width, length, status);
+                Order order = new Order(orderId, heigth, width, length, shed, status, false);
                 orders.add(order);
             }
             return orders;
@@ -217,7 +217,8 @@ public class DataMapper {
                 double width = rs.getInt("Width");
                 double length = rs.getInt("Length");
                 boolean status = rs.getBoolean("status");
-                Order order = new Order(id, heigth, width, length, status);
+                boolean shed = rs.getBoolean("shed");
+                Order order = new Order(heigth, width, length, shed, status, false);
                 return order;
             }
         } catch (SQLException ex) {
@@ -228,8 +229,7 @@ public class DataMapper {
     }
 
     /**
-     * This method should be used to update the materials in the database but
-     * sadly doesn't work yet
+     * This method should be used to update the materials in the database but sadly doesn't work yet
      *
      * @param name
      * @param desc
@@ -258,8 +258,7 @@ public class DataMapper {
     }
 
     /**
-     * This method creates an order and saves it in the database and the creates
-     * orderlines and saves them aswell
+     * This method creates an order and saves it in the database and the creates orderlines and saves them aswell
      *
      * @param order
      * @param user
@@ -275,8 +274,8 @@ public class DataMapper {
             ps.setDouble(2, order.getHeigth());
             ps.setDouble(3, order.getWidth());
             ps.setDouble(4, order.getLength());
-            ps.setBoolean(5, order.getStatus());
-            ps.setBoolean(6, order.getShed());
+            ps.setBoolean(5, order.getShed());
+            ps.setBoolean(6, order.getStatus());
             ps.executeUpdate();
             ResultSet ids = ps.getGeneratedKeys();
             ids.next();
@@ -344,37 +343,31 @@ public class DataMapper {
             throw new LoginSampleException(ex.getMessage());
         }
     }
-        
-        
-        public static boolean validateUser(String username, String password) throws LoginSampleException{
-           boolean isValidUser = false;
-            try{
-                // get the connection for the database
-                Connection con = Connector.connection();
-                
-                //skriv 'select query'
-                String SQL = "select * from Users where email = ?, password = ?";
-                
-                // set de givne parametre til PreparedStatement
-                
-                PreparedStatement statement = con.prepareStatement(SQL);
-                statement.setString(1, username);
-                statement.setString(2, password);
-                
-                
-                //udfør statmentet og check om brugeren er gyldig
-                
-                ResultSet set = statement.executeQuery();
-                while(set.next()){
+
+    public static boolean validateUser(String username, String password) throws LoginSampleException {
+        boolean isValidUser = false;
+        try {
+            // get the connection for the database
+            Connection con = Connector.connection();
+
+            //skriv 'select query'
+            String SQL = "select * from Users where email = ?, password = ?";
+
+            // set de givne parametre til PreparedStatement
+            PreparedStatement statement = con.prepareStatement(SQL);
+            statement.setString(1, username);
+            statement.setString(2, password);
+
+            //udfør statmentet og check om brugeren er gyldig
+            ResultSet set = statement.executeQuery();
+            while (set.next()) {
                 isValidUser = true;
             }
-            }catch(SQLException ex){
-                Conf.MYLOGGER.log(Level.SEVERE, null, ex);
-                throw new LoginSampleException(ex.getSQLState());
-                
-                
-            }
-            return isValidUser;
-        }
-    }
+        } catch (SQLException ex) {
+            Conf.MYLOGGER.log(Level.SEVERE, null, ex);
+            throw new LoginSampleException(ex.getSQLState());
 
+        }
+        return isValidUser;
+    }
+}

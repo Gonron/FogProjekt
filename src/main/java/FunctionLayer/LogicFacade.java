@@ -51,7 +51,7 @@ public class LogicFacade {
     public static ArrayList<OrderLine> createList(Order o) throws LoginSampleException {
         double userWidth = o.getWidth();
         double userLength = o.getLength();
-        boolean shed = false;
+        boolean shed = o.getShed();
         return Calculator.fillAmount(userWidth, userLength, shed);
     }
 
