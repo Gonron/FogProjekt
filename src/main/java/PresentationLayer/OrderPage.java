@@ -9,7 +9,7 @@ import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.Order;
 import FunctionLayer.User;
-import java.sql.SQLException;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
@@ -24,11 +24,19 @@ public class OrderPage extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
+        HttpSession session = request.getSession();
+//        if(session.getAttribute("user") == null){
+//            try {
+//                response.sendRedirect("index.jsp");
+//            } catch (IOException ex) {
+//                Logger.getLogger(OrderPage.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//////        }
+        
         int width = Integer.parseInt(request.getParameter("width"));
         int length = Integer.parseInt(request.getParameter("length"));
         boolean shed = Boolean.parseBoolean(request.getParameter("shed"));
         boolean roof = Boolean.parseBoolean(request.getParameter("roof"));
-        HttpSession session = request.getSession();
         User u = (User) session.getAttribute("user");
         LogicFacade.createOrder(210, width, length, shed, roof, u); //TODO: Vi skal ikke hardcode shed og roof til false
         Order o = new Order(0, 210, width, length, true);      

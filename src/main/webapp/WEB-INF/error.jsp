@@ -13,6 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@include file ="header.jsp" %>
         <h1>Der gik desværre noget galt</h1>
         <h2>Vi arbejder på højtryk for at få løst vores fejl!</h2>
         <p>I mellemtiden kan du kontakte os via mail kontakt@johannesfog.dk eller på tlf 346289423</p>

@@ -14,6 +14,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@include file ="header.jsp" %>
+        <%@include file="isValidUser.jsp" %>
         <h1>Bekræft Ordre</h1>
     </body>
 </html>

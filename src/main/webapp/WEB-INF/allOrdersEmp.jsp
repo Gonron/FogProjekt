@@ -103,6 +103,8 @@ input[type=submit]:hover {
         <link rel="stylesheet" type="text/css" href="main.css" />
     </head>
     <body>
+        <%@include file ="header.jsp" %>
+        <%@include file="isValidUser.jsp" %>
         <h1>Her er en liste over alle ordre</h1>
         <%for (int i = 0; i < LogicFacade.getOrders().size(); i++) {
                 out.print(LogicFacade.getOrders().get(i).toString()+"<br>");}%>

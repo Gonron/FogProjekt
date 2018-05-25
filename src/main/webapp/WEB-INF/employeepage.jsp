@@ -72,7 +72,8 @@ a:hover, a:active {
         <title>Employee home page</title>
     </head>
     <body>
-
+<%@include file ="header.jsp" %>
+<%@include file="isValidUser.jsp" %>
         <h2>Hello <%=request.getParameter("email")%> </h2>
         Du er nu logget ind som medarbejder.
         <div id="box">

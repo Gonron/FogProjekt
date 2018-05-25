@@ -34,7 +34,7 @@ p{
     font-size: 20px;
 }
 
-            a:link, a:visited {
+     #tag:link, #tag:visited {
   
     background-color: #6666FF;
     color: white;
@@ -44,18 +44,33 @@ p{
 
 }
 
+h2{
+    text-align: center;
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    
+}
+
 
 #box{
     padding: 16px;
     border: 4px;
     border-style: inset;
+    
 }
 
 #paragraph{
 padding-top: 30px;
  color: #333333; font-family: "Helvetica Neue",Arial,sans-serif; font-size: 16px; font-weight: 300; line-height: 1.5625; margin-bottom: 15px; }
  
-a:hover, a:active {
+#tag:hover, #tag:active {
     background-color: #4169e1;
 }
 
@@ -71,12 +86,14 @@ a:hover, a:active {
         <link rel="stylesheet" type="text/css" href="main.css" />
     </head>
     <body>
-        <h2>Hello ${email}</h2>
+        <%@include file ="header.jsp" %>
+           <%@include file ="isValidUser.jsp" %>
+           <h2>Hello <%=request.getParameter( "email" )%></h2>
         <p>You are now logged in as a customer of our wonderful site.</p><br>   
         <div id="box">
-        <a href="FrontController?command=createorder" class="button"> Start din ordre </a><br>
-        <a href="FrontController?command=allOrdersCust" class="button"> Vis alle dine ordre </a><br>
-        <a href="FrontController?command=contact" class="button"> Kontakt os </a>
+        <a href="FrontController?command=createorder" class="button" id="tag"> Start din ordre </a><br>
+        <a href="FrontController?command=allOrdersCust" class="button" id="tag"> Vis alle dine ordre </a><br>
+        <a href="FrontController?command=contact" class="button" id="tag"> Kontakt os </a>
 </div>
         <div id="paragraph">
         <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod

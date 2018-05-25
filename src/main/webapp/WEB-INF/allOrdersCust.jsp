@@ -47,6 +47,8 @@
         </style>
     </head>
     <body>
+        <%@include file ="header.jsp" %>
+        <%@include file="isValidUser" %>
         <h1>Her er en liste over alle dine ordre!</h1>
         <table>
             <tr>

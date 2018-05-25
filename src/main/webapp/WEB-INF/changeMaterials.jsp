@@ -103,6 +103,9 @@ input[type=submit]:hover {
         </style>
     </head>
     <body>
+        
+        <%@include file ="header.jsp" %>
+        <%@include file="isValidUser.jsp" %>
         <h1>Denne side kan bruges til at ændre diverse materialer i databasen</h1>
         <h2> Herunder ses en liste af alle materialer</h2>
         

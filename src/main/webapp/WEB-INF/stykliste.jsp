@@ -31,6 +31,8 @@
         </style>
     </head>
     <body>
+        <%@include file ="header.jsp" %>
+        <%@include file="isValidUser.jsp" %>
         <h1>Stykliste</h1>
         <%
             //request.getParameter(name)

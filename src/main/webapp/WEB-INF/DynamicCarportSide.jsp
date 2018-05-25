@@ -14,6 +14,8 @@
         <title>Fog - Carport sidetegning.</title>
     </head>
     <body>
+        <%@include file ="header.jsp" %>
+        <%@include file="isValidUser.jsp" %>
       <% Order o = (Order) session.getAttribute("order"); %>
         <% double len = o.getLength(); %>
         <% double wid = o.getWidth(); %>

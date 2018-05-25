@@ -14,6 +14,8 @@
         <title>Find carport</title>
     </head>
     <body>
+        <%@include file ="header.jsp" %>
+         <%@include file="isValidUser.jsp" %>
        <h1>Start din ordre</h1><br>
         Indtast størrelserne i cm.
         <br>

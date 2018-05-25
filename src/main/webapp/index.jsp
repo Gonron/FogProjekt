@@ -67,7 +67,9 @@ button:hover {
     padding: 16px;
 }
 
-
+.terms{
+    
+}
 
 .logindiv{
    display: inline-block;
@@ -180,9 +182,11 @@ header{
                 </div>
 
 
-                <footer><p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+                <footer id="terms"><p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
                 </footer>
-
+                        
+                
+                
 
 
                 <% String error = (String) request.getAttribute("error");
@@ -193,5 +197,7 @@ header{
                     %>
                 </p>
 
+                <%@include file="WEB-INF/footer.jsp" %>
+                      
                 </body>
                 </html>

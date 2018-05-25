@@ -16,6 +16,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@include file ="header.jsp" %>
+        <%@include file="isValidUser.jsp" %>
         <h1>Kvittering</h1>
          Din ordre er blevet modtaget.<br>        
         <a href="FrontController?command=allOrdersCust"> Vis alle dine ordre </a><br>

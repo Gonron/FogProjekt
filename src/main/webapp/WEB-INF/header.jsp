@@ -54,6 +54,12 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 h1 { color: #000000; font-family: 'Lato', sans-serif; font-size: 54px; font-weight: 300; line-height: 58px; margin: 0 0 58px; }
 
+#fill{
+    background-color: white;
+    padding-left: 150px;
+    padding-right: 150px;
+}
+
 
 </style>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
