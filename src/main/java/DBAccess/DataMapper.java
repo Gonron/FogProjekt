@@ -269,13 +269,14 @@ public class DataMapper {
     public static void createOrder(Order order, User user, ArrayList<OrderLine> orderlines) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
-            String SQL = "INSERT INTO orders (id, Heigth, Width, Length, status) VALUES (?, ?, ?, ?, ?)";
+            String SQL = "INSERT INTO orders (id, Heigth, Width, Length, shed, status) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, user.getId());
             ps.setDouble(2, order.getHeigth());
             ps.setDouble(3, order.getWidth());
             ps.setDouble(4, order.getLength());
             ps.setBoolean(5, order.getStatus());
+            ps.setBoolean(6, order.getShed());
             ps.executeUpdate();
             ResultSet ids = ps.getGeneratedKeys();
             ids.next();
@@ -323,7 +324,7 @@ public class DataMapper {
             rs = ps.executeQuery();
             int i = 0;
             int j = 0;
-            int amount = 0;
+            int amount;
             while (rs.next()) {
                 int matId = materialIds.get(i);
                 i++;

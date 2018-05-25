@@ -31,7 +31,7 @@ public class LogicFacade {
     public static Order createOrder(int height, int width, int length, boolean shed, boolean roof, User u) throws LoginSampleException {
         //Order order = new Order(length, width, length, shed, roof, false);
         Order order = new Order(210, width, length, shed, false, false);
-        ArrayList<OrderLine> orderlines = fillAmount(order.getLength(), order.getWidth(), false);
+        ArrayList<OrderLine> orderlines = fillAmount(order.getLength(), order.getWidth(), shed);
         DataMapper.createOrder(order, u, orderlines);
         return order;
     }
