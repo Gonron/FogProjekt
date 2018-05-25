@@ -98,22 +98,22 @@
 
     <% if(wShed == true){ %>
     
-    <rect x="<%= Math.abs(wid/2) %>" y="0" height="<%= len %>" width="<%= Math.abs(wid/2) %>"
+    <rect x="<%= Math.abs(wid-200) %>" y="0" height="<%= len %>" width="200"
         style="stroke:#000000; stroke-width: 3; fill: none"/>
     
     
-    <rect x="<%= Math.abs(wid/2) %>" y="0" height="10" width="10"
+    <rect x="<%= Math.abs(wid-200) %>" y="0" height="10" width="10"
         style="stroke:#000000; fill: #101111"/>
     <rect x="<%= Math.abs(wid-10) %>" y="0" height="10" width="10"
         style="stroke:#000000; fill: #101111"/>
-    <rect x="<%= Math.abs(wid/2) %>" y="<%= Math.abs(len-10) %>" height="10" width="10"
+    <rect x="<%= Math.abs(wid-200) %>" y="<%= Math.abs(len-10) %>" height="10" width="10"
         style="stroke:#000000; fill: #101111"/>
     <rect x="<%= Math.abs(wid-10) %>" y="<%= Math.abs(len-10) %>" height="10" width="10"
         style="stroke:#000000; fill: #101111"/>
     
-    <text x="<%= Math.abs((wid/2)+(wid/8)) %>" y="<%= Math.abs(len+35) %>" fill="Red"> Skur: <%= Math.abs(wid/2) %> cm </text>
+    <text x="<%= Math.abs((wid-200)+(wid/8)) %>" y="<%= Math.abs(len+35) %>" fill="Red"> Skur: 200.0 cm </text>
     
-    <line x1="<%= Math.abs(wid/2) %>"  y1="<%= Math.abs(len+20) %>" x2="<%= wid %>" y2="<%= Math.abs(len+20) %>" 
+    <line x1="<%= Math.abs(wid-200) %>"  y1="<%= Math.abs(len+20) %>" x2="<%= wid %>" y2="<%= Math.abs(len+20) %>" 
 	style="stroke:#c40d0d;
 	marker-start: url(#beginArrow);
         marker-end: url(#endArrow);"/>  
