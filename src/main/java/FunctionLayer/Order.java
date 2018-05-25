@@ -1,6 +1,5 @@
 package FunctionLayer;
 
-
 public class Order {
 
     private int id;
@@ -20,9 +19,6 @@ public class Order {
         this.status = status;
     }
 
-
-   
-
     public Order(int id, double heigth, double width, double length, boolean shed, boolean flatRoof, boolean status) {
         this.id = id;
         this.heigth = heigth;
@@ -33,7 +29,6 @@ public class Order {
         this.status = status;
     }
 
-    
     public int getId() {
         return id;
     }
@@ -92,8 +87,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order:" + "id=" + id + ", bredde=" + width + ", længde=" + length + ", sendt=" + status;
-    }     
+        return "Order:" + "id=" + id + ", bredde=" + width + ", længde=" + length + ", skur=" + shed + ", sendt=" + status;
+    }
 
-    
 }

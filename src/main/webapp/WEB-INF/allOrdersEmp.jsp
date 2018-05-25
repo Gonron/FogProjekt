@@ -111,7 +111,7 @@ input[type=submit]:hover {
                 <h2>For at markere en ordre som sendt, indtast ordrenummeret</h2>
         <form name="sent" action="FrontController" method="POST">
             <input type="hidden" name="command" value="EmpControl">
-            <input type="number" name="id" required="" placeholder="Order id" required/>            
+            <input type="number" name="id" placeholder="Order id" required/>            
             <input type="submit" value="Mark as sent"/>         
          </form>
     </body>

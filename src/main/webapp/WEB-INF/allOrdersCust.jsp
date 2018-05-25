@@ -48,7 +48,7 @@
     </head>
     <body>
         <%@include file ="header.jsp" %>
-        <%@include file="isValidUser" %>
+        <%@include file="isValidUser.jsp" %>
         <h1>Her er en liste over alle dine ordre!</h1>
         <table>
             <tr>
@@ -65,7 +65,7 @@
                 <td><b>  </b></td>
                 <td><b>  </b></td>
             </tr>
-            <%   User u = (User) session.getAttribute("user");
+            <%   //User u = (User) session.getAttribute("user");
                 for (int i = 0; i < LogicFacade.getOrders(u).size(); i++) {
                     System.out.println(LogicFacade.getOrders(u).get(i));
             %>
@@ -84,7 +84,7 @@
         <h2>For at se en stykliste over materialer i en ordre, indtast ordrenummeret</h2>
         <form name="materialListOrder" action="FrontController" method="POST">
             <input type="hidden" name="command" value="materialListOrder">
-            <input type="number" name="id" required="" placeholder="Order id" required/>            
+            <input type="number" name="id" placeholder="Order id" required/>            
             <input type="submit" value="List of materials"/>           
         </form>   
 
