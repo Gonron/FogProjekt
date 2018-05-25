@@ -22,10 +22,10 @@
         <form name="order" action="FrontController" method="POST">            
             <input type="hidden" name="command" value="order">
             <input type="number" name="length" placeholder="length" min="250" max="800" required>
-            <input type="number" name="width" placeholder="width" min="150" max="800" required> 
+            <input type="number" name="width" placeholder="width" min="300" max="800" required> 
             <select name="shed">  
-            <option value="medskur" name="wShed" selected='selected'>Med skur</option>
-            <option value="udenskur" name="noShed" selected='selected'>Uden skur</option>            
+            <option value="medskur" name="wShed" >Med skur</option>
+            <option value="udenskur" name="noShed" >Uden skur</option>            
             </select>             
             <input type="submit" value="Submit">
             </form>
