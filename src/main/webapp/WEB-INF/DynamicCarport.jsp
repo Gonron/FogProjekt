@@ -39,7 +39,7 @@
         style="stroke:#000000; fill: #dcdfe5"/>
     <rect x="<%= Math.abs(wid-(wid/10)) %>" y="0" height=" <%= len %>" width="<%= Math.abs(wid/10) %>"
         style="stroke:#000000; fill: #dcdfe5"/>
-    
+   
     <rect x="0" y="0" height="<%= len %>" width="<%= wid %>"
         style="stroke:#000000; fill: none"/>
     
@@ -60,16 +60,16 @@
     
     
     <defs>
-    <marker id="beginArrow" 
-    	markerWidth="9" markerHeight="9" 
-    	refX="0" refY="4" 
-    	orient="auto">
+    <marker id="beginArrow"
+        markerWidth="9" markerHeight="9"
+        refX="0" refY="4"
+        orient="auto">
         <path d="M0,4 L8,0 L8,8 L0,4" style="fill: #c40d0d;" />
     </marker>
-    <marker id="endArrow" 
-    	markerWidth="9" markerHeight="9" 
-    	refX="8" refY="4" 
-    	orient="auto">
+    <marker id="endArrow"
+        markerWidth="9" markerHeight="9"
+        refX="8" refY="4"
+        orient="auto">
         <path d="M0,0 L8,4 L0,8 L0,0" style="fill: #c40d0d;" />
     </marker>
 </defs>
@@ -78,22 +78,22 @@
 	marker-start: url(#beginArrow);
    marker-end: url(#endArrow);"/>
 <defs>
-    <marker id="beginArrow2" 
-    	markerWidth="9" markerHeight="9" 
-    	refX="0" refY="4" 
-    	orient="auto">
+    <marker id="beginArrow2"
+        markerWidth="9" markerHeight="9"
+        refX="0" refY="4"
+        orient="auto">
         <path d="M0,4 L8,0 L8,8 L0,4" style="fill: #c40d0d;" />
     </marker>
-    <marker id="endArrow2" 
-    	markerWidth="9" markerHeight="9" 
-    	refX="8" refY="4" 
-    	orient="auto">
+    <marker id="endArrow2"
+        markerWidth="9" markerHeight="9"
+        refX="8" refY="4"
+        orient="auto">
         <path d="M0,0 L8,4 L0,8 L0,0" style="fill: #c40d0d;" />
     </marker>
 </defs>
-<line x1="<%= Math.abs(wid+20) %>"  y1="0" x2="<%= Math.abs(wid+20) %>" y2="<%= len %>" 
-	style="stroke:#c40d0d;
-	marker-start: url(#beginArrow);
+<line x1="<%= Math.abs(wid+20) %>"  y1="0" x2="<%= Math.abs(wid+20) %>" y2="<%= len %>"
+    style="stroke:#c40d0d;
+    marker-start: url(#beginArrow);
    marker-end: url(#endArrow);"/>  
 
     <% if(wShed == true){ %>
@@ -121,7 +121,6 @@
     <% } %>
 
     </SVG>
-    
     <form action="FrontController?command=DynamicCarportSide" name="order" method="POST">
         <input type="hidden" name="length" value="<%= len %>">
         <input type="hidden" name="width" value="<%= wid %>">

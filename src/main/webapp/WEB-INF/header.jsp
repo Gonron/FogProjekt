@@ -25,24 +25,24 @@ li a {
 }
 
 li a:hover:not(.active) {
-    background-color: #111;
+    background-color: #27408B;
 }
 
 .active {
-    background-color: teal;
+    background-color: #4169e1;
 }
 
 
 header .logo{
   display: block;
-  width: 200px;
+  width: 400px;
 }
 header img{
   display: block;
   width: 100%;
 }
 header{
-  background-color: #f4f4f4;
+  background-color: white;
   box-shadow: 0 2px 4px rgba(0,0,0,0.14);
   display: flex;
   justify-content: center;

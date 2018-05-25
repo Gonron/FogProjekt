@@ -65,6 +65,7 @@
             </tr>
             <%   User u = (User) session.getAttribute("user");
                 for (int i = 0; i < LogicFacade.getOrders(u).size(); i++) {
+                    System.out.println(LogicFacade.getOrders(u).get(i));
             %>
 
             <tr>
@@ -72,7 +73,7 @@
                 <td><%out.print(LogicFacade.getOrders(u).get(i).getLength());%></td>
                 <td><%out.print(LogicFacade.getOrders(u).get(i).getWidth());%></td>
                 <td><%out.print(LogicFacade.getOrders(u).get(i).getStatus());%></td>
-                <td>><%out.print(LogicFacade.getOrders(u).get(i).getShed());%></td>
+                <td><%out.print(LogicFacade.getOrders(u).get(i).getShed());%></td>
             </tr>
             <%              }
             %>

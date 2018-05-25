@@ -14,22 +14,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link rel="stylesheet" type="text/css" href="main.css" />
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+      
         <style>
-            table, td, th {
-                background: white;
-                border: 1px solid black;
-                padding-left:  5px;
-                padding-right:  5px;
-            }
-
-            table {
-                border-collapse: collapse;
-                width: 54%;
-            }
-
-            td {
-                vertical-align: bottom;
-            }
+           
         </style>
     </head>
     <body>
@@ -42,7 +30,10 @@
             for (int i = 0; i < LogicFacade.createList(o).size(); i++) {
         %>
 
-        <table>
+        <table class="table">
+        
+       <thead class="mdb-color darken-3">
+        <tr class="text-white">
             <tr>
                 <th> Beskrivelse </th>
                 <th> Længde </th>
@@ -50,6 +41,7 @@
                 <th> Enhed </th>
                 <th> Beskrivelse </th>
             </tr>
+<thead>
             <tr>
                 <th></th>
                 <th></th>
@@ -318,6 +310,7 @@
             i++;%></td>
     </tr>
 </table>
+            
 <%
         int totalPrice = 0;
         for (int j = 0; j < LogicFacade.createList(o).size(); j++) {

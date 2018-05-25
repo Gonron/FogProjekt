@@ -4,8 +4,6 @@ import FunctionLayer.LoginSampleException;
 import FunctionLayer.Order;
 import FunctionLayer.OrderLine;
 import FunctionLayer.User;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,7 +11,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import logger.Conf;
 
 /**
@@ -187,7 +184,7 @@ public class DataMapper {
             while (rs.next()) {
                 int id = rs.getInt("material_id");
                 String name = rs.getString("name");
-                String description = rs.getString("desc");
+                String description = rs.getString("descr");
                 int length = rs.getInt("length");
                 int price = rs.getInt("price");
                 int group = rs.getInt("material_group");
@@ -245,7 +242,7 @@ public class DataMapper {
     public static void updateMaterials(String name, String desc, int length, int price, int materialGroup, int id) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
-            String SQL = "UPDATE materials SET name = ?, desc = ?, length = ?, price = ?, material_group = ? WHERE material_id = ?";
+            String SQL = "UPDATE materials SET name = ?, descr = ?, length = ?, price = ?, material_group = ? WHERE material_id = ?";
             PreparedStatement ps = con.prepareStatement(SQL);
             ps.setString(1, name);
             ps.setString(2, desc);
@@ -331,7 +328,7 @@ public class DataMapper {
                 int matId = materialIds.get(i);
                 i++;
                 String name = rs.getString("name");
-                String description = rs.getString("desc");
+                String description = rs.getString("descr");
                 int length = rs.getInt("length");
                 amount = amounts.get(j);
                 j++;
@@ -346,4 +343,37 @@ public class DataMapper {
             throw new LoginSampleException(ex.getMessage());
         }
     }
-}
+        
+        
+        public static boolean validateUser(String username, String password) throws LoginSampleException{
+           boolean isValidUser = false;
+            try{
+                // get the connection for the database
+                Connection con = Connector.connection();
+                
+                //skriv 'select query'
+                String SQL = "select * from Users where email = ?, password = ?";
+                
+                // set de givne parametre til PreparedStatement
+                
+                PreparedStatement statement = con.prepareStatement(SQL);
+                statement.setString(1, username);
+                statement.setString(2, password);
+                
+                
+                //udfør statmentet og check om brugeren er gyldig
+                
+                ResultSet set = statement.executeQuery();
+                while(set.next()){
+                isValidUser = true;
+            }
+            }catch(SQLException ex){
+                Conf.MYLOGGER.log(Level.SEVERE, null, ex);
+                throw new LoginSampleException(ex.getSQLState());
+                
+                
+            }
+            return isValidUser;
+        }
+    }
+
