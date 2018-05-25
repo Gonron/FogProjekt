@@ -15,11 +15,9 @@
     </head>
     
         <% Order o = (Order) session.getAttribute("order"); %>
-        <% String Shed = request.getParameter("shed"); %>
         <% Boolean wShed = Boolean.valueOf(request.getParameter("wShed")); %>
         <% wShed = true; %>
         <% Boolean noShed = Boolean.valueOf(request.getParameter("noShed")); %>
-        <% Boolean shed = true; %>
         <% double len = o.getLength(); %>
         <% double wid = o.getWidth(); %>
     <SVG width="<%= Math.abs((wid*3)) %>" height="<%= Math.abs(len*2) %>">
