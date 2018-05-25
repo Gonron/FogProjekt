@@ -36,13 +36,26 @@ button {
 button:hover {
     opacity:1;
 }
+
+
+#fill{
+    background-color: white;
+    padding-left: 150px;
+    padding-right: 150px;
+}
+
+
+.container {
+    padding: 16px;
+}
         </style>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
     <body>
-         <%@include file ="WEB-INF/header.jsp" %>
+         <%@include file ="header.jsp" %>
          
+        <div class="container">
         <h1>Hos Johannes Fog bygger vi carporte i særklasse</h1>
         <p> vi har siden 1988 været danmarks bedst carports leverandøre, og vi vil med glæde også levere til dig
         vores materialer er altid i bedste kvalitet, og hvis du skulle være utilfreds med nogle af vores servicekrav, har vi vores kvalitetsgaranti, der sikrer, at alle vores kunder forbliver glade og tilfreds
@@ -52,5 +65,6 @@ button:hover {
         
         
         <a href="FrontController?command=register">Opret dig her</a>
+        </div>
     </body>
 </html>

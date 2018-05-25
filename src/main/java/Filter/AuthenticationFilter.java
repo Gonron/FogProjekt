@@ -20,7 +20,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(urlPatterns = "/LogInSample/FrontController?command=createorder") // i tuborgklammerne skal alle servletter der skal konfigureres skrives
+@WebFilter(urlPatterns = {"/*"}) // i tuborgklammerne skal alle servletter der skal konfigureres skrives
 public class AuthenticationFilter implements Filter {
     
     @Override

@@ -68,7 +68,7 @@ h1 { color: #000000; font-family: 'Lato', sans-serif; font-size: 54px; font-weig
   </a>
     </header>
         <ul>
-        <li><a class="active" href="hjem">Hjem</a>
+        <li><a class="active" href="FrontController?command=index">Hjem</a>
         </li>
         <li><a href="FrontController?command=pickus">Hvorfor vælge os</a></li>
         <li><a href="FrontController?command=contact">Kontakt</a></li>

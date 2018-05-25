@@ -76,8 +76,8 @@ a:hover, a:active {
         <h2>Hello <%=request.getParameter("email")%> </h2>
         Du er nu logget ind som medarbejder.
         <div id="box">
-        <a href="FrontController?command=allOrdersEmp"> Se all ordre </a>
-        <a href="FrontController?command=changematerials"> Opdater et materiale </a> 
+        <a href="FrontController?command=allOrdersEmp" class="button"> Se all ordre </a>
+        <a href="FrontController?command=changematerials" class="button"> Opdater et materiale </a> 
         </div>
         
         <div id="paragraph">

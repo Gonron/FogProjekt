@@ -10,7 +10,7 @@
 <html>
     <head>
         <style>
-             body {font-family: Arial, Helvetica, sans-serif;}
+  body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box}
 
 h1 {padding-top: 30px; color: #000000; font-family: 'Lato', sans-serif; font-size: 54px; font-weight: 300; line-height: 58px; margin: 0 0 58px; }
@@ -20,6 +20,16 @@ p {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.container {
+    padding: 16px;
+}
+
+
+#fill{
+    background-color: white;
+    padding-left: 150px;
+    padding-right: 150px;
+}
             
         </style>
         <link rel="stylesheet" type="text/css" href="main.css" />
@@ -28,7 +38,10 @@ p {
     </head>
     <body>
         <%@include file ="header.jsp" %>
+        
+        <div class="container">
         <h1>Kontakt Information</h1>
+        
         <p>Tlf: 23759305</p>
         <p>Pressechef: Kristoffer Tølbøll</p>
         <p>Besøg os i vores butik på Lyngbyvej 132</p>
@@ -38,6 +51,8 @@ p {
         <br>
         <adrress> skriv til os på
         <a href="mailto:johannesfog@hotmail.dk"> email</a>
+   
         </adrress>
+             </div>
     </body>
 </html>
