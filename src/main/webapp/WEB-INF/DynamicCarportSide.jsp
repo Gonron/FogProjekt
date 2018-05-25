@@ -17,6 +17,7 @@
         <% Order o = (Order) session.getAttribute("order"); %>
         <% double len = o.getLength(); %>
         <% double wid = o.getWidth();%>
+        <% boolean shed = o.getShed(); %>
     </body>
     <SVG width="<%= Math.abs(wid * 2)%>" height="<%= Math.abs(len + 100)%>">
 
@@ -34,7 +35,7 @@
 
     <text x="<%= Math.abs(wid + 25)%>" y="115" fill="Red"> Højde: 210 cm </text>
     <text x="<%= Math.abs(wid + 25)%>" y="15" fill="Red"> Højde: 25 cm </text>
-    <text x="<%= Math.abs((wid / 2) - 25)%>" y="265" fill="Red"> Bredde: <%= wid%> cm </text>
+    <text x="<%= Math.abs((wid / 2) - 25)%>" y="325" fill="Red"> Bredde: <%= wid%> cm </text>
 
 
     <defs>
@@ -51,7 +52,7 @@
         <path d="M0,0 L8,4 L0,8 L0,0" style="fill: #c40d0d;" />
     </marker>
     </defs>
-    <line x1="0"  y1="250" x2="<%= wid%>" y2="250" 
+    <line x1="0"  y1="300" x2="<%= wid%>" y2="300" 
           style="stroke:#c40d0d;
           marker-start: url(#beginArrow);
           marker-end: url(#endArrow);"/>
@@ -92,14 +93,31 @@
           marker-start: url(#beginArrow);
           marker-end: url(#endArrow);"/>
 
+    <% if(shed){ %>
 
-
-
+    <rect x="<%= Math.abs(wid-200) %>" y="25" height="210" width="200"
+        style="stroke:#000000; stroke-width: 3; fill: none"/>
+    
+    <rect x="<%= Math.abs(wid-200) %>" y="25" height="210" width="10"
+        style="stroke:#000000; stroke-width: 1; fill: #000000"/>
+    <rect x="<%= Math.abs(wid-10) %>" y="25" height="210" width="10"
+        style="stroke:#000000; stroke-width: 1; fill: #000000"/>
+    
+    <line x1="<%= Math.abs(wid-200) %>"  y1="250" x2="<%= wid%>" y2="250" 
+          style="stroke:#c40d0d;
+          marker-start: url(#beginArrow);
+          marker-end: url(#endArrow);"/>
+    
+    <text x="<%= Math.abs((wid-200)+(wid/8))%>" y="270" fill="Red"> Skur: 200.0 cm </text>
+    
+    <% } %>
+    
     </SVG>
 
     <form action="FrontController?command=DynamicCarport" method="POST">        
         <input type="hidden" name="length" value="<%= len%>">
         <input type="hidden" name="width" value="<%= wid%>">
+        <input type="hidden" name="shed" value="<%= shed %>">
         <input type="submit" value="Grundtegning">
     </form>
 

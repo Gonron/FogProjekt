@@ -120,6 +120,7 @@
     <form action="FrontController?command=DynamicCarportSide" name="order" method="POST">
         <input type="hidden" name="length" value="<%= len %>">
         <input type="hidden" name="width" value="<%= wid %>">
+        <input type="hidden" name="shed" value="<%= shed %>">
         <input type="submit" value="Side tegning">
     </form>
     
