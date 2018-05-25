@@ -13,11 +13,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Fog - Carport grundtegning.</title>
     </head>
-    
+        
         <% Order o = (Order) session.getAttribute("order"); %>
-        <% Boolean wShed = Boolean.valueOf(request.getParameter("wShed")); %>
-        <% wShed = true; %>
-        <% Boolean noShed = Boolean.valueOf(request.getParameter("noShed")); %>
+        <% boolean shed = o.getShed(); %>
         <% double len = o.getLength(); %>
         <% double wid = o.getWidth(); %>
     <SVG width="<%= Math.abs((wid*3)) %>" height="<%= Math.abs(len*2) %>">
@@ -94,7 +92,7 @@
     marker-start: url(#beginArrow);
    marker-end: url(#endArrow);"/>  
 
-    <% if(wShed == true){ %>
+    <% if(shed){ %>
     
     <rect x="<%= Math.abs(wid-200) %>" y="0" height="<%= len %>" width="200"
         style="stroke:#000000; stroke-width: 3; fill: none"/>
