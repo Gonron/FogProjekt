@@ -9,12 +9,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <style>
-             
-            body {font-family: Arial, Helvetica, sans-serif;}
-            * {box-sizing: border-box}
+ <style>
+ body {font-family: Arial, Helvetica, sans-serif;}
+ * {box-sizing: border-box}
 
-            h1 { color: #000000; font-family: 'Lato', sans-serif; font-size: 54px; font-weight: 300; line-height: 58px; margin: 0 0 58px; text-align: center; padding-top: 40px; }
+h1 { color: #000000; font-family: 'Lato', sans-serif; font-size: 54px; font-weight: 300; line-height: 58px; margin: 0 0 58px; text-align: center; padding-top: 40px; }
 
 .button {
   font: bold 20px Arial;
@@ -35,7 +34,7 @@ p{
     font-size: 20px;
 }
 
-            a:link, a:visited {
+     #tag:link, #tag:visited {
   
     background-color: #6666FF;
     color: white;
@@ -45,18 +44,33 @@ p{
 
 }
 
+h2{
+    text-align: center;
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    
+}
+
 
 #box{
     padding: 16px;
     border: 4px;
     border-style: inset;
+    
 }
 
 #paragraph{
 padding-top: 30px;
  color: #333333; font-family: "Helvetica Neue",Arial,sans-serif; font-size: 16px; font-weight: 300; line-height: 1.5625; margin-bottom: 15px; }
  
-a:hover, a:active {
+#tag:hover, #tag:active {
     background-color: #4169e1;
 }
 
@@ -66,20 +80,22 @@ a:hover, a:active {
                     width: 100%;
                 }
             }
-        </style>
+            </style>
+         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Customer home page</title>
         <link rel="stylesheet" type="text/css" href="main.css" />
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Employee home page</title>
     </head>
     <body>
 <%@include file ="header.jsp" %>
 <%@include file="isValidUser.jsp" %>
         <h2>Hello <%=request.getParameter("email")%> </h2>
-        Du er nu logget ind som medarbejder.
-        <div id="box">
-        <a href="FrontController?command=allOrdersEmp" class="button"> Se all ordre </a>
-        <a href="FrontController?command=changematerials" class="button"> Opdater et materiale </a> 
-        </div>
+        <p> Du er nu logget ind som medarbejder. </p>
+        
+         <div id="box">
+        <a href="FrontController?command=allOrdersEmp" class="button" id="tag"> Se alle ordre </a><br>
+        <a href="FrontController?command=changematerials" class="button" id="tag"> Opdater et materiale </a><br>
+        
+</div>
         
         <div id="paragraph">
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod

@@ -44,20 +44,115 @@
             }
             
             h2 {padding-top: 30px; color: #000000; font-family: 'Lato', sans-serif; font-size: 48px; font-weight: 300; line-height: 58px; margin: 0 0 58px; }
+        
+            .zui-table {
+    border: solid 1px #DDEEEE;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font: normal 14px Arial, sans-serif;
+    width: 60%;
+    height: 35%
+
+    }
+    .zui-table thead th {
+    background-color: #DDEFEF;
+    border: solid 1px #DDEEEE;
+    color: #336B6B;
+    padding: 10px;
+    text-align: left;
+    text-shadow: 1px 1px 1px #fff;
+    }
+    .zui-table tbody td {
+    border: solid 1px #DDEEEE;
+    color: #333;
+    padding: 10px;
+    text-shadow: 1px 1px 1px #fff;
+    }
+
+    input[type=text]:focus {
+    border: 3px solid #555;
+	}
+
+	input[type=number] {
+    margin-bottom: 30px;
+	}
+
+* {
+    box-sizing: border-box;
+}
+
+
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+}
+
+label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: left;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+.container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .col-25, .col-75, input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+    }
+}
+        
+        
         </style>
     </head>
     <body>
         <%@include file ="header.jsp" %>
         <%@include file="isValidUser.jsp" %>
         <h1>Her er en liste over alle dine ordre!</h1>
-        <table>
-            <tr>
+        
+        
+        <table class="zui-table table-hover">
+           
+            
+            <thead>
+            <tr>  
                 <th> Ordernummer </th>
                 <th> Længde </th>
                 <th> Brede </th>
                 <th> Sendt </th>
-                <th> Skur </th>
+                <th> Skur </th>          
             </tr>
+             </thead>
             <tr>
                 <td><b>  </b></td>
                 <td><b> Centimeter </b></td>

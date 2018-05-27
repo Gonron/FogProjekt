@@ -11,6 +11,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <style>
@@ -110,7 +111,8 @@ input[type=submit]:hover {
         <h2> Herunder ses en liste af alle materialer</h2>
         
          
-            <table class="zui-table">
+          <table class="zui-table table-hover">
+         
          <thead>
          <tr>
              <th> id</th> 

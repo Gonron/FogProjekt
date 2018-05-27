@@ -11,7 +11,12 @@
 <html>
     <head>
         <style>
-         .zui-table {
+            h1{
+                padding-top: 30px;
+            }
+            
+            
+            .zui-table {
     border: solid 1px #DDEEEE;
     border-collapse: collapse;
     border-spacing: 0;
@@ -106,8 +111,42 @@ input[type=submit]:hover {
         <%@include file ="header.jsp" %>
         <%@include file="isValidUser.jsp" %>
         <h1>Her er en liste over alle ordre</h1>
-        <%for (int i = 0; i < LogicFacade.getOrders().size(); i++) {
-                out.print(LogicFacade.getOrders().get(i).toString()+"<br>");}%>
+        
+        <table class="zui-table table-hover">
+            
+            
+          <thead>
+       
+        <tr>
+                <th> Ordernummer </th>
+                <th> Længde </th>
+                <th> Brede </th>
+                <th> Sendt </th>
+                <th> Skur </th>
+            </tr>
+          </thead>
+            <tr>
+                <td><b>  </b></td>
+                <td><b> Meter </b></td>
+                <td><b> Centimeter </b></td>
+                <td><b>  </b></td>
+                <td><b>  </b></td>
+            </tr>
+            <%   //User u = (User) session.getAttribute("user");
+                for (int i = 0; i < LogicFacade.getOrders().size(); i++) {
+                    System.out.println(LogicFacade.getOrders().get(i));
+            %>
+
+            <tr>
+                <td><%out.print(LogicFacade.getOrders().get(i).getId());%></td>
+                <td><%out.print(LogicFacade.getOrders().get(i).getLength());%></td>
+                <td><%out.print(LogicFacade.getOrders().get(i).getWidth());%></td>
+                <td><%out.print(LogicFacade.getOrders().get(i).getStatus());%></td>
+                <td><%out.print(LogicFacade.getOrders().get(i).getShed());%></td>
+            </tr>
+            <%              }
+            %>
+        </table>
                 <h2>For at markere en ordre som sendt, indtast ordrenummeret</h2>
         <form name="sent" action="FrontController" method="POST">
             <input type="hidden" name="command" value="EmpControl">
