@@ -125,6 +125,7 @@
         <input type="hidden" name="shed" value="<%= shed %>">
         <input type="submit" value="Side tegning">
     </form>
-    
+          <%@include file="footer.jsp" %>
+</body>
 </html>
 

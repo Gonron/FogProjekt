@@ -405,5 +405,6 @@
         out.println("<br>" + "Pris: " + totalPrice * 10 + "kr.");
     }
 %>
+   <%@include file="footer.jsp" %>
 </body>
 </html>

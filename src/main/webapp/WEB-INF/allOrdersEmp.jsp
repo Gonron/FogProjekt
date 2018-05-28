@@ -153,5 +153,6 @@ input[type=submit]:hover {
             <input type="number" name="id" placeholder="Order id" required/>            
             <input type="submit" value="Mark as sent"/>         
          </form>
+                  <%@include file="footer.jsp" %>
     </body>
 </html>

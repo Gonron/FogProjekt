@@ -180,6 +180,6 @@ input[type=submit]:hover {
             <textarea rows="4" cols="50" name="desc" placeholder="insert the description of the product...."></textarea>
             <input type="submit" value="Submit">
             </form>
-            
+              <%@include file="footer.jsp" %>
     </body>
 </html>

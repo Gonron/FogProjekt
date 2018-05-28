@@ -32,5 +32,6 @@
             <input type="submit" value="Submit">
             </form>
         <br>
+           <%@include file="footer.jsp" %>
     </body>
 </html>

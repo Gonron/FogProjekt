@@ -66,5 +66,6 @@ button:hover {
         
         <a href="FrontController?command=register">Opret dig her</a>
         </div>
+            <%@include file="footer.jsp" %>
     </body>
 </html>

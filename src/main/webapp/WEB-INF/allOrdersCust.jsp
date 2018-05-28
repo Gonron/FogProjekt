@@ -182,6 +182,6 @@ input[type=submit]:hover {
             <input type="number" name="id" placeholder="Order id" required/>            
             <input type="submit" value="List of materials"/>           
         </form>   
-
+  <%@include file="footer.jsp" %>
     </body>
 </html>

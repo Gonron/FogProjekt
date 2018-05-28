@@ -126,4 +126,6 @@
     <form action="FrontController?command=allOrdersCust" method="POST">
         <input type="submit" value="Se alle dine ordrer">
     </form>
+          <%@include file="footer.jsp" %>
+</body>
 </html>

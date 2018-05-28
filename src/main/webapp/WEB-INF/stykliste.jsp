@@ -353,6 +353,6 @@ input[type=submit]:hover {
                 <td>Til montering af løsholter i skur</td>
             </tr>
         </table>
-
+   <%@include file="footer.jsp" %>
     </body>
 </html>

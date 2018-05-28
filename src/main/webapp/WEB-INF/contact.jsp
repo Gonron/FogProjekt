@@ -54,5 +54,6 @@ p {
    
         </adrress>
              </div>
+           <%@include file="footer.jsp" %>
     </body>
 </html>

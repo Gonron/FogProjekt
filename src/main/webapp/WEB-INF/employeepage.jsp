@@ -106,5 +106,6 @@ padding-top: 30px;
         proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
         </div>
+           <%@include file="footer.jsp" %>
     </body>
 </html>

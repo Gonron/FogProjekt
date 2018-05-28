@@ -209,7 +209,7 @@
 
 				<div>
 					<i class="fa fa-map-marker"></i>
-					<p><span>34 Lyngbyvej</span> Lyngby, Danmark</p>
+					<p><span>34 Lyshøjvej 14</span> 3650 Ølstykke</p>
 				</div>
 
 				<div>
