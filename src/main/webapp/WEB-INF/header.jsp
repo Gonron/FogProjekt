@@ -26,6 +26,7 @@ li a {
 
 li a:hover:not(.active) {
     background-color: #27408B;
+    
 }
 
 .active {
@@ -58,6 +59,10 @@ h1 { color: #000000; font-family: 'Lato', sans-serif; font-size: 54px; font-weig
     background-color: white;
     padding-left: 150px;
     padding-right: 150px;
+}
+
+li{
+    color: white;
 }
 
 

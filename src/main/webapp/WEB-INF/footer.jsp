@@ -202,7 +202,7 @@
 					
 				</p>
 
-				<p class="footer-company-name">Company Name &copy; 2015</p>
+				<p class="footer-company-name">Johannes Fog &copy; 2018</p>
 			</div>
 
 			<div class="footer-center">
