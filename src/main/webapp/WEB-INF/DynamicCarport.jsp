@@ -53,7 +53,7 @@
     
     
     
-    <text x="<%= Math.abs(wid+25) %>" y="<%= Math.abs(len/2) %>" fill="Red"> LÃ¦ngde: <%= len %> cm </text>
+    <text x="<%= Math.abs(wid+25) %>" y="<%= Math.abs(len/2) %>" fill="Red"> Længde: <%= len %> cm </text>
     <text x="<%= Math.abs((wid/2)-25) %>" y="<%= Math.abs(len+80) %>" fill="Red"> Bredde: <%= wid %> cm </text>
     
     
