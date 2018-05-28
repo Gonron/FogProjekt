@@ -29,6 +29,7 @@ abstract class Command {
         commands.put("DynamicCarportSide", new DynamicCarportSide());
         commands.put("pickus", new PickUsSide());
         commands.put("about", new AboutUs());
+        commands.put("employees", new EmployeePage());
     }
 
     static Command from(HttpServletRequest request) {

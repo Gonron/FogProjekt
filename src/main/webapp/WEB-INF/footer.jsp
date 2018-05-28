@@ -193,7 +193,7 @@
 				<p class="footer-links">
 					<a href="#">Home</a>
 					·
-					<a href="#">Mød vores medarbejdere</a>
+					<a href="FrontController?command=employees">Mød vores medarbejdere</a>
 					·
 					<a href="#">Service</a>
 					·
