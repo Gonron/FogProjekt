@@ -9,110 +9,110 @@
 <html>
     <head>
         <style>
-    body {font-family: Arial, Helvetica, sans-serif;}
-* {box-sizing: border-box}
+            body {font-family: Arial, Helvetica, sans-serif;}
+            * {box-sizing: border-box}
 
-h1 { color: #000000; font-family: 'Lato', sans-serif; font-size: 54px; font-weight: 300; line-height: 58px; margin: 0 0 58px; }
+            h1 { color: #000000; font-family: 'Lato', sans-serif; font-size: 54px; font-weight: 300; line-height: 58px; margin: 0 0 58px; }
 
-/* Full-width input fields */
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    display: inline-block;
-    border: none;
-    background: #f1f1f1;
-}
+            /* Full-width input fields */
+            input[type=text], input[type=password] {
+                width: 100%;
+                padding: 15px;
+                margin: 5px 0 22px 0;
+                display: inline-block;
+                border: none;
+                background: #f1f1f1;
+            }
 
-input[type=text]:focus, input[type=password]:focus {
-    background-color: #ddd;
-    outline: none;
-}
+            input[type=text]:focus, input[type=password]:focus {
+                background-color: #ddd;
+                outline: none;
+            }
 
-hr {
-    border: 1px solid #f1f1f1;
-    margin-bottom: 25px;
-}
+            hr {
+                border: 1px solid #f1f1f1;
+                margin-bottom: 25px;
+            }
 
-/* Set a style for all buttons */
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    opacity: 0.9;
-}
+            /* Set a style for all buttons */
+            button {
+                background-color: #4CAF50;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                cursor: pointer;
+                width: 100%;
+                opacity: 0.9;
+            }
 
-button:hover {
-    opacity:1;
-}
+            button:hover {
+                opacity:1;
+            }
 
-/* Extra styles for the cancel button */
-.loginbtn {
-    padding: 14px 20px;
-    background-color: #666DFF;
-}
+            /* Extra styles for the cancel button */
+            .loginbtn {
+                padding: 14px 20px;
+                background-color: #666DFF;
+            }
 
-/* Float cancel and signup buttons and add an equal width */
-.signupbtn, .loginbtn {
-  float: left;
-  width: 50%;
-}
+            /* Float cancel and signup buttons and add an equal width */
+            .signupbtn, .loginbtn {
+                float: left;
+                width: 50%;
+            }
 
-/* Add padding to container elements */
-.container {
-    padding: 16px;
-}
+            /* Add padding to container elements */
+            .container {
+                padding: 16px;
+            }
 
-.terms{
-    
-}
+            .terms{
 
-.logindiv{
-   display: inline-block;
-   padding-top: 60px;
-   padding-right: 1000px;
+            }
 
-   }
+            .logindiv{
+                display: inline-block;
+                padding-top: 60px;
+                padding-right: 1000px;
 
-
-/* Clear floats */
-.clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
-.footer{
-    display: block;
-    padding-right: 20px;
-}
-
-header{
-    background-color: #4169e1;
- padding-top:180px;
- padding-left: 50px;
-
-}
-
-#fill{
-    background-color: white;
-    padding-left: 150px;
-    padding-right: 150px;
-}
+            }
 
 
+            /* Clear floats */
+            .clearfix::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
 
-/* Change styles for cancel button and signup button on extra small screens */
-@media screen and (max-width: 300px) {
-    .cancelbtn, .signupbtn {
-       width: 100%;
-    }
-}
-    </style>
+            .footer{
+                display: block;
+                padding-right: 20px;
+            }
+
+            header{
+                background-color: #4169e1;
+                padding-top:180px;
+                padding-left: 50px;
+
+            }
+
+            #fill{
+                background-color: white;
+                padding-left: 150px;
+                padding-right: 150px;
+            }
+
+
+
+            /* Change styles for cancel button and signup button on extra small screens */
+            @media screen and (max-width: 300px) {
+                .cancelbtn, .signupbtn {
+                    width: 100%;
+                }
+            }
+        </style>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Welcome page</title>
         <link rel="stylesheet" type="text/css" href="main.css" />
@@ -140,11 +140,8 @@ header{
                 <label for="email"><b>Adresse</label>
                 <input type="text" placeholder="Skriv din adresse" name="adress" required>
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="passsword" required>
                 <label for="email"><b>Telefonnummer</b></label>
                 <input type="text" placeholder="Skriv dit telefonnummer" name="phonenr" required>
-
 
                 <label for="psw"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="password1" required>
@@ -184,9 +181,9 @@ header{
 
                 <footer id="terms"><p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
                 </footer>
-                        
-                
-                
+
+
+
 
 
                 <% String error = (String) request.getAttribute("error");
@@ -198,6 +195,6 @@ header{
                 </p>
 
                 <%@include file="WEB-INF/footer.jsp" %>
-                      
+
                 </body>
                 </html>
