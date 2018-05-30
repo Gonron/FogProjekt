@@ -134,7 +134,7 @@ input[type=submit]:hover {
             </tr>
             <%   //User u = (User) session.getAttribute("user");
                 for (int i = 0; i < LogicFacade.getOrders().size(); i++) {
-                    System.out.println(LogicFacade.getOrders().get(i));
+                    
             %>
 
             <tr>
