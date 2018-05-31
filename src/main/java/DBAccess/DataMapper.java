@@ -4,6 +4,7 @@ import FunctionLayer.LoginSampleException;
 import FunctionLayer.Order;
 import FunctionLayer.OrderLine;
 import FunctionLayer.User;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -370,4 +371,45 @@ public class DataMapper {
         }
         return isValidUser;
     }
+    
+    
+    public static  byte[] getSaltMethod(String username, String password) throws SQLException, LoginSampleException{
+        
+        try{
+            
+            Connection con = Connector.connection();
+            
+            
+            String SQL = "select * from Users.Salt where email = ?, password = ?";
+            
+            
+            PreparedStatement statement = con.prepareStatement(SQL);
+             statement.setString(1, username);
+            statement.setString(2, password);
+            
+             ResultSet set = statement.executeQuery();
+             
+             while(set.next()){
+             
+                 Blob blob = set.getBlob("salt");
+                 int blobLength = (int) blob.length();  
+                byte[] blobAsBytes = blob.getBytes(1, blobLength);
+                //release the blob and free up memory. (since JDBC 4.0)
+                   /* jeg er i tivil om denne skal være her*/blob.free();
+                return blobAsBytes;
+
+            
+             
+             }
+            
+        }catch(SQLException ex){
+            Conf.MYLOGGER.log(Level.SEVERE, null, ex);
+            throw new LoginSampleException(ex.getSQLState());
+        }
+        return null;
+        
+      
+ 
+    }
+    
 }

@@ -2,6 +2,7 @@ package FunctionLayer;
 
 import DBAccess.DataMapper;
 import static FunctionLayer.Calculator.fillAmount;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -11,6 +12,13 @@ import java.util.ArrayList;
  */
 public class LogicFacade {
 
+    
+    //jeg ved ikke hvorfor den kaster SQL-exception her, det skal vi lige kigge på.
+    public static byte[] getSalt(String email, String password) throws SQLException, LoginSampleException{
+        return DataMapper.getSaltMethod(email, password);
+    }
+    
+    
     public static User login(String email, String password) throws LoginSampleException{
         return DataMapper.login(email, password);
     }
