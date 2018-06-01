@@ -75,6 +75,7 @@ h1{
   background-color: #555;
 }
 </style>
+<title>Mød Medarbejderne</title>
 </head>
 <body>
     <%@include file="header.jsp" %>
@@ -96,7 +97,7 @@ h1{
         <p class="title">Developer & CEO</p>
         <p>Scrum-master i uge 2, og software udvikler for Johannes Fog. </p>
         <b>cph-kt119@cphbuisness.dk</b>
-        <p><button class="button">Contact</button></p>
+        <p><button class="button">Kontakt</button></p>
       </div>
     </div>
   </div>
@@ -108,8 +109,8 @@ h1{
         <h2>Morten</h2>
         <p class="title">Developer & Scrum-master</p>
         <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <b>example@example.com</b>
-        <p><button class="button">Contact</button></p>
+        <b>cph-mb537@cphbusiness.dk</b>
+        <p><button class="button">Kontakt</button></p>
       </div>
     </div>
   </div>
@@ -121,8 +122,8 @@ h1{
         <h2>Michael</h2>
         <p class="title">Developer & CFO</p>
         <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <b>example@example.com</b>
-        <p><button class="button">Contact</button></p>
+        <b>cph-ml510@cpbbusiness.dk</b>
+        <p><button class="button">Kontakt</button></p>
       </div>
     </div>
   </div>
@@ -133,8 +134,8 @@ h1{
         <h2>Johachim</h2>
         <p class="title">Developer & Art Director</p>
         <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <b>example@example.com</b>
-        <p><button class="button">Contact</button></p>
+        <b>cph-jg133@cphbusiness.dk</b>
+        <p><button class="button">Kontakt</button></p>
       </div>
     </div>
   </div>

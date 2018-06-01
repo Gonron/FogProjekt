@@ -82,7 +82,7 @@ padding-top: 30px;
             }
             </style>
          <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Customer home page</title>
+        <title>Medarbejderside</title>
         <link rel="stylesheet" type="text/css" href="main.css" />
     </head>
     <body>

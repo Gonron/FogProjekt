@@ -122,13 +122,6 @@ input[type=submit]:hover {
                 <th> Beskrivelse </th>
             </tr>
             <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr>
                 <th>Træ og Tagplader</th>
                 <th></th>
                 <th></th>
