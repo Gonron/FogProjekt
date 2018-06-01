@@ -12,7 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Styklisten</title>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/css/bootstrap.min.css">
 
@@ -127,13 +127,6 @@
                 </tr>
             </thead>
             <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr>
                 <th>Træ og Tagplader</th>
                 <th></th>
                 <th></th>
@@ -145,8 +138,7 @@
                 <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
                 <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
                 <td>Stk</td>
-                <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
-                    i++;%></td>
+                <td><%out.println(LogicFacade.createList(o).get(i).getDescription()); i++;%></td>
             </tr>
             <tr>
                 <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
@@ -290,8 +282,8 @@
         <td><%out.println(LogicFacade.createList(o).get(i).getLength());%></td>
         <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
         <td>Pakke</td>
-        <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
-                    i++;%></td>
+            <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
+            i++;%></td>
     </tr>
 </tr>
 <tr>
@@ -300,7 +292,7 @@
     <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
     <td>Rulle</td>
         <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
-                    i++;%></td>
+            i++;%></td>
 </tr>
 <tr>
 <tr>
@@ -309,7 +301,7 @@
     <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
     <td>Stk</td>
         <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
-                    i++;%></td>
+            i++;%></td>
 </tr>
 </tr>
 <tr>
@@ -319,7 +311,7 @@
     <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
     <td>Stk</td>
         <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
-                i++;%></td>
+            i++;%></td>
 </tr>
 <tr>
 <tr>
@@ -328,7 +320,7 @@
     <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
     <td>Pakke</td>
         <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
-                i++;%></td>
+            i++;%></td>
 </tr>
 <tr>
     <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
@@ -336,7 +328,7 @@
     <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
     <td>Pakke</td>
         <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
-                i++;%></td>
+            i++;%></td>
 </tr>
 <tr>
 <tr>
@@ -345,7 +337,7 @@
     <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
     <td>Stk</td>
         <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
-                i++;%></td>
+            i++;%></td>
 </tr>
 <tr>
     <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
@@ -353,7 +345,7 @@
     <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
     <td>Stk</td>
         <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
-                i++;%></td>
+            i++;%></td>
 </tr>
 <tr>
     <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
@@ -361,7 +353,7 @@
     <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
     <td>Pakke</td>
         <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
-                i++;%></td>
+            i++;%></td>
 </tr>
 <tr>
     <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
@@ -369,7 +361,7 @@
     <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
     <td>Pakke</td>
         <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
-                i++;%></td>
+            i++;%></td>
 </tr>
 <tr>
     <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
@@ -377,7 +369,7 @@
     <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
     <td>Sæt</td>
         <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
-                i++;%></td>
+            i++;%></td>
 </tr>
 <tr>
     <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
@@ -385,7 +377,7 @@
     <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
     <td>Stk</td>
         <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
-                i++;%></td>
+            i++;%></td>
 </tr>
 <tr>
     <td><%out.println(LogicFacade.createList(o).get(i).getName());%></td>
@@ -393,7 +385,7 @@
     <td><%out.println(LogicFacade.createList(o).get(i).getAmount());%></td>
     <td>Stk</td>
         <td><%out.println(LogicFacade.createList(o).get(i).getDescription());
-                i++;%></td>
+            i++;%></td>
 </tr>
 </table>
 
@@ -405,6 +397,6 @@
         out.println("<br>" + "Pris: " + totalPrice * 10 + "kr.");
     }
 %>
-   <%@include file="footer.jsp" %>
+<%@include file="footer.jsp" %>
 </body>
 </html>

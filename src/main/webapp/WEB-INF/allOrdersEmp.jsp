@@ -104,7 +104,7 @@ input[type=submit]:hover {
 }
         </style>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>All Orders</title>
+        <title>Alle Ordrer</title>
         <link rel="stylesheet" type="text/css" href="main.css" />
     </head>
     <body>
@@ -127,14 +127,14 @@ input[type=submit]:hover {
           </thead>
             <tr>
                 <td><b>  </b></td>
-                <td><b> Meter </b></td>
+                <td><b> Centimiter </b></td>
                 <td><b> Centimeter </b></td>
                 <td><b>  </b></td>
                 <td><b>  </b></td>
             </tr>
             <%   //User u = (User) session.getAttribute("user");
                 for (int i = 0; i < LogicFacade.getOrders().size(); i++) {
-                    System.out.println(LogicFacade.getOrders().get(i));
+                    
             %>
 
             <tr>
@@ -150,8 +150,8 @@ input[type=submit]:hover {
                 <h2>For at markere en ordre som sendt, indtast ordrenummeret</h2>
         <form name="sent" action="FrontController" method="POST">
             <input type="hidden" name="command" value="EmpControl">
-            <input type="number" name="id" placeholder="Order id" required/>            
-            <input type="submit" value="Mark as sent"/>         
+            <input type="number" name="id" placeholder="Ordernummer" required/>            
+            <input type="submit" value="Marker som Sendt"/>         
          </form>
                   <%@include file="footer.jsp" %>
     </body>

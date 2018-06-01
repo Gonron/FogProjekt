@@ -82,14 +82,14 @@ padding-top: 30px;
             }
             </style>
          <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Customer home page</title>
+        <title>Kundeside</title>
         <link rel="stylesheet" type="text/css" href="main.css" />
     </head>
     <body>
         <%@include file ="header.jsp" %>
            <%@include file ="isValidUser.jsp" %>
            <h2>Hello <%=request.getParameter( "email" )%></h2>
-        <p>You are now logged in as a customer of our wonderful site.</p><br>   
+        <p>Du er logget ind som kunde</p><br>   
         <div id="box">
         <a href="FrontController?command=createorder" class="button" id="tag"> Start din ordre </a><br>
         <a href="FrontController?command=allOrdersCust" class="button" id="tag"> Vis alle dine ordre </a><br>

@@ -191,7 +191,7 @@
                             <h3><img src="http://shop.johannesfog.dk/gfx/foglogok.png"</img></h3>
 
 				<p class="footer-links">
-					<a href="#">Home</a>
+					<a href="#">Hjem</a>
 					·
 					<a href="FrontController?command=employees">Mød vores medarbejdere</a>
 					·
@@ -219,7 +219,7 @@
 
 				<div>
 					<i class="fa fa-envelope"></i>
-					<p><a href="mailto:support@company.com">support@company.com</a></p>
+					<p><a href="mailto:johannesfog@hotmail.dk">johannesfog@hotmail.dk</a></p>
 				</div>
 
 			</div>

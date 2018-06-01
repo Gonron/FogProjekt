@@ -37,7 +37,7 @@ p {
         </style>
         </style>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Omkring Fog</title>
         <link rel="stylesheet" type="text/css" href="main.css" />
     </head>
     <body>

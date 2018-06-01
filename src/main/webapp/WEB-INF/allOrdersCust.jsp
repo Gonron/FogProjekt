@@ -14,7 +14,7 @@
 
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Dine Ordrer</title>
         <link rel="stylesheet" type="text/css" href="main.css" />
         <style>
             body {font-family: Arial, Helvetica, sans-serif;}
@@ -142,8 +142,6 @@ input[type=submit]:hover {
         
         
         <table class="zui-table table-hover">
-           
-            
             <thead>
             <tr>  
                 <th> Ordernummer </th>
@@ -180,7 +178,7 @@ input[type=submit]:hover {
         <form name="materialListOrder" action="FrontController" method="POST">
             <input type="hidden" name="command" value="materialListOrder">
             <input type="number" name="id" placeholder="Order id" required/>            
-            <input type="submit" value="List of materials"/>           
+            <input type="submit" value="Se Styklisten"/>           
         </form>   
   <%@include file="footer.jsp" %>
     </body>
