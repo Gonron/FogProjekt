@@ -15,5 +15,6 @@ import java.util.logging.Logger;
 public class Conf {
     public static final boolean PRODUCTION = false;
     public static final String LOGFILEPATH = "/var/log/tomcat8/demoApp.log";
-    public static final Logger MYLOGGER = Logger.getLogger("");
+    //her tilføjet vi navnet på klassen som navnet til loggeren
+    public static final Logger MYLOGGER = Logger.getLogger(Conf.class.getName());
 }
