@@ -103,7 +103,7 @@ public class DataMapper {
                 int Length = rs.getInt("Length");
                 boolean status = rs.getBoolean("status");
                 boolean shed = rs.getBoolean("shed");
-                Order order = new Order(id, Heigth, Width, Length, shed, status, false);
+                Order order = new Order(id, Heigth, Width, Length, shed, false, status);
                 orders.add(order);
             }
             return orders;
@@ -137,7 +137,7 @@ public class DataMapper {
                 int length = rs.getInt("Length");
                 boolean shed = rs.getBoolean("shed");
                 boolean status = rs.getBoolean("status");
-                Order order = new Order(orderId, heigth, width, length, shed, status, false);
+                Order order = new Order(orderId, heigth, width, length, shed, false, status);
                 orders.add(order);
             }
             return orders;
@@ -218,7 +218,7 @@ public class DataMapper {
                 double length = rs.getInt("Length");
                 boolean status = rs.getBoolean("status");
                 boolean shed = rs.getBoolean("shed");
-                Order order = new Order(heigth, width, length, shed, status, false);
+                Order order = new Order(heigth, width, length, shed, false, status);
                 return order;
             }
         } catch (SQLException ex) {

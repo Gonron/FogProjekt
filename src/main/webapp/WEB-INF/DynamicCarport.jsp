@@ -11,7 +11,7 @@
     <head>
         <link rel="stylesheet" type="text/css" href="main.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Fog - Carport grundtegning.</title>
+        <title>Fog - Carport grundtegning</title>
     </head>
     <body>
         <%@include file ="header.jsp" %>
@@ -53,7 +53,7 @@
     
     
     
-    <text x="<%= Math.abs(wid+25) %>" y="<%= Math.abs(len/2) %>" fill="Red"> LÃ¦ngde: <%= len %> cm </text>
+    <text x="<%= Math.abs(wid+25) %>" y="<%= Math.abs(len/2) %>" fill="Red"> Længde: <%= len %> cm </text>
     <text x="<%= Math.abs((wid/2)-25) %>" y="<%= Math.abs(len+80) %>" fill="Red"> Bredde: <%= wid %> cm </text>
     
     
@@ -125,6 +125,7 @@
         <input type="hidden" name="shed" value="<%= shed %>">
         <input type="submit" value="Side tegning">
     </form>
-    
+          <%@include file="footer.jsp" %>
+</body>
 </html>
 

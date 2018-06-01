@@ -37,7 +37,7 @@ p {
         </style>
         </style>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Omkring Fog</title>
         <link rel="stylesheet" type="text/css" href="main.css" />
     </head>
     <body>
@@ -50,5 +50,7 @@ p {
         <p>Byggecentrene har alt til hjemmet inden for bl.a. værktøj, maling, bad, beslag, el, lamper og pejseartikler. Fog kan hjælpe dig med valget af f.eks. en ny græsslåmaskine. Der er power til forskel, men det handler om at vælge værktøjet til lige præcis dit behov. Ordentlige haveredskaber og -møbler kan holde i rigtig mange år. Hos Fog får du kvalitet. Her er der forskellige slags havemøbler at vælge i mellem, parasoller der bare holder, terrassevarmere og meget andet, der bidrager til det hyggelige udeliv. Få kvalificeret rådgivning i Fog, så du nemt kan vælge.</p>
        <p>Fog på Nørgaardsvej i Lyngby er helt speciel. Det er vores Bolig &amp; Designhus. Her finder du udover de traditionelle byggecenter-varer også lækkert design og idéer til boligen indenfor køkken- og badudstyr, farve og tapeter, garderober, stort udvalg af havemøbler og Nordens største lampeafdeling med alle de kendte designlamper.</p>
           </div>
+          
+            <%@include file="footer.jsp" %>
           </body>
 </html>

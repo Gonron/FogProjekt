@@ -11,8 +11,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Opdater Materialer</title>
         <style>
     .zui-table {
     border: solid 1px #DDEEEE;
@@ -110,15 +111,16 @@ input[type=submit]:hover {
         <h2> Herunder ses en liste af alle materialer</h2>
         
          
-            <table class="zui-table">
+          <table class="zui-table table-hover">
+         
          <thead>
          <tr>
-             <th> id</th> 
-            <th>Name</th>
-            <th>Length</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Material Group</th>
+            <th>Id</th> 
+            <th>Beskrivelse</th>
+            <th>Længde</th>
+            <th>Beskrivelse</th>
+            <th>Pris</th>
+            <th>Materiale Gruppe</th>
         </tr>
         </thead>
         <tbody>
@@ -169,15 +171,13 @@ input[type=submit]:hover {
             <form name="materialListOrder" action="FrontController" method="POST">
             <input type="hidden" name="command" value="changematerialsdo"> Indtast idnummeret på det materiale du vil opdatere
             <input type="number" name="id" placeholder="ID" min="0"> 
-            Insert name 
-            <input type="text" name="name" placeholder="Name" size="20"> Insert length of product
-            <input type="number" name="length" placeholder="Length" min="0"> insert the price of the product
-            <input type="number" name="price" placeholder="Price" min="0"> insert the Material Group Id of the product
-            <input type="number" name="materialgroup" placeholder="Material Group" min="0">
-            Insert the description of the product
-            <textarea rows="4" cols="50" name="desc" placeholder="insert the description of the product...."></textarea>
-            <input type="submit" value="Submit">
+            <input type="text" name="name" placeholder="Beskrivelse" size="20"> 
+            <input type="number" name="length" placeholder="Længde" min="0"> 
+            <input type="number" name="price" placeholder="Pris" min="0"> 
+            <input type="number" name="materialgroup" placeholder="Materiale Grupoe" min="0">
+            <textarea rows="4" cols="50" name="desc" placeholder="Beskrivelsen af Produktet..."></textarea>
+            <input type="submit" value="OK">
             </form>
-            
+              <%@include file="footer.jsp" %>
     </body>
 </html>

@@ -191,9 +191,9 @@
                             <h3><img src="http://shop.johannesfog.dk/gfx/foglogok.png"</img></h3>
 
 				<p class="footer-links">
-					<a href="#">Home</a>
+					<a href="#">Hjem</a>
 					·
-					<a href="#">Mød vores medarbejdere</a>
+					<a href="FrontController?command=employees">Mød vores medarbejdere</a>
 					·
 					<a href="#">Service</a>
 					·
@@ -202,14 +202,14 @@
 					
 				</p>
 
-				<p class="footer-company-name">Company Name &copy; 2015</p>
+				<p class="footer-company-name">Johannes Fog &copy; 2018</p>
 			</div>
 
 			<div class="footer-center">
 
 				<div>
 					<i class="fa fa-map-marker"></i>
-					<p><span>34 Lyngbyvej</span> Lyngby, Danmark</p>
+					<p><span>34 Lyshøjvej 14</span> 3650 Ølstykke</p>
 				</div>
 
 				<div>
@@ -219,7 +219,7 @@
 
 				<div>
 					<i class="fa fa-envelope"></i>
-					<p><a href="mailto:support@company.com">support@company.com</a></p>
+					<p><a href="mailto:johannesfog@hotmail.dk">johannesfog@hotmail.dk</a></p>
 				</div>
 
 			</div>

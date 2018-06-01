@@ -50,7 +50,7 @@ button:hover {
 }
         </style>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Hvorfor Vælge Os</title>
     </head>
     <body>
          <%@include file ="header.jsp" %>
@@ -66,5 +66,6 @@ button:hover {
         
         <a href="FrontController?command=register">Opret dig her</a>
         </div>
+            <%@include file="footer.jsp" %>
     </body>
 </html>

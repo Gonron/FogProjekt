@@ -13,7 +13,7 @@
     <head>
         <link rel="stylesheet" type="text/css" href="main.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Kvittering</title>
     </head>
     <body>
         <%@include file ="header.jsp" %>
@@ -23,5 +23,6 @@
         <a href="FrontController?command=allOrdersCust"> Vis alle dine ordre </a><br>
         <a href="FrontController?command=contact"> Kontakt os </a><br>
         <a href="FrontController?command=DynamicCarport"> Se carport </a>
-       </body>
+       <%@include file="footer.jsp" %>   
+    </body>
 </html>
