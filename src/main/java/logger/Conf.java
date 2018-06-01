@@ -13,7 +13,7 @@ import java.util.logging.Logger;
  */
  
 public class Conf {
-    public static final boolean PRODUCTION = false;
+    public static final boolean PRODUCTION = true;
     public static final String LOGFILEPATH = "/var/log/tomcat8/demoApp.log";
     public static final Logger MYLOGGER = Logger.getLogger("");
 }
