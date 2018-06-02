@@ -23,11 +23,11 @@ public class Login extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
         
-        Passwordtesting pt = new Passwordtesting();
-        
-        
-        
 
+        
+        Passwordtesting passwordt = new Passwordtesting();
+        
+        
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         
@@ -35,7 +35,6 @@ public class Login extends Command {
             byte[] salt = LogicFacade.getSalt(email, password);
       
 
-        Passwordtesting passwordt = new Passwordtesting();
         
         byte[] attemptedPassword = passwordt.getEncryptedPassword(password, salt);
         
@@ -54,14 +53,11 @@ public class Login extends Command {
      return user.getRole() + "page";
     
         }else{
-            //her skal vi håndtere, hvis brugeren ikke kan komme ind, måske en fejlmeddelse, jeg erikke helt sikker på hvordan vi får det løst på nuværende tid.,
+            String message ="something went wrong";
+           throw new LoginSampleException(message);
         }
         
 }       catch (SQLException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InvalidKeySpecException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
