@@ -188,7 +188,7 @@
 
                 <% String error = (String) request.getAttribute("error");
                     if (error != null) {%>
-                <p>Error!!</p>
+    
                 <p><%= error%>
                     <% }
                     %>
