@@ -9,18 +9,27 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <style>
+           
+            </style>
         <link rel="stylesheet" type="text/css" href="main.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Fog - Carport sidetegning.</title>
     </head>
     <body>
+        <script>
+         const hide = e => e.style.display = 'none'
+        const show = e => e.style.display = ''
+        const toggleHide = function(selector) {
+        [...document.querySelectorAll(selector)].forEach(e => e.style.display ? show(e) : hide(e))
+}        
+         </script>
         <%@include file ="header.jsp" %>
         <%@include file="isValidUser.jsp" %>
       <% Order o = (Order) session.getAttribute("order"); %>
         <% double len = o.getLength(); %>
         <% double wid = o.getWidth();%>
         <% boolean shed = o.getShed(); %>
-    </body>
     <SVG width="<%= Math.abs(wid * 2)%>" height="<%= Math.abs(len + 100)%>">
 
     <rect x="0" y="0" height="25" width="<%= Math.abs(wid / 2)%>"
@@ -72,7 +81,7 @@
         <path d="M0,0 L8,4 L0,8 L0,0" style="fill: #c40d0d;" />
     </marker>
     </defs>
-    <line x1="<%= Math.abs(wid + 20)%>"  y1="25" x2="<%= Math.abs(wid + 20)%>" y2="235" 
+    <line class="segments" x1="<%= Math.abs(wid + 20)%>"  y1="25" x2="<%= Math.abs(wid + 20)%>" y2="235" 
           style="stroke:#c40d0d;
           marker-start: url(#beginArrow);
           marker-end: url(#endArrow);"/>
@@ -90,19 +99,19 @@
         <path d="M0,0 L8,4 L0,8 L0,0" style="fill: #c40d0d;" />
     </marker>
     </defs>
-    <line x1="<%= Math.abs(wid + 20)%>"  y1="0" x2="<%= Math.abs(wid + 20)%>" y2="25" 
+    <line class="segments" x1="<%= Math.abs(wid + 20)%>"  y1="0" x2="<%= Math.abs(wid + 20)%>" y2="25" 
           style="stroke:#c40d0d;
           marker-start: url(#beginArrow);
           marker-end: url(#endArrow);"/>
 
     <% if(shed){ %>
-
-    <rect x="<%= Math.abs(wid-200) %>" y="25" height="210" width="200"
+    
+    <rect class="frame" x="<%= Math.abs(wid-200) %>" y="25" height="210" width="200"
         style="stroke:#000000; stroke-width: 3; fill: none"/>
     
-    <rect x="<%= Math.abs(wid-200) %>" y="25" height="210" width="10"
+    <rect class="frame" x="<%= Math.abs(wid-200) %>" y="25" height="210" width="10"
         style="stroke:#000000; stroke-width: 1; fill: #000000"/>
-    <rect x="<%= Math.abs(wid-10) %>" y="25" height="210" width="10"
+    <rect class="frame" x="<%= Math.abs(wid-10) %>" y="25" height="210" width="10"
         style="stroke:#000000; stroke-width: 1; fill: #000000"/>
     
     <line x1="<%= Math.abs(wid-200) %>"  y1="250" x2="<%= wid%>" y2="250" 
@@ -116,12 +125,20 @@
     
     </SVG>
 
+    
+    <p>Click on the buttons to remove some parts of the shed</p>
+   
+    
+  <button onclick="toggleHide('.segments')">Toggle bars</button>
+  <button onclick="toggleHide('.frame')">Toggle frame</button>
+
     <form action="FrontController?command=DynamicCarport" method="POST">        
         <input type="hidden" name="length" value="<%= len%>">
         <input type="hidden" name="width" value="<%= wid%>">
         <input type="hidden" name="shed" value="<%= shed %>">
         <input type="submit" value="Grundtegning">
     </form>
+
 
     <form action="FrontController?command=allOrdersCust" method="POST">
         <input type="submit" value="Se alle dine ordrer">
