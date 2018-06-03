@@ -188,14 +188,19 @@ header{
                 
                 
 
-
-                <% String error = (String) request.getAttribute("error");
-                    if (error != null) {%>
-                <p>Error!!</p>
-                <p><%= error%>
-                    <% }
-                    %>
-                </p>
+<%
+    if(null!=request.getAttribute("errorMessage"))
+    {
+        out.println(request.getAttribute("errorMessage"));
+        out.println("<p> Error!! </p>");
+        //ved godt det ikke er super smart at printe paragraph tags med ud
+        
+    
+    }
+    
+%>
+                
+                
 
                 <%@include file="WEB-INF/footer.jsp" %>
                       
