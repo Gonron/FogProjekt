@@ -2,6 +2,7 @@ package FunctionLayer;
 
 import DBAccess.DataMapper;
 import static FunctionLayer.Calculator.fillAmount;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -29,9 +30,9 @@ public class LogicFacade {
 //        return user;
 //    }
 
-    public static User createUser(String email, String password, String phonenumber, String postalCode, String address) throws LoginSampleException {
+    public static User createUser(String email, String password, String phonenumber, String postalCode, String address, byte[] salt) throws LoginSampleException, NoSuchAlgorithmException {
 
-        User user = new User(email, password, phonenumber, postalCode, address, "customer");
+        User user = new User(email, password, phonenumber, postalCode, address, "customer", salt);
         DataMapper.createUser(user);
         return user;
     }

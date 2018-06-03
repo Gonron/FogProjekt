@@ -3,7 +3,9 @@ package DBAccess;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.Order;
 import FunctionLayer.OrderLine;
+import FunctionLayer.PasswordEncryptionService;
 import FunctionLayer.User;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,7 +17,8 @@ import java.util.logging.Level;
 import logger.Conf;
 
 /**
- * The purpose of DataMapper is to extract data and insert data into the database
+ * The purpose of DataMapper is to extract data and insert data into the
+ * database
  *
  * @author kasper
  */
@@ -27,10 +30,13 @@ public class DataMapper {
      * @param user
      * @throws LoginSampleException
      */
-    public static void createUser(User user) throws LoginSampleException {
+    public static void createUser(User user) throws LoginSampleException, NoSuchAlgorithmException //vi skal lige have ne bedre errorhandeling her
+    {
         try {
+            PasswordEncryptionService PE = new PasswordEncryptionService();
+            byte[] salt = PE.generateSalt();
             Connection con = Connector.connection();
-            String SQL = "INSERT INTO Users (email, password, phone, post, adress, role) VALUES (?, ?, ?, ?, ?, ?)";
+            String SQL = "INSERT INTO Users (email, password, phone, post, adress, role, salt) VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, user.getEmail());
             ps.setString(2, user.getPassword());
@@ -38,6 +44,7 @@ public class DataMapper {
             ps.setString(4, user.getPostalCode());
             ps.setString(5, user.getAddress());
             ps.setString(6, user.getRole());
+            ps.setBytes(7, salt);
             ps.executeUpdate();
             ResultSet ids = ps.getGeneratedKeys();
             ids.next();
@@ -53,7 +60,8 @@ public class DataMapper {
      *
      * @param email
      * @param password
-     * @return this method returns the user with the corresponding username and password
+     * @return this method returns the user with the corresponding username and
+     * password
      * @throws LoginSampleException
      */
     public static User login(String email, String password) throws LoginSampleException {
@@ -230,7 +238,8 @@ public class DataMapper {
     }
 
     /**
-     * This method should be used to update the materials in the database but sadly doesn't work yet
+     * This method should be used to update the materials in the database but
+     * sadly doesn't work yet
      *
      * @param name
      * @param desc
@@ -259,7 +268,8 @@ public class DataMapper {
     }
 
     /**
-     * This method creates an order and saves it in the database and the creates orderlines and saves them aswell
+     * This method creates an order and saves it in the database and the creates
+     * orderlines and saves them aswell
      *
      * @param order
      * @param user
@@ -371,45 +381,38 @@ public class DataMapper {
         }
         return isValidUser;
     }
-    
-    
-    public static  byte[] getSaltMethod(String username, String password) throws SQLException, LoginSampleException{
-        
-        try{
-            
-            Connection con = Connector.connection();
-            
-            
-            String SQL = "select * from Users.Salt where email = ?, password = ?";
-            
-            
-            PreparedStatement statement = con.prepareStatement(SQL);
-             statement.setString(1, username);
-            statement.setString(2, password);
-            
-             ResultSet set = statement.executeQuery();
-             
-             while(set.next()){
-             
-                 Blob blob = set.getBlob("salt");
-                 int blobLength = (int) blob.length();  
-                byte[] blobAsBytes = blob.getBytes(1, blobLength);
-                //release the blob and free up memory. (since JDBC 4.0)
-                   /* jeg er i tivil om denne skal være her*/blob.free();
-                return blobAsBytes;
 
-            
-             
-             }
-            
-        }catch(SQLException ex){
+    public static byte[] getSaltMethod(String username, String password) throws SQLException, LoginSampleException {
+
+        try {
+
+            Connection con = Connector.connection();
+
+            String SQL = "SELECT salt FROMsers WHERE email = ?, password = ?";
+
+            PreparedStatement statement = con.prepareStatement(SQL);
+            statement.setString(1, username);
+            statement.setString(2, password);
+
+            ResultSet set = statement.executeQuery();
+
+            while (set.next()) {
+
+                // vi skal ikke have en blolb her alligevel
+                byte[] salt = set.getBytes("salt");
+                //release the blob and free up memory. (since JDBC 4.0)
+                /* jeg er i tivil om denne skal være her*/
+
+                return salt;
+
+            }
+
+        } catch (SQLException ex) {
             Conf.MYLOGGER.log(Level.SEVERE, null, ex);
             throw new LoginSampleException(ex.getSQLState());
         }
         return null;
-        
-      
- 
+
     }
-    
+
 }
