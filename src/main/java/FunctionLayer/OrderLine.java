@@ -10,7 +10,7 @@ package FunctionLayer;
  * @author morten
  */
 
-public class OrderLine {
+public class OrderLine{
 
     private int materialId;
     private String name;
@@ -30,6 +30,11 @@ public class OrderLine {
         this.materialgroup = materialgroup;
     }
 
+   
+
+   
+
+  
     public int getMaterialId() {
         return materialId;
     }

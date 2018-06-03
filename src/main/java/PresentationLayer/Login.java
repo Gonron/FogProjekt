@@ -36,15 +36,15 @@ public class Login extends Command {
         String password = request.getParameter("password");
         
         
-        //her henter vi salten fra brugeren, til at validere brugeren. 
-//        try {
-//            byte[] salt = LogicFacade.getSalt(email, password);
-//      
-//
-//        
-//        byte[] attemptedPassword = passwordService.getEncryptedPassword(password, salt);
-//        
-//        if(!passwordService.authenticate(password, attemptedPassword, salt)){
+      //  her henter vi salten fra brugeren, til at validere brugeren. 
+        try {
+            byte[] salt = LogicFacade.getSalt(email, password);
+      
+
+        
+        byte[] attemptedPassword = passwordService.getEncryptedPassword(password, salt);
+        
+        if(!passwordService.authenticate(password, attemptedPassword, salt)){
   
             
             User user = LogicFacade.login(email, password);
@@ -55,38 +55,38 @@ public class Login extends Command {
             
             return user.getRole() + "page";
             
-//        }else{
-//            
-//            
-//         //   vidste ikke helt hvordan man kastede den her exception
-//       //     men her behandler vi, hvis brugeren ikke bliver authenticated'
-//           
-//   //Vi logger salten og det hashede password til loggeren
-//        }
-//        
-//}       catch (SQLException | NoSuchAlgorithmException | InvalidKeySpecException ex) {
-//            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-//              
-//            String errorMessage ="We have an internal problem, but we are working as hard as possible, to solve it.";
-//             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-//            request.setAttribute("errorMessage", errorMessage );
-//            try {
-//                request.getRequestDispatcher("/index.jsp").forward(request, response);
-//            } catch (ServletException | IOException ex1) {
-//                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex1);
-//            }
-//            // her bliver der kun kastet en error, hvis det er vores valideringsmetoder, der ikke virker... // tror jeg 
-//        } catch (LoginSampleException ex) {
-//              
-//            String errorMessage ="The retrived password or username did not match, try again later.";
-//             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-//            request.setAttribute("errorMessage", errorMessage );
-//            try {
-//                request.getRequestDispatcher("/index.jsp").forward(request, response);
-//            } catch (ServletException | IOException ex1) {
-//                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex1);
-//            }
-//        }
-//        return null;
+        }else{
+            
+            
+         //   vidste ikke helt hvordan man kastede den her exception
+       //     men her behandler vi, hvis brugeren ikke bliver authenticated'
+           
+   //Vi logger salten og det hashede password til loggeren
+        }
+        
+}       catch (SQLException | NoSuchAlgorithmException | InvalidKeySpecException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+              
+            String errorMessage ="We have an internal problem, but we are working as hard as possible, to solve it.";
+             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            request.setAttribute("errorMessage", errorMessage );
+            try {
+                request.getRequestDispatcher("/index.jsp").forward(request, response);
+            } catch (ServletException | IOException ex1) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+            // her bliver der kun kastet en error, hvis det er vores valideringsmetoder, der ikke virker... // tror jeg 
+        } catch (LoginSampleException ex) {
+              
+            String errorMessage ="The retrived password or username did not match, try again later.";
+             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            request.setAttribute("errorMessage", errorMessage );
+            try {
+                request.getRequestDispatcher("/index.jsp").forward(request, response);
+            } catch (ServletException | IOException ex1) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+        }
+        return null;
 }
 }
