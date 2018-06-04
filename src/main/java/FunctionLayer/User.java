@@ -27,10 +27,11 @@ public class User {
         this.postalCode = postalCode;
         this.address = address;
         this.role = role;
+        this.salt = salt;
     }
     
     //constructor without id, which is used to create the user object, where the id is genereated in the MySQL database
-      public User(String email, String password, String phonenumber, String postalCode, String address, String role, byte[] salt) {
+      public User(String email, String password, String phonenumber, String postalCode, String address, String role) {
         this.email = email;
         this.password = password;
         this.phone = phonenumber;

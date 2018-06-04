@@ -29,7 +29,7 @@ public class Register extends Command {
             String password2 = request.getParameter("password2");
             
             if (password1.equals(password2)) {
-                User user = LogicFacade.createUser(email, password2, phonenumber, postalCode, address, salt);
+                User user = LogicFacade.createUser(email, password2, phonenumber, postalCode, address);
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
                 session.setAttribute("role", user.getRole());

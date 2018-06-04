@@ -30,9 +30,9 @@ public class LogicFacade {
 //        return user;
 //    }
 
-    public static User createUser(String email, String password, String phonenumber, String postalCode, String address, byte[] salt) throws LoginSampleException, NoSuchAlgorithmException {
+    public static User createUser(String email, String password, String phonenumber, String postalCode, String address) throws LoginSampleException, NoSuchAlgorithmException {
 
-        User user = new User(email, password, phonenumber, postalCode, address, "customer", salt);
+        User user = new User(email, password, phonenumber, postalCode, address, "customer");
         DataMapper.createUser(user);
         return user;
     }

@@ -29,15 +29,15 @@ public class Login extends Command {
         
 
         
-        PasswordEncryptionService passwordService = new PasswordEncryptionService();
+//        PasswordEncryptionService passwordService = new PasswordEncryptionService();
         
         
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         
         
-      //  her henter vi salten fra brugeren, til at validere brugeren. 
-//        try {
+        //her henter vi salten fra brugeren, til at validere brugeren. 
+    try {
 //            byte[] salt = LogicFacade.getSalt(email, password);
 //      
 //
@@ -46,8 +46,8 @@ public class Login extends Command {
 //        
 //        if(passwordService.authenticate(password, attemptedPassword, salt)){
 //  
-//            
-            User user = LogicFacade.login(email, password);
+            User user = null;
+            user = LogicFacade.login(email, password);
             
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
@@ -56,9 +56,9 @@ public class Login extends Command {
             return user.getRole() + "page";
             
 //        }else{
-//            
-//       
-//        //Vi logger salten og det hashede password til loggeren
+            
+       
+        //Vi logger salten og det hashede password til loggeren
 //        
 //        }
 //        
@@ -74,17 +74,22 @@ public class Login extends Command {
 //                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex1);
 //            }
 //            // her bliver der kun kastet en error, hvis det er vores valideringsmetoder, der ikke virker... // tror jeg 
-//        } catch (LoginSampleException ex) {
-//              
-//            String errorMessage ="The retrived password or username did not match, please try again.";
-//             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-//            request.setAttribute("errorMessage", errorMessage );
-//            try {
-//                request.getRequestDispatcher("/index.jsp").forward(request, response);
-//            } catch (ServletException | IOException ex1) {
-//                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex1);
-//            }
-//        }
-//        return null;
+        } catch (LoginSampleException ex) {
+             
+            
+
+        String errorMessage ="The retrived password or username did not match, please try again.";
+             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            request.setAttribute("errorMessage", errorMessage );
+            try {
+                request.getRequestDispatcher("/index.jsp").forward(request, response);
+            } catch (ServletException | IOException ex1) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+        return null;
+        }
 }
 }
+    
+
+

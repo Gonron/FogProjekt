@@ -33,8 +33,6 @@ public class DataMapper {
     public static void createUser(User user) throws LoginSampleException, NoSuchAlgorithmException //vi skal lige have ne bedre errorhandeling her
     {
         try {
-            PasswordEncryptionService PE = new PasswordEncryptionService();
-            byte[] salt = PE.generateSalt();
             Connection con = Connector.connection();
             String SQL = "INSERT INTO Users (email, password, phone, post, adress, role, salt) VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
@@ -44,7 +42,7 @@ public class DataMapper {
             ps.setString(4, user.getPostalCode());
             ps.setString(5, user.getAddress());
             ps.setString(6, user.getRole());
-            ps.setBytes(7, salt);
+            ps.setBytes(7, user.getSalt());
             ps.executeUpdate();
             ResultSet ids = ps.getGeneratedKeys();
             ids.next();
@@ -68,7 +66,7 @@ public class DataMapper {
         try {
             // denne metode skal rettes så ledes, at vi tager et salt objekt udfra databasen og kan bruge det til at verificere brugeren
             Connection con = Connector.connection();
-            String SQL = "SELECT id, phone, post, adress, role FROM Users "
+            String SQL = "SELECT id, phone, post, adress, role, salt FROM Users "
                     + "WHERE email=? AND password=?";
             PreparedStatement ps = con.prepareStatement(SQL);
             ps.setString(1, email);
@@ -80,7 +78,8 @@ public class DataMapper {
                 String phonenumber = rs.getString("phone");
                 String postalCode = rs.getString("post");
                 String address = rs.getString("adress");
-                User user = new User(id, email, password, phonenumber, postalCode, address, role);
+                byte[] salt = rs.getBytes("salt");
+                User user = new User(id, email, password, phonenumber, postalCode, address, role, salt);
                 user.setId(id);
                 return user;
             } else {
@@ -388,7 +387,7 @@ public class DataMapper {
 
             Connection con = Connector.connection();
 
-            String SQL = "SELECT salt FROMsers WHERE email = ?, password = ?";
+            String SQL = "SELECT salt FROM users WHERE email = ?, password = ?";
 
             PreparedStatement statement = con.prepareStatement(SQL);
             statement.setString(1, username);
@@ -398,18 +397,16 @@ public class DataMapper {
 
             while (set.next()) {
 
-                // vi skal ikke have en blolb her alligevel
                 byte[] salt = set.getBytes("salt");
-                //release the blob and free up memory. (since JDBC 4.0)
+                
                 /* jeg er i tivil om denne skal være her*/
-
+                
                 return salt;
-
             }
 
         } catch (SQLException ex) {
             Conf.MYLOGGER.log(Level.SEVERE, null, ex);
-            throw new LoginSampleException(ex.getSQLState());
+            throw new LoginSampleException(ex.getMessage());
         }
         return null;
 
