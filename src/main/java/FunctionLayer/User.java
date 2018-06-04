@@ -31,6 +31,7 @@ public class User {
     }
     
     //constructor without id, which is used to create the user object, where the id is genereated in the MySQL database
+
       public User(String email, byte[] password, String phonenumber, String postalCode, String address, String role, byte[] salt) {
         this.email = email;
         this.password = password;
@@ -39,6 +40,21 @@ public class User {
         this.address = address;
         this.role = role;
         this.salt = salt;
+    }
+     /**
+      * Used to show Users to employees
+      * @param id
+      * @param phone
+      * @param email
+      * @param postalCode
+      * @param address 
+      */
+    public User(int id, String phone, String email, String postalCode, String address) {
+        this.id = id;
+        this.phone = phone;
+        this.email = email;
+        this.postalCode = postalCode;
+        this.address = address;
     }
 
     public User(int id, String phone, String email, String address, String postalCode, String role, byte[] salt) {
@@ -120,6 +136,11 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Kunde:" + "id=" + id + ", phone=" + phone + ", email=" + email + ", postalCode=" + postalCode + ", address=" + address;
     }
 
 }

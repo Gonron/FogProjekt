@@ -31,6 +31,7 @@ public class Register extends Command {
             
             byte[] EncryptedPW =PE.getEncryptedPassword(password2, salt);
             if (password1.equals(password2)) {
+
                 User user = LogicFacade.createUser(email, EncryptedPW, phonenumber, postalCode, address, salt);
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);

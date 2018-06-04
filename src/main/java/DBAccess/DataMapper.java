@@ -383,11 +383,13 @@ public class DataMapper {
 
     public static byte[] getSaltMethod(String username) throws SQLException, LoginSampleException {
 
+
         try {
 
             Connection con = Connector.connection();
 
             String SQL = "SELECT salt FROM Users WHERE email = ?";
+
 
             PreparedStatement statement = con.prepareStatement(SQL);
             statement.setString(1, username);
@@ -398,13 +400,13 @@ public class DataMapper {
             while (set.next()) {
 
                 byte[] salt = set.getBytes("salt");
-                
+
                 /* jeg er i tivil om denne skal være her*/
-                
                 return salt;
             }
 
         } catch (SQLException ex) {
+
             Conf.MYLOGGER.log(Level.SEVERE, null, ex);
             throw new LoginSampleException(ex.getMessage());
         }
@@ -412,4 +414,25 @@ public class DataMapper {
 
     }
 
+    public static User showUser(int id) throws LoginSampleException {
+        try {
+            Connection con = Connector.connection();
+            String SQL = "SELECT * FROM Users WHERE id=?";
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                String email = rs.getString("email");
+                String phone= rs.getString("phone");
+                String post = rs.getString("post");                
+                String adress = rs.getString("adress");
+                User u = new User(id, phone, email, post, adress);
+                return u;
+            }
+        } catch (SQLException ex) {
+            Conf.MYLOGGER.log(Level.SEVERE, null, ex);
+            throw new LoginSampleException(ex.getMessage());
+        }
+        return null;
+    }
 }

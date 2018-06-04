@@ -15,6 +15,7 @@ public class LogicFacade {
 
     
     //jeg ved ikke hvorfor den kaster SQL-exception her, det skal vi lige kigge på.
+
     public static byte[] getSalt(String email) throws SQLException, LoginSampleException{
         return DataMapper.getSaltMethod(email);
     }
@@ -30,8 +31,8 @@ public class LogicFacade {
 //        return user;
 //    }
 
-    public static User createUser(String email, byte[] password, String phonenumber, String postalCode, String address, byte[] salt) throws LoginSampleException, NoSuchAlgorithmException {
 
+    public static User createUser(String email, byte[] password, String phonenumber, String postalCode, String address, byte[] salt) throws LoginSampleException, NoSuchAlgorithmException {
         User user = new User(email, password, phonenumber, postalCode, address, "customer", salt);
         DataMapper.createUser(user);
         return user;
@@ -75,5 +76,9 @@ public class LogicFacade {
     public static boolean validateUser(String email, String password) throws LoginSampleException{
         return DataMapper.validateUser(email, password);
         
+    }
+    public static User showUser(int id) throws LoginSampleException{        
+        User user = DataMapper.showUser(id);
+        return user;
     }
 }

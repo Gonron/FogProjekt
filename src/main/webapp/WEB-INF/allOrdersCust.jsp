@@ -180,8 +180,13 @@ input[type=submit]:hover {
         <form name="materialListOrder" action="FrontController" method="POST">
             <input type="hidden" name="command" value="materialListOrder">
             <input type="number" name="id" placeholder="Order id" required/>            
-            <input type="submit" value="List of materials"/>           
-        </form>   
+            <input type="submit" value="Se stykliste"/>           
+        </form>         
+        <form name="DynamicCarport" action="FrontController" method="POST">
+            <input type="hidden" name="command" value="DynamicCarport">
+            <input type="number" name="idt" placeholder="Order id" required/>            
+            <input type="submit" value="Se tegning af carport"/>           
+        </form>        
   <%@include file="footer.jsp" %>
     </body>
 </html>
