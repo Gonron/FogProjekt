@@ -2,6 +2,7 @@ package PresentationLayer;
 
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
+import FunctionLayer.PasswordEncryptionService;
 import FunctionLayer.User;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -15,21 +16,31 @@ public class Register extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-        String email = request.getParameter("email");       
-        String phonenumber = request.getParameter("phonenr");
-        String postalCode = request.getParameter("postnr");
-        String address = request.getParameter("adress");
-        String password1 = request.getParameter("password1");
-        String password2 = request.getParameter("password2");
-        if (password1.equals(password2)) {
-            User user = LogicFacade.createUser(email, password2, phonenumber, postalCode, address);
-            HttpSession session = request.getSession();
-            session.setAttribute("user", user);
-            session.setAttribute("role", user.getRole());
-            return user.getRole() + "page";
-        } else {
-            throw new LoginSampleException("the two passwords did not match");
+        try {
+            PasswordEncryptionService PE = new PasswordEncryptionService();
+            
+            byte[] salt =PE.generateSalt();
+            
+            String email = request.getParameter("email");
+            String phonenumber = request.getParameter("phonenr");
+            String postalCode = request.getParameter("postnr");
+            String address = request.getParameter("adress");
+            String password1 = request.getParameter("password1");
+            String password2 = request.getParameter("password2");
+            
+            if (password1.equals(password2)) {
+                User user = LogicFacade.createUser(email, password2, phonenumber, postalCode, address, salt);
+                HttpSession session = request.getSession();
+                session.setAttribute("user", user);
+                session.setAttribute("role", user.getRole());
+                return user.getRole() + "page";
+            } else {
+                throw new LoginSampleException("the two passwords did not match");
+            }
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return null;
     }
 
 }

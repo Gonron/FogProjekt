@@ -16,9 +16,10 @@ public class User {
     private String role;
     private String postalCode;
     private String address;
+    private byte[] salt;
     
     //the "real" constructor which has all the parameters nedded to create the object
-    public User(int id, String email, String password, String phonenumber, String postalCode, String address, String role) {
+    public User(int id, String email, String password, String phonenumber, String postalCode, String address, String role, byte[] salt) {
         this.id = id;        
         this.email = email;
         this.password = password;
@@ -26,21 +27,46 @@ public class User {
         this.postalCode = postalCode;
         this.address = address;
         this.role = role;
+        this.salt = salt;
     }
     
     //constructor without id, which is used to create the user object, where the id is genereated in the MySQL database
-      public User(String email, String password, String phonenumber, String postalCode, String address, String role) {
+      public User(String email, String password, String phonenumber, String postalCode, String address, String role, byte[] salt) {
         this.email = email;
         this.password = password;
         this.phone = phonenumber;
         this.postalCode = postalCode;
         this.address = address;
         this.role = role;
+        this.salt = salt;
+    }
+     /**
+      * Used to show Users to employees
+      * @param id
+      * @param phone
+      * @param email
+      * @param postalCode
+      * @param address 
+      */
+    public User(int id, String phone, String email, String postalCode, String address) {
+        this.id = id;
+        this.phone = phone;
+        this.email = email;
+        this.postalCode = postalCode;
+        this.address = address;
     }
 
 
     public String getPhonenumber() {
         return phone;
+    }
+
+    public byte[] getSalt() {
+        return salt;
+    }
+
+    public void setSalt(byte[] salt) {
+        this.salt = salt;
     }
 
     public void setPhonenumber(String phonenumber) {
@@ -98,6 +124,11 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Kunde:" + "id=" + id + ", phone=" + phone + ", email=" + email + ", postalCode=" + postalCode + ", address=" + address;
     }
 
 }

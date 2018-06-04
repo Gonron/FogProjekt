@@ -139,9 +139,7 @@ header{
 
                 <label for="email"><b>Adresse</label>
                 <input type="text" placeholder="Skriv din adresse" name="adress" required>
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="passsword" required>
+    
                 <label for="email"><b>Telefonnummer</b></label>
                 <input type="text" placeholder="Skriv dit telefonnummer" name="phonenr" required>
 

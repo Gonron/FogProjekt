@@ -20,6 +20,7 @@
         <% boolean shed = o.getShed(); %>
         <% double len = o.getLength(); %>
         <% double wid = o.getWidth(); %>
+
     <SVG width="<%= Math.abs((wid*3)) %>" height="<%= Math.abs(len*2) %>">
     
     
@@ -119,13 +120,16 @@
     <% } %>
 
     </SVG>
+       
+
     <form action="FrontController?command=DynamicCarportSide" name="order" method="POST">
         <input type="hidden" name="length" value="<%= len %>">
         <input type="hidden" name="width" value="<%= wid %>">
         <input type="hidden" name="shed" value="<%= shed %>">
         <input type="submit" value="Side tegning">
     </form>
-          <%@include file="footer.jsp" %>
+
+        <%@include file="footer.jsp" %>
 </body>
 </html>
 

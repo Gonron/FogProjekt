@@ -3,7 +3,9 @@ package DBAccess;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.Order;
 import FunctionLayer.OrderLine;
+import FunctionLayer.PasswordEncryptionService;
 import FunctionLayer.User;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,7 +17,8 @@ import java.util.logging.Level;
 import logger.Conf;
 
 /**
- * The purpose of DataMapper is to extract data and insert data into the database
+ * The purpose of DataMapper is to extract data and insert data into the
+ * database
  *
  * @author kasper
  */
@@ -27,10 +30,11 @@ public class DataMapper {
      * @param user
      * @throws LoginSampleException
      */
-    public static void createUser(User user) throws LoginSampleException {
+    public static void createUser(User user) throws LoginSampleException, NoSuchAlgorithmException //vi skal lige have ne bedre errorhandeling her
+    {
         try {
             Connection con = Connector.connection();
-            String SQL = "INSERT INTO Users (email, password, phone, post, adress, role) VALUES (?, ?, ?, ?, ?, ?)";
+            String SQL = "INSERT INTO Users (email, password, phone, post, adress, role, salt) VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, user.getEmail());
             ps.setString(2, user.getPassword());
@@ -38,6 +42,7 @@ public class DataMapper {
             ps.setString(4, user.getPostalCode());
             ps.setString(5, user.getAddress());
             ps.setString(6, user.getRole());
+            ps.setBytes(7, user.getSalt());
             ps.executeUpdate();
             ResultSet ids = ps.getGeneratedKeys();
             ids.next();
@@ -53,14 +58,15 @@ public class DataMapper {
      *
      * @param email
      * @param password
-     * @return this method returns the user with the corresponding username and password
+     * @return this method returns the user with the corresponding username and
+     * password
      * @throws LoginSampleException
      */
     public static User login(String email, String password) throws LoginSampleException {
         try {
             // denne metode skal rettes så ledes, at vi tager et salt objekt udfra databasen og kan bruge det til at verificere brugeren
             Connection con = Connector.connection();
-            String SQL = "SELECT id, phone, post, adress, role FROM Users "
+            String SQL = "SELECT id, phone, post, adress, role, salt FROM Users "
                     + "WHERE email=? AND password=?";
             PreparedStatement ps = con.prepareStatement(SQL);
             ps.setString(1, email);
@@ -72,7 +78,8 @@ public class DataMapper {
                 String phonenumber = rs.getString("phone");
                 String postalCode = rs.getString("post");
                 String address = rs.getString("adress");
-                User user = new User(id, email, password, phonenumber, postalCode, address, role);
+                byte[] salt = rs.getBytes("salt");
+                User user = new User(id, email, password, phonenumber, postalCode, address, role, salt);
                 user.setId(id);
                 return user;
             } else {
@@ -230,7 +237,8 @@ public class DataMapper {
     }
 
     /**
-     * This method should be used to update the materials in the database but sadly doesn't work yet
+     * This method should be used to update the materials in the database but
+     * sadly doesn't work yet
      *
      * @param name
      * @param desc
@@ -259,7 +267,8 @@ public class DataMapper {
     }
 
     /**
-     * This method creates an order and saves it in the database and the creates orderlines and saves them aswell
+     * This method creates an order and saves it in the database and the creates
+     * orderlines and saves them aswell
      *
      * @param order
      * @param user
@@ -371,42 +380,57 @@ public class DataMapper {
         }
         return isValidUser;
     }
-    
-    
-    public static  byte[] getSaltMethod(String username, String password) throws LoginSampleException{
-        
-        try{
-            
-            Connection con = Connector.connection();            
-            
+
+    public static byte[] getSaltMethod(String username, String password) throws LoginSampleException {
+
+        try {
+
+            Connection con = Connector.connection();
+
             String SQL = "select * from Users.Salt where email = ?, password = ?";
-            
-            
+
             PreparedStatement statement = con.prepareStatement(SQL);
-             statement.setString(1, username);
+            statement.setString(1, username);
             statement.setString(2, password);
-            
-             ResultSet set = statement.executeQuery();
-             
-             while(set.next()){
-             
-                 Blob blob = set.getBlob("salt");
-                 int blobLength = (int) blob.length();  
-                byte[] blobAsBytes = blob.getBytes(1, blobLength);
-                //release the blob and free up memory. (since JDBC 4.0)
-                   /* jeg er i tivil om denne skal være her*/blob.free();
-                return blobAsBytes;          
-             
-             }
-            
-        }catch(SQLException ex){
+
+            ResultSet set = statement.executeQuery();
+
+            while (set.next()) {
+
+                byte[] salt = set.getBytes("salt");
+
+                /* jeg er i tivil om denne skal være her*/
+                return salt;
+            }
+
+        } catch (SQLException ex) {
+
             Conf.MYLOGGER.log(Level.SEVERE, null, ex);
             throw new LoginSampleException(ex.getMessage());
         }
         return null;
-        
-      
- 
+
     }
-    
+
+    public static User showUser(int id) throws LoginSampleException {
+        try {
+            Connection con = Connector.connection();
+            String SQL = "SELECT * FROM Users WHERE id=?";
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                String email = rs.getString("email");
+                String phone= rs.getString("phone");
+                String post = rs.getString("post");                
+                String adress = rs.getString("adress");
+                User u = new User(id, phone, email, post, adress);
+                return u;
+            }
+        } catch (SQLException ex) {
+            Conf.MYLOGGER.log(Level.SEVERE, null, ex);
+            throw new LoginSampleException(ex.getMessage());
+        }
+        return null;
+    }
 }
