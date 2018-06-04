@@ -37,7 +37,7 @@ public class DataMapper {
             String SQL = "INSERT INTO Users (email, password, phone, post, adress, role, salt) VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, user.getEmail());
-            ps.setString(2, user.getPassword());
+            ps.setBytes(2, user.getPassword());
             ps.setString(3, user.getPhonenumber());
             ps.setString(4, user.getPostalCode());
             ps.setString(5, user.getAddress());
@@ -64,13 +64,13 @@ public class DataMapper {
      */
     public static User login(String email, String password) throws LoginSampleException {
         try {
+           
             // denne metode skal rettes så ledes, at vi tager et salt objekt udfra databasen og kan bruge det til at verificere brugeren
             Connection con = Connector.connection();
             String SQL = "SELECT id, phone, post, adress, role, salt FROM Users "
-                    + "WHERE email=? AND password=?";
+                    + "WHERE email=?";
             PreparedStatement ps = con.prepareStatement(SQL);
             ps.setString(1, email);
-            ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 String role = rs.getString("role");
@@ -79,7 +79,7 @@ public class DataMapper {
                 String postalCode = rs.getString("post");
                 String address = rs.getString("adress");
                 byte[] salt = rs.getBytes("salt");
-                User user = new User(id, email, password, phonenumber, postalCode, address, role, salt);
+                User user = new User(id, email, phonenumber, postalCode, address, role, salt);
                 user.setId(id);
                 return user;
             } else {
@@ -381,17 +381,17 @@ public class DataMapper {
         return isValidUser;
     }
 
-    public static byte[] getSaltMethod(String username, String password) throws SQLException, LoginSampleException {
+    public static byte[] getSaltMethod(String username) throws SQLException, LoginSampleException {
 
         try {
 
             Connection con = Connector.connection();
 
-            String SQL = "SELECT salt FROM users WHERE email = ?, password = ?";
+            String SQL = "SELECT salt FROM Users WHERE email = ?";
 
             PreparedStatement statement = con.prepareStatement(SQL);
             statement.setString(1, username);
-            statement.setString(2, password);
+     
 
             ResultSet set = statement.executeQuery();
 

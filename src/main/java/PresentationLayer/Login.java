@@ -11,7 +11,6 @@ import java.security.spec.InvalidKeySpecException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,23 +28,23 @@ public class Login extends Command {
         
 
         
-//        PasswordEncryptionService passwordService = new PasswordEncryptionService();
+        PasswordEncryptionService passwordService = new PasswordEncryptionService();
         
         
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         
         
-        //her henter vi salten fra brugeren, til at validere brugeren. 
+       // her henter vi salten fra brugeren, til at validere brugeren. 
     try {
-//            byte[] salt = LogicFacade.getSalt(email, password);
-//      
-//
-//        
-//        byte[] attemptedPassword = passwordService.getEncryptedPassword(password, salt);
-//        
-//        if(passwordService.authenticate(password, attemptedPassword, salt)){
-//  
+            byte[] salt = LogicFacade.getSalt(email);
+      
+
+        
+        byte[] attemptedPassword = passwordService.getEncryptedPassword(password, salt);
+        
+        if(passwordService.authenticate(password, attemptedPassword, salt)){
+  
             User user = null;
             user = LogicFacade.login(email, password);
             
@@ -55,29 +54,27 @@ public class Login extends Command {
             
             return user.getRole() + "page";
             
-//        }else{
+        }else{
             
        
-        //Vi logger salten og det hashede password til loggeren
-//        
-//        }
-//        
-//}       catch (SQLException | NoSuchAlgorithmException | InvalidKeySpecException ex) {
-//            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-//              
-//            String errorMessage ="We have an internal problem, but we are working as hard as possible, to solve it.";
-//             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-//            request.setAttribute("errorMessage", errorMessage );
-//            try {
-//                request.getRequestDispatcher("/index.jsp").forward(request, response);
-//            } catch (ServletException | IOException ex1) {
-//                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex1);
-//            }
-//            // her bliver der kun kastet en error, hvis det er vores valideringsmetoder, der ikke virker... // tror jeg 
+       // Vi logger salten og det hashede password til loggeren
+        
+        }
+        
+}       catch (SQLException | NoSuchAlgorithmException | InvalidKeySpecException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+              
+            String errorMessage ="We have an internal problem, but we are working as hard as possible, to solve it.";
+             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            request.setAttribute("errorMessage", errorMessage );
+            try {
+                request.getRequestDispatcher("/index.jsp").forward(request, response);
+            } catch (ServletException | IOException ex1) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+            // her bliver der kun kastet en error, hvis det er vores valideringsmetoder, der ikke virker... // tror jeg 
         } catch (LoginSampleException ex) {
-             
             
-
         String errorMessage ="The retrived password or username did not match, please try again.";
              Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             request.setAttribute("errorMessage", errorMessage );
@@ -86,8 +83,8 @@ public class Login extends Command {
             } catch (ServletException | IOException ex1) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex1);
             }
-        return null;
         }
+        return null;
 }
 }
     

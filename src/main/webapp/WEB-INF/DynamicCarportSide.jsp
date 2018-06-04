@@ -22,7 +22,7 @@
         const show = e => e.style.display = ''
         const toggleHide = function(selector) {
         [...document.querySelectorAll(selector)].forEach(e => e.style.display ? show(e) : hide(e))
-}        
+    }        
          </script>
         <%@include file ="header.jsp" %>
         <%@include file="isValidUser.jsp" %>

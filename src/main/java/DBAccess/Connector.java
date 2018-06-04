@@ -13,7 +13,7 @@ import logger.Conf;
  */
 public class Connector {
 
-    private static final String URL = "jdbc:mysql://46.101.101.94/fog?autoReconnect=true&serverTimezone=CET";
+    private static final String URL = "jdbc:mysql://46.101.101.94/useradmin?autoReconnect=true&serverTimezone=CET";
     private static final String USERNAME = "ruben";
     private static final String PASSWORD = "1234";
 

@@ -12,14 +12,14 @@ public class User {
     private int id; // just used to demo retrieval of autogen keys in UserMapper
     private String phone;
     private String email;
-    private String password; // Should be hashed and all
+    private byte[] password; // Should be hashed and all
     private String role;
     private String postalCode;
     private String address;
     private byte[] salt;
     
     //the "real" constructor which has all the parameters nedded to create the object
-    public User(int id, String email, String password, String phonenumber, String postalCode, String address, String role) {
+    public User(int id, String email, byte[] password, String phonenumber, String postalCode, String address, String role, byte[] salt) {
         this.id = id;        
         this.email = email;
         this.password = password;
@@ -31,7 +31,7 @@ public class User {
     }
     
     //constructor without id, which is used to create the user object, where the id is genereated in the MySQL database
-      public User(String email, String password, String phonenumber, String postalCode, String address, String role) {
+      public User(String email, byte[] password, String phonenumber, String postalCode, String address, String role, byte[] salt) {
         this.email = email;
         this.password = password;
         this.phone = phonenumber;
@@ -41,6 +41,17 @@ public class User {
         this.salt = salt;
     }
 
+    public User(int id, String phone, String email, String address, String postalCode, String role, byte[] salt) {
+        this.id = id;
+        this.phone = phone;
+        this.email = email;
+        this.role = role;
+        this.postalCode = postalCode;
+        this.address = address;
+        this.salt = salt;
+    }
+
+    
 
     public String getPhonenumber() {
         return phone;
@@ -87,11 +98,11 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
+    public byte[] getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(byte[] password) {
         this.password = password;
     }
 
