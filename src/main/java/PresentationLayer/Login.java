@@ -64,7 +64,7 @@ public class Login extends Command {
    //Vi logger salten og det hashede password til loggeren
         }
         
-}       catch (SQLException | NoSuchAlgorithmException | InvalidKeySpecException ex) {
+}       catch (NoSuchAlgorithmException | InvalidKeySpecException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
               
             String errorMessage ="We have an internal problem, but we are working as hard as possible, to solve it.";

@@ -14,7 +14,7 @@ public class LogicFacade {
 
     
     //jeg ved ikke hvorfor den kaster SQL-exception her, det skal vi lige kigge på.
-    public static byte[] getSalt(String email, String password) throws SQLException, LoginSampleException{
+    public static byte[] getSalt(String email, String password) throws LoginSampleException{
         return DataMapper.getSaltMethod(email, password);
     }
     

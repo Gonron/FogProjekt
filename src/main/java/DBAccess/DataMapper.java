@@ -373,12 +373,11 @@ public class DataMapper {
     }
     
     
-    public static  byte[] getSaltMethod(String username, String password) throws SQLException, LoginSampleException{
+    public static  byte[] getSaltMethod(String username, String password) throws LoginSampleException{
         
         try{
             
-            Connection con = Connector.connection();
-            
+            Connection con = Connector.connection();            
             
             String SQL = "select * from Users.Salt where email = ?, password = ?";
             
@@ -396,15 +395,13 @@ public class DataMapper {
                 byte[] blobAsBytes = blob.getBytes(1, blobLength);
                 //release the blob and free up memory. (since JDBC 4.0)
                    /* jeg er i tivil om denne skal være her*/blob.free();
-                return blobAsBytes;
-
-            
+                return blobAsBytes;          
              
              }
             
         }catch(SQLException ex){
             Conf.MYLOGGER.log(Level.SEVERE, null, ex);
-            throw new LoginSampleException(ex.getSQLState());
+            throw new LoginSampleException(ex.getMessage());
         }
         return null;
         
