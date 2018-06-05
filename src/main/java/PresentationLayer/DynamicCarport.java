@@ -22,6 +22,7 @@ public class DynamicCarport extends Command {
         HttpSession session = request.getSession();
         int id = Integer.parseInt(request.getParameter("idt"));
         session.setAttribute("order", LogicFacade.getOrder(id));
+        System.out.println(LogicFacade.getOrder(id));
         return "DynamicCarport";
     }
     }

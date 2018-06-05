@@ -130,14 +130,7 @@
    
     
   <button onclick="toggleHide('.segments')">Toggle bars</button>
-  <button onclick="toggleHide('.frame')">Toggle frame</button>
-
-    <form action="FrontController?command=DynamicCarport" method="POST">        
-        <input type="hidden" name="length" value="<%= len%>">
-        <input type="hidden" name="width" value="<%= wid%>">
-        <input type="hidden" name="shed" value="<%= shed %>">
-        <input type="submit" value="Grundtegning">
-    </form>
+  <button onclick="toggleHide('.frame')">Toggle frame</button>  
 
 
     <form action="FrontController?command=allOrdersCust" method="POST">
