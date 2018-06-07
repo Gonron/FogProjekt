@@ -19,8 +19,6 @@ public class Login extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
 
-        PasswordEncryptionService passwordService = new PasswordEncryptionService();
-
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
