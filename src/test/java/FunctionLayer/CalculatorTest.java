@@ -45,6 +45,7 @@ public class CalculatorTest {
         int expResult = 6;
         int result = calc.calculatePlanks(userLength, lengthPrUnit);
         assertEquals(expResult, result);
+        
     }
 
     @Test

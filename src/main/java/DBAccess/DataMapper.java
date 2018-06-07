@@ -3,10 +3,8 @@ package DBAccess;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.Order;
 import FunctionLayer.OrderLine;
-import FunctionLayer.PasswordEncryptionService;
 import FunctionLayer.User;
 import java.security.NoSuchAlgorithmException;
-import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -64,7 +62,7 @@ public class DataMapper {
      */
     public static User login(String email, String password) throws LoginSampleException {
         try {
-           
+
             // denne metode skal rettes så ledes, at vi tager et salt objekt udfra databasen og kan bruge det til at verificere brugeren
             Connection con = Connector.connection();
             String SQL = "SELECT id, phone, post, adress, role, salt FROM Users "
@@ -381,8 +379,7 @@ public class DataMapper {
         return isValidUser;
     }
 
-    public static byte[] getSaltMethod(String username) throws SQLException, LoginSampleException {
-
+    public static byte[] getSaltMethod(String username) throws LoginSampleException {
 
         try {
 
@@ -390,10 +387,8 @@ public class DataMapper {
 
             String SQL = "SELECT salt FROM Users WHERE email = ?";
 
-
             PreparedStatement statement = con.prepareStatement(SQL);
             statement.setString(1, username);
-     
 
             ResultSet set = statement.executeQuery();
 
@@ -405,8 +400,7 @@ public class DataMapper {
                 return salt;
             }
 
-        } catch (SQLException ex) {
-
+        } catch (SQLException ex ){
             Conf.MYLOGGER.log(Level.SEVERE, null, ex);
             throw new LoginSampleException(ex.getMessage());
         }
@@ -423,8 +417,8 @@ public class DataMapper {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 String email = rs.getString("email");
-                String phone= rs.getString("phone");
-                String post = rs.getString("post");                
+                String phone = rs.getString("phone");
+                String post = rs.getString("post");
                 String adress = rs.getString("adress");
                 User u = new User(id, phone, email, post, adress);
                 return u;
@@ -434,5 +428,36 @@ public class DataMapper {
             throw new LoginSampleException(ex.getMessage());
         }
         return null;
+    }
+    
+    
+    public static byte[] getEncryptedPassword(String username) throws LoginSampleException {
+
+        try {
+
+            Connection con = Connector.connection();
+
+            String SQL = "SELECT password FROM Users WHERE email = ?";
+
+            PreparedStatement statement = con.prepareStatement(SQL);
+            statement.setString(1, username);
+
+            ResultSet set = statement.executeQuery();
+
+            while (set.next()) {
+
+                byte[] password = set.getBytes("password");
+
+                /* jeg er i tivil om denne skal være her*/
+                return password;
+            }
+
+        } catch (SQLException ex) {
+
+            Conf.MYLOGGER.log(Level.SEVERE, null, ex);
+            throw new LoginSampleException(ex.getMessage());
+        }
+        return null;
+
     }
 }

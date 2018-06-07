@@ -187,9 +187,9 @@ header{
                 
 
 <%
-    if(request.getAttribute("errorMessage") != null)
+    if(request.getAttribute("error") != null)
     {
-        out.println(request.getAttribute("errorMessage"));
+        out.println(request.getAttribute("error"));
         out.println("<p> Error!! </p>");
         //ved godt det ikke er super smart at printe paragraph tags med ud
         

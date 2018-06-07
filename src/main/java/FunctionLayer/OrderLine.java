@@ -29,11 +29,6 @@ public class OrderLine{
         this.price = price;
         this.materialgroup = materialgroup;
     }
-
-   
-
-   
-
   
     public int getMaterialId() {
         return materialId;
