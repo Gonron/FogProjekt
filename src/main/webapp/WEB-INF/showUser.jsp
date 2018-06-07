@@ -6,6 +6,7 @@
 
 <%@page import="FunctionLayer.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page errorPage="error.jsp"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,12 +14,14 @@
         <title>Vis Bruger</title>
     </head>
     <body>
-        <h1>Her kan du se information om en bruger</h1>
-        <%  User u = (User) session.getAttribute("cust");%>
-        <% out.print("Kunde id:" + u.getId() + "<br>");
-            out.print("Email:" + u.getEmail() + "<br>");
-            out.print("Telefon:" + u.getPhonenumber() + "<br>");
-            out.print("Adresse:" + u.getAddress() + "<br>");
-            out.print("Postnr.:" + u.getPostalCode() + "<br>");%>
+        <%@include file ="header.jsp" %>
+        <%@include file="isValidUser.jsp" %>
+        <h1>Her kan du se informationer om en bruger</h1>
+        <%  User u2 = (User) session.getAttribute("cust");%>
+        <% out.print("<b>"+"Kunde id:"+"</b>" + u2.getId() + "<br>");
+            out.print("<b>"+"Email:"+"</b>" + u2.getEmail() + "<br>");
+            out.print("<b>"+"Telefon:"+"</b>" + u2.getPhonenumber() + "<br>");
+            out.print("<b>"+"Adresse:" +"</b>"+ u2.getAddress() + "<br>");
+            out.print("<b>"+"Postnr.:"+"</b>" + u2.getPostalCode() + "<br>");%>
     </body>
 </html>

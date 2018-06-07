@@ -30,6 +30,7 @@ abstract class Command {
         commands.put("pickus", new PickUsSide());
         commands.put("about", new AboutUs());
         commands.put("employees", new EmployeePage());
+        commands.put("showUser", new ShowUser());
     }
 
     static Command from(HttpServletRequest request) {
