@@ -18,9 +18,8 @@ public class Register extends Command {
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
    
         try {
-            PasswordEncryptionService PE = new PasswordEncryptionService();
-            
-            byte[] salt =PE.generateSalt();
+                        
+            byte[] salt = LogicFacade.generateSalt();
             
             String email = request.getParameter("email");
             String phonenumber = request.getParameter("phonenr");
@@ -29,7 +28,7 @@ public class Register extends Command {
             String password1 = request.getParameter("password1");
             String password2 = request.getParameter("password2");
             
-            byte[] EncryptedPW =PE.getEncryptedPassword(password2, salt);
+            byte[] EncryptedPW =LogicFacade.getEncryptedPassword(password2, salt);
             if (password1.equals(password2)) {
 
                 User user = LogicFacade.createUser(email, EncryptedPW, phonenumber, postalCode, address, salt);
@@ -40,9 +39,7 @@ public class Register extends Command {
             } else {
                 throw new LoginSampleException("the two passwords did not match");
             }
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InvalidKeySpecException ex) {
+        } catch (NoSuchAlgorithmException | InvalidKeySpecException ex) {
             Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;

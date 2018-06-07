@@ -3,6 +3,7 @@ package FunctionLayer;
 import DBAccess.DataMapper;
 import static FunctionLayer.Calculator.fillAmount;
 import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -11,12 +12,9 @@ import java.util.ArrayList;
  *
  * @author kasper
  */
-public class LogicFacade {
+public class LogicFacade {   
 
-    
-    //jeg ved ikke hvorfor den kaster SQL-exception her, det skal vi lige kigge på.
-
-    public static byte[] getSalt(String email) throws SQLException, LoginSampleException{
+    public static byte[] getSalt(String email) throws LoginSampleException{
         return DataMapper.getSaltMethod(email);
     }
     
@@ -30,7 +28,20 @@ public class LogicFacade {
 //        User user = new User(id, username, username, email, password, email, salt);
 //        return user;
 //    }
-
+    public static byte[] generateSalt() throws NoSuchAlgorithmException {
+        PasswordEncryptionService pes = new PasswordEncryptionService();
+        return pes.generateSalt(); 
+    }
+    
+    public static byte[] getEncryptedPassword(String password, byte[] salt) throws NoSuchAlgorithmException, InvalidKeySpecException{
+       PasswordEncryptionService pes = new PasswordEncryptionService();
+       return pes.getEncryptedPassword(password, salt);
+    }
+    
+    public static boolean authenticate(String attemptedPassword, byte[] encryptedPassword, byte[] salt) throws NoSuchAlgorithmException, InvalidKeySpecException{
+        PasswordEncryptionService pes = new PasswordEncryptionService();
+        return pes.authenticate(attemptedPassword, encryptedPassword, salt);
+    }
 
     public static User createUser(String email, byte[] password, String phonenumber, String postalCode, String address, byte[] salt) throws LoginSampleException, NoSuchAlgorithmException {
         User user = new User(email, password, phonenumber, postalCode, address, "customer", salt);

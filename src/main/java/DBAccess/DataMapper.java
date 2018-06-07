@@ -381,7 +381,7 @@ public class DataMapper {
         return isValidUser;
     }
 
-    public static byte[] getSaltMethod(String username) throws SQLException, LoginSampleException {
+    public static byte[] getSaltMethod(String username) throws LoginSampleException {
 
 
         try {
