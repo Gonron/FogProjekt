@@ -20,7 +20,8 @@ public class Calculator {
      *
      * @param userLength
      * @param lengthPrUnit
-     * @return The method returns the number of planks needed to make the carport
+     * @return The method returns the number of planks needed to make the
+     * carport
      */
     public int calculatePlanks(double userLength, double lengthPrUnit) {
         //denne metode bruges til at bregne diverse materiale, som ikke er stolper 
@@ -41,7 +42,7 @@ public class Calculator {
      * @return The method returns the number of posts needed to make the carport
      */
     public int calculatePosts(double userLength, double userwidth, boolean shed) {
-        double postAmount = (userLength / 200) * (userwidth / 500);        
+        double postAmount = (userLength / 200) * (userwidth / 500);
         if (shed == true) {
             postAmount += 4;
         }
@@ -64,13 +65,30 @@ public class Calculator {
         return line.getAmount() * line.getPrice();
     }
 
+    public int calculateRafter(double userLength, double userwidth) {
+        double rafter = (userLength / 100) * (userwidth / 361);
+        return (int) Math.round(rafter);
+    }
+
+    public int calculateNails(double userLength, double userwidth) {
+        double nails = (userLength / 200) * (userwidth / 500);
+        return (int) Math.round(nails);
+    }
+
+    public int calculateBrackets(double userLength, double lengthPrUnit) {
+        int planks = calculatePlanks(userLength, lengthPrUnit);
+        double brackets = planks*3;
+        return (int) Math.round(brackets);
+    }
     /**
-     * This method set the amount of materials used to the appropiate amount and calculates the price
+     * This method set the amount of materials used to the appropiate amount and
+     * calculates the price
      *
      * @param userWidth
      * @param userLength
      * @param shed
-     * @return The method calls a calculator that calculates amount and price of materials in the order
+     * @return The method calls a calculator that calculates amount and price of
+     * materials in the order
      * @throws FunctionLayer.LoginSampleException
      */
     public static ArrayList<OrderLine> fillAmount(double userWidth, double userLength, boolean shed) throws LoginSampleException {
