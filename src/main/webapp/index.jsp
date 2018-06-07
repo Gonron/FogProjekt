@@ -191,7 +191,7 @@ header{
     {
         out.println(request.getAttribute("error"));
         out.println("<p> Error!! </p>");
-        //ved godt det ikke er super smart at printe paragraph tags med ud
+  
         
     
     }
