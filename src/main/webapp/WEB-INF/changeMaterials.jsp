@@ -7,6 +7,7 @@
 <%@page import="FunctionLayer.LogicFacade"%>
 <%@page import="FunctionLayer.OrderLine"%>
 <%@page import="java.util.ArrayList"%>
+<%@page errorPage="error.jsp"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

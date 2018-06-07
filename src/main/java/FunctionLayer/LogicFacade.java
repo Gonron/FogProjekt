@@ -36,9 +36,9 @@ public class LogicFacade {
         return pes.generateSalt(); 
     }
     
-    public static byte[] getEncryptedPassword(String password, byte[] salt) throws NoSuchAlgorithmException, InvalidKeySpecException{
-       PasswordEncryptionService pes = new PasswordEncryptionService();
-       return pes.getEncryptedPassword(password, salt);
+    public static byte[] getEncryptedPassword(String email) throws NoSuchAlgorithmException, InvalidKeySpecException, LoginSampleException{
+      byte[] EncryptedPassword = DataMapper.getEncryptedPassword(email);
+       return EncryptedPassword;
     }
     
     public static boolean authenticate(String attemptedPassword, byte[] encryptedPassword, byte[] salt) throws NoSuchAlgorithmException, InvalidKeySpecException{

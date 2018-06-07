@@ -7,6 +7,7 @@
 <%@page import="FunctionLayer.Order"%>
 <%@page import="FunctionLayer.LogicFacade"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <%@page errorPage="error.jsp"%>
 <!DOCTYPE html>
 <html>
@@ -22,7 +23,6 @@
          Din ordre er blevet modtaget.<br>        
         <a href="FrontController?command=allOrdersCust"> Vis alle dine ordre </a><br>
         <a href="FrontController?command=contact"> Kontakt os </a><br>
-        <a href="FrontController?command=DynamicCarport"> Se carport </a>
        <%@include file="footer.jsp" %>   
     </body>
 </html>

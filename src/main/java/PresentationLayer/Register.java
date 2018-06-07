@@ -28,7 +28,7 @@ public class Register extends Command {
             String password1 = request.getParameter("password1");
             String password2 = request.getParameter("password2");
             
-            byte[] EncryptedPW =LogicFacade.getEncryptedPassword(password2, salt);
+            byte[] EncryptedPW =LogicFacade.getEncryptedPassword(email);
             if (password1.equals(password2)) {
 
                 User user = LogicFacade.createUser(email, EncryptedPW, phonenumber, postalCode, address, salt);
