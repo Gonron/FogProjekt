@@ -15,8 +15,7 @@ import java.util.logging.Level;
 import logger.Conf;
 
 /**
- * The purpose of DataMapper is to extract data and insert data into the
- * database
+ * The purpose of DataMapper is to extract data and insert data into the database
  *
  * @author kasper
  */
@@ -56,8 +55,7 @@ public class DataMapper {
      *
      * @param email
      * @param password
-     * @return this method returns the user with the corresponding username and
-     * password
+     * @return this method returns the user with the corresponding username and password
      * @throws LoginSampleException
      */
     public static User login(String email, String password) throws LoginSampleException {
@@ -109,7 +107,7 @@ public class DataMapper {
                 int Length = rs.getInt("Length");
                 boolean status = rs.getBoolean("status");
                 boolean shed = rs.getBoolean("shed");
-                Order order = new Order(id, Heigth, Width, Length, shed, status, false);
+                Order order = new Order(id, Heigth, Width, Length, shed, false, status);
                 orders.add(order);
             }
             return orders;
@@ -143,7 +141,7 @@ public class DataMapper {
                 int length = rs.getInt("Length");
                 boolean shed = rs.getBoolean("shed");
                 boolean status = rs.getBoolean("status");
-                Order order = new Order(orderId, heigth, width, length, shed, status, false);
+                Order order = new Order(orderId, heigth, width, length, shed, false, status);
                 orders.add(order);
             }
             return orders;
@@ -224,7 +222,7 @@ public class DataMapper {
                 double length = rs.getInt("Length");
                 boolean status = rs.getBoolean("status");
                 boolean shed = rs.getBoolean("shed");
-                Order order = new Order(heigth, width, length, shed, status, false);
+                Order order = new Order(heigth, width, length, shed, false, status);
                 return order;
             }
         } catch (SQLException ex) {
@@ -235,8 +233,7 @@ public class DataMapper {
     }
 
     /**
-     * This method should be used to update the materials in the database but
-     * sadly doesn't work yet
+     * This method should be used to update the materials in the database but sadly doesn't work yet
      *
      * @param name
      * @param desc
@@ -265,8 +262,7 @@ public class DataMapper {
     }
 
     /**
-     * This method creates an order and saves it in the database and the creates
-     * orderlines and saves them aswell
+     * This method creates an order and saves it in the database and the creates orderlines and saves them aswell
      *
      * @param order
      * @param user
@@ -400,7 +396,7 @@ public class DataMapper {
                 return salt;
             }
 
-        } catch (SQLException ex ){
+        } catch (SQLException ex) {
             Conf.MYLOGGER.log(Level.SEVERE, null, ex);
             throw new LoginSampleException(ex.getMessage());
         }
@@ -429,8 +425,7 @@ public class DataMapper {
         }
         return null;
     }
-    
-    
+
     public static byte[] getEncryptedPassword(String username) throws LoginSampleException {
 
         try {
