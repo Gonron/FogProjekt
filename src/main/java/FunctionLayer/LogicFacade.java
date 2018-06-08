@@ -4,7 +4,6 @@ import DBAccess.DataMapper;
 import static FunctionLayer.Calculator.fillAmount;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -46,8 +45,10 @@ public class LogicFacade {
         return pes.authenticate(attemptedPassword, encryptedPassword, salt);
     }
 
-    public static User createUser(String email, byte[] password, String phonenumber, String postalCode, String address, byte[] salt) throws LoginSampleException, NoSuchAlgorithmException {
-        User user = new User(email, password, phonenumber, postalCode, address, "customer", salt);
+    public static User createUser(String email, String password, String phonenumber, String postalCode, String address, byte[] salt) throws LoginSampleException, NoSuchAlgorithmException, InvalidKeySpecException {
+        PasswordEncryptionService pes = new PasswordEncryptionService();
+       byte[] encPassword = pes.getEncryptedPassword(password, salt);
+        User user = new User(email, encPassword, phonenumber, postalCode, address, "employee", salt);
         DataMapper.createUser(user);
         return user;
     }
