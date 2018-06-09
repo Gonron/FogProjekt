@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
-
 public class Login extends Command {
 
     @Override
@@ -39,10 +37,9 @@ public class Login extends Command {
 
                 return user.getRole() + "page";
 
-        
-            }else{
-             String errorMessage = "the username or password you have selected does not exist";
-            throw new LoginSampleException(errorMessage);
+            } else {
+                String errorMessage = "the username or password you have selected does not exist";
+                throw new LoginSampleException(errorMessage);
 
             }
 
@@ -50,7 +47,10 @@ public class Login extends Command {
             String errorMessage = "We have an internal problem, but we are working as hard as possible, to solve it.";
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             throw new LoginSampleException(errorMessage);
+        } catch (NullPointerException ex) {
+            String errorMessage = "the username or password you have selected does not exist";
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            throw new LoginSampleException(errorMessage);
+        }
     }
 }
-}
-
