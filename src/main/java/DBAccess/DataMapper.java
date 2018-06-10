@@ -453,7 +453,7 @@ public class DataMapper {
         } catch (SQLException ex) {
             Conf.MYLOGGER.log(Level.SEVERE, null, ex);
             throw new LoginSampleException(ex.getMessage());
-        }       
+        }
 
     }
 
