@@ -5,6 +5,7 @@
  */
 package PresentationLayer;
 
+import FunctionLayer.InternalErrorException;
 import FunctionLayer.LoginSampleException;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -38,8 +39,10 @@ public class FrontController extends HttpServlet {
         } catch ( LoginSampleException ex ) {
             request.setAttribute( "error", ex.getMessage() );
             request.getRequestDispatcher( "index.jsp" ).forward( request, response );
-        }
+         }catch (InternalErrorException  ex){
+             request.setAttribute("internalError", ex.getMessage());
     }
+    }  
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

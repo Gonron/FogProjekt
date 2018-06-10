@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page errorPage="error.jsp"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -174,9 +175,7 @@ header{
                         <div class="clearfix">
                             <button type="submit" class="loginbtn" value="Submit">Login</button>
                     </form>
-
-
-
+        
                 </div>
 
 

@@ -40,14 +40,14 @@ public class LogicFacade {
        return EncryptedPassword;
     }
     
-    public static boolean authenticate(String attemptedPassword, byte[] encryptedPassword, byte[] salt) throws NoSuchAlgorithmException, InvalidKeySpecException{
+    public static boolean authenticate(String attemptedPassword, byte[] encryptedPassword, byte[] salt) throws NoSuchAlgorithmException, InvalidKeySpecException, LoginSampleException{
         PasswordEncryptionService pes = new PasswordEncryptionService();
         return pes.authenticate(attemptedPassword, encryptedPassword, salt);
     }
 
     public static User createUser(String email, String password, String phonenumber, String postalCode, String address, byte[] salt) throws LoginSampleException, NoSuchAlgorithmException, InvalidKeySpecException {
         PasswordEncryptionService pes = new PasswordEncryptionService();
-       byte[] encPassword = pes.getEncryptedPassword(password, salt);
+        byte[] encPassword = pes.getEncryptedPassword(password, salt);
         User user = new User(email, encPassword, phonenumber, postalCode, address, "employee", salt);
         DataMapper.createUser(user);
         return user;

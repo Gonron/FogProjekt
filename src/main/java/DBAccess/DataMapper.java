@@ -1,5 +1,6 @@
 package DBAccess;
 
+import FunctionLayer.InternalErrorException;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.Order;
 import FunctionLayer.OrderLine;
@@ -26,6 +27,7 @@ public class DataMapper {
      *
      * @param user
      * @throws LoginSampleException
+     * @throws java.security.NoSuchAlgorithmException
      */
     public static void createUser(User user) throws LoginSampleException, NoSuchAlgorithmException //vi skal lige have ne bedre errorhandeling her
     {
@@ -159,7 +161,7 @@ public class DataMapper {
      * @throws FunctionLayer.LoginSampleException
      *
      */
-    public static void updateOrder(int id) throws LoginSampleException {
+    public static void updateOrder(int id) throws InternalErrorException {
         try {
             Connection con = Connector.connection();
             String SQL = "UPDATE orders SET status = ? WHERE order_id = ?";
@@ -169,7 +171,7 @@ public class DataMapper {
             ps.executeUpdate();
         } catch (SQLException ex) {
             Conf.MYLOGGER.log(Level.SEVERE, null, ex);
-            throw new LoginSampleException(ex.getMessage());
+            throw new InternalErrorException(ex.getMessage());
         }
     }
 
@@ -393,7 +395,6 @@ public class DataMapper {
 
                 byte[] salt = set.getBytes("salt");
 
-                /* jeg er i tivil om denne skal være her*/
                 return salt;
             }
 
