@@ -30,7 +30,7 @@ public class DataMapper {
     public static void createUser(User user) throws LoginSampleException, NoSuchAlgorithmException //vi skal lige have ne bedre errorhandeling her
     {
         try {
-            
+
             Connection con = Connector.connection();
             String SQL = "INSERT INTO Users (email, password, phone, post, adress, role, salt) VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
@@ -440,22 +440,23 @@ public class DataMapper {
 
             ResultSet set = statement.executeQuery();
 
-            while (set.next()) {
+            if (set.next()) {
 
                 byte[] password = set.getBytes("password");
 
                 /* jeg er i tivil om denne skal være her*/
                 return password;
+            } else {
+                String errorMessage = "the username or password you have selected does not exist";
+                throw new LoginSampleException(errorMessage);
             }
-
         } catch (SQLException ex) {
-
             Conf.MYLOGGER.log(Level.SEVERE, null, ex);
             throw new LoginSampleException(ex.getMessage());
-        }
-        return null;
+        }       
 
     }
+
     public static byte[] saveEncryptedPassword(String username, byte[] password) throws LoginSampleException {
 
         try {
@@ -471,7 +472,7 @@ public class DataMapper {
 
             while (set.next()) {
 
-                 password = set.getBytes("password");
+                password = set.getBytes("password");
 
                 /* jeg er i tivil om denne skal være her*/
                 return password;

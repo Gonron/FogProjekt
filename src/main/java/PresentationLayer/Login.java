@@ -28,7 +28,7 @@ public class Login extends Command {
 
             if (LogicFacade.authenticate(password, attemptedPassword, salt)) {
 
-                User user = null;
+                User user;
                 user = LogicFacade.login(email, password);
 
                 HttpSession session = request.getSession();
@@ -46,11 +46,7 @@ public class Login extends Command {
         } catch (NoSuchAlgorithmException | InvalidKeySpecException ex) {
             String errorMessage = "We have an internal problem, but we are working as hard as possible, to solve it.";
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            throw new LoginSampleException(errorMessage);
-        } catch (NullPointerException ex) {
-            String errorMessage = "the username or password you have selected does not exist";
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            throw new LoginSampleException(errorMessage);
+            throw new LoginSampleException(errorMessage);//  
         }
     }
 }
