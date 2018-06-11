@@ -5,6 +5,8 @@
  */
 package FunctionLayer;
 
+import java.util.ArrayList;
+import java.util.Random;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -21,6 +23,11 @@ public class CalculatorTest {
     public CalculatorTest() {
     }
 
+    Calculator calc;
+    double plankLength;
+    double userLength;
+    double userWidth;
+
     @BeforeClass
     public static void setUpClass() {
     }
@@ -31,6 +38,10 @@ public class CalculatorTest {
 
     @Before
     public void setUp() {
+        calc = new Calculator();
+        plankLength = 360;
+        userLength = 780;
+        userWidth = 600;
     }
 
     @After
@@ -39,70 +50,93 @@ public class CalculatorTest {
 
     @Test
     public void testCalculatePlanksLength() {
-        double userLength = 780.0;
-        double lengthPrUnit = 360.0;
-        Calculator calc = new Calculator();
         int expResult = 6;
-        int result = calc.calculatePlanks(userLength, lengthPrUnit);
+        int result = calc.calculatePlanks(userLength, plankLength);
         assertEquals(expResult, result);
-        
+
     }
 
     @Test
     public void testCalculatePlanksWidth() {
-        double userLength = 600.0;
-        double lengthPrUnit = 360.0;
-        Calculator calc = new Calculator();
         int expResult = 5;
-        int result = calc.calculatePlanks(userLength, lengthPrUnit);
+        int result = calc.calculatePlanks(userWidth, plankLength);
         assertEquals(expResult, result);
     }
 
     @Test
     public void testCalculatePostsWithoutShed() {
-        double userLength = 780.0;
-        double userwidth = 600.0;
         boolean shed = false;
-        Calculator calc = new Calculator();
         int expResult = 6;
-        int result = calc.calculatePosts(userLength, userwidth, shed);
+        int result = calc.calculatePosts(userLength, userWidth, shed);
         assertEquals(expResult, result);
     }
 
     @Test
     public void testCalculatePostsWithShed() {
-        double userLength = 780.0;
-        double userwidth = 600.0;
         boolean shed = true;
-        Calculator calc = new Calculator();
         int expResult = 10;
-        int result = calc.calculatePosts(userLength, userwidth, shed);
+        int result = calc.calculatePosts(userLength, userWidth, shed);
         assertEquals(expResult, result);
     }
 
     @Test
     public void testCalculatePrice() {
-        OrderLine ol = new OrderLine(0, "planke", 0, 200, "Ed Bois", 14, 0);
-        Calculator instance = new Calculator();
+        OrderLine ol = new OrderLine(0, "planke", 0, 200, "desc", 14, 0);
         int expResult = 2800;
-        int result = instance.calculatePrice(ol);
+        int result = calc.calculatePrice(ol);
         assertEquals(expResult, result);
     }
 
     @Test
     public void testCalculatePriceManyOrderLines() {
-        OrderLine ol = new OrderLine(0, "planke", 0, 200, "Ed Bois", 14, 0); 
-        OrderLine ol01 = new OrderLine(0, "planke", 0, 20, "Ed Bois", 12, 0);
-        OrderLine ol02 = new OrderLine(0, "planke", 0, 1, "Ed Bois", 150, 0);
-        OrderLine ol03 = new OrderLine(0, "planke", 0, 12, "Ed Bois", 2, 0); 
-        OrderLine ol04 = new OrderLine(0, "planke", 0, 10, "Ed Bois", 4, 0); 
-        OrderLine ol05 = new OrderLine(0, "planke", 0, 6, "Ed Bois", 6, 0); 
+        ArrayList<OrderLine> OList;
+        OList = new ArrayList();
 
-        Calculator instance = new Calculator();
-        int expResult = 3290;
-        int result = instance.calculatePrice(ol) + instance.calculatePrice(ol01)
-                + instance.calculatePrice(ol02) + instance.calculatePrice(ol03)
-                + instance.calculatePrice(ol04) + instance.calculatePrice(ol05);
+        for (int i = 0; i < 10; i++) {
+            OList.add(new OrderLine(i, "Plank", 0, 200, "description", 20, 0));
+
+        }
+        int result = 0;
+        int expResult = 40000;
+        for (int i = 0; i < OList.size(); i++) {
+            result += calc.calculatePrice(OList.get(i));
+        }
+
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    public void testCalculateRafter() {
+        int expResult = 13;
+        int result = calc.calculateRafter(userLength, userWidth);
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    public void testCalculateNails() {
+        int expResult = 5;
+        int result = calc.calculateNails(userLength, userWidth);
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    public void testCalculateBrackets() {
+        int expResult = 60;
+        int result = calc.calculateBrackets(userLength, plankLength);
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    public void testCalculateShedPlanksWithShed() {
+        int expResult = 398;
+        int result = calc.calculateShedplanks(userWidth, true);
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testCalculateShedPlanksWithoutShed() {
+        int expResult = 0;
+        int result = calc.calculateShedplanks(userWidth, false);
         assertEquals(expResult, result);
     }
 
