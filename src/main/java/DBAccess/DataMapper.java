@@ -165,7 +165,7 @@ public class DataMapper {
     public static void updateOrder(int id) throws InternalErrorException {
         try {
             Connection con = Connector.connection();
-            String SQL = "UPDATE orders SET stastus = ? WHERE order_id = ?";
+            String SQL = "UPDATE orders SET status = ? WHERE order_id = ?";
             PreparedStatement ps = con.prepareStatement(SQL);
             ps.setBoolean(1, true);
             ps.setInt(2, id);

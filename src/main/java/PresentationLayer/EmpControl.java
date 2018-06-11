@@ -19,6 +19,7 @@ public class EmpControl extends Command{
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws InternalErrorException {
         int id = Integer.parseInt(request.getParameter("id"));
+        System.out.println(id);
         LogicFacade.updateOrder(id);
         return "allOrdersEmp";
     }
