@@ -41,6 +41,7 @@ public class FrontController extends HttpServlet {
             request.getRequestDispatcher( "index.jsp" ).forward( request, response );
          }catch (InternalErrorException  ex){
              request.setAttribute("internalError", ex.getMessage());
+             response.sendRedirect(request.getRequestURI());
     }
     }  
 

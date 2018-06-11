@@ -78,7 +78,7 @@ li{
   </a>
     </header>
         <ul>
-        <li><a class="active" href="FrontController?command=index">Hjem</a>
+        <li><a class="active" href="index.jsp">Hjem</a>
         </li>
         <li><a href="FrontController?command=pickus">Hvorfor vælge os</a></li>
         <li><a href="FrontController?command=contact">Kontakt</a></li>
