@@ -11,8 +11,8 @@ package FunctionLayer;
  */
 public class InternalErrorException extends Exception{
     
-    public InternalErrorException(String msg){
-    super(msg);
+    public InternalErrorException(String msg, Throwable cause){
+    super(msg, cause);
     
 }
 }

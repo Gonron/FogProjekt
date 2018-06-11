@@ -25,9 +25,9 @@ public class Login extends Command {
             byte[] salt = LogicFacade.getSalt(email);
 
             byte[] attemptedPassword = LogicFacade.getEncryptedPassword(email);
+            if (LogicFacade.authenticate(password, attemptedPassword, salt)) {
 
-            if (LogicFacade.authenticate(password, attemptedPassword, salt) ) {
-                User user = null;
+                User user;
                 user = LogicFacade.login(email, password);
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
@@ -38,14 +38,14 @@ public class Login extends Command {
                 throw new LoginSampleException(errorMessage);
             }
 
-        } catch (NoSuchAlgorithmException | InvalidKeySpecException | LoginSampleException ex ) {
+        } catch (NoSuchAlgorithmException | InvalidKeySpecException ex) {
             String errorMessage = "We have an internal problem, but we are working as hard as possible, to solve it.";
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             throw new LoginSampleException(errorMessage);
         }catch (NullPointerException ex){
             String errorMessage = "We have an internal problem, but we are working as hard as possible, to solve it.";
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            throw new LoginSampleException(errorMessage);
         }
+        return "index";
     }
 }

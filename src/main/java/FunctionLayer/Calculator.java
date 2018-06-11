@@ -20,8 +20,7 @@ public class Calculator {
      *
      * @param userLength
      * @param lengthPrUnit
-     * @return The method returns the number of planks needed to make the
-     * carport
+     * @return The method returns the number of planks needed to make the carport
      */
     public int calculatePlanks(double userLength, double lengthPrUnit) {
         //denne metode bruges til at bregne diverse materiale, som ikke er stolper 
@@ -77,18 +76,25 @@ public class Calculator {
 
     public int calculateBrackets(double userLength, double lengthPrUnit) {
         int planks = calculatePlanks(userLength, lengthPrUnit);
-        double brackets = planks*3;
+        double brackets = planks * 10;
         return (int) Math.round(brackets);
     }
+
+    public int calculateShedplanks(double userWidth, boolean shed) {
+        double shedPlanks = 0;
+        if (shed) {
+            shedPlanks = userWidth * 0.33 + 200;
+        }
+        return (int) Math.round(shedPlanks);
+    }
+
     /**
-     * This method set the amount of materials used to the appropiate amount and
-     * calculates the price
+     * This method set the amount of materials used to the appropiate amount and calculates the price
      *
      * @param userWidth
      * @param userLength
      * @param shed
-     * @return The method calls a calculator that calculates amount and price of
-     * materials in the order
+     * @return The method calls a calculator that calculates amount and price of materials in the order
      * @throws FunctionLayer.LoginSampleException
      */
     public static ArrayList<OrderLine> fillAmount(double userWidth, double userLength, boolean shed) throws LoginSampleException {
@@ -106,6 +112,18 @@ public class Calculator {
                     break;
                 case 4:
                     orderlines.get(i).setAmount(calc.calculatePlanks(userWidth, orderlines.get(i).getLength()));
+                    break;
+                case 5:
+                    orderlines.get(i).setAmount(calc.calculateRafter(userLength, userWidth));
+                    break;
+                case 6:
+                    orderlines.get(i).setAmount(calc.calculateNails(userLength, userWidth));
+                    break;
+                case 7:
+                    orderlines.get(i).setAmount(calc.calculateBrackets(userLength, orderlines.get(0).getLength()));
+                    break;
+                case 8:
+                    orderlines.get(i).setAmount(calc.calculateShedplanks(userWidth, shed));
                     break;
                 default:
                     orderlines.get(i).setAmount(1);

@@ -47,8 +47,10 @@ public class LogicFacade {
 
     public static User createUser(String email, String password, String phonenumber, String postalCode, String address, byte[] salt) throws LoginSampleException, NoSuchAlgorithmException, InvalidKeySpecException {
         PasswordEncryptionService pes = new PasswordEncryptionService();
-        byte[] encPassword = pes.getEncryptedPassword(password, salt);
-        User user = new User(email, encPassword, phonenumber, postalCode, address, "employee", salt);
+
+
+       byte[] encPassword = pes.getEncryptedPassword(password, salt);
+        User user = new User(email, encPassword, phonenumber, postalCode, address, "customer", salt);
         DataMapper.createUser(user);
         return user;
     }
@@ -69,7 +71,7 @@ public class LogicFacade {
         return DataMapper.getOrders(u);
     }
 
-    public static void updateOrder(int id) throws LoginSampleException {
+    public static void updateOrder(int id) throws InternalErrorException {
         DataMapper.updateOrder(id);
     }
 
